@@ -1,0 +1,38 @@
+# derived from 
+#<https://github.com/marketplace/actions/mkdocs-action>
+#<https://gist.github.com/liflovs/f2a950dadcca25a0dbdfe10f53f5c838>
+#<https://stackoverflow.com/questions/64374179/how-to-push-to-another-repository-in-github-actions>
+#<https://stackoverflow.com/questions/41714882/git-how-to-clone-with-ssh-key-username>
+
+name: mkdocs-build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    name: build mkdocs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+
+      - name: Install & Build
+        run: |
+          pip install -r requirements.txt
+          mkdocs build
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site          
+          allow_empty_commit: true
