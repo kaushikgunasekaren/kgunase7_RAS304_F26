@@ -29,7 +29,7 @@
 
     
       
-        <title>Individal Block Diagram - RAS 304 Kaushik Gunasekaren Data Sheet</title>
+        <title>Individual Block Diagram - RAS 304 Kaushik Gunasekaren Data Sheet</title>
       
     
     
@@ -127,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Individal Block Diagram
+              Individual Block Diagram
             
           </span>
         </div>
@@ -512,7 +512,7 @@
   <span class="md-ellipsis">
     
   
-    Individal Block Diagram
+    Individual Block Diagram
   
 
     
@@ -530,7 +530,7 @@
   <span class="md-ellipsis">
     
   
-    Individal Block Diagram
+    Individual Block Diagram
   
 
     
@@ -565,10 +565,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-block-diagram" class="md-nav__link">
+  <a href="#block-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example Block Diagram
+        Block Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-components-and-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Major Components and Cost
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Domains
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microcontroller-peripherals-and-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microcontroller Peripherals and Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Team Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Notes
       
     </span>
   </a>
@@ -912,10 +967,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-block-diagram" class="md-nav__link">
+  <a href="#block-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example Block Diagram
+        Block Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-components-and-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Major Components and Cost
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Domains
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microcontroller-peripherals-and-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microcontroller Peripherals and Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Team Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Notes
       
     </span>
   </a>
@@ -995,21 +1105,291 @@
   
 
 
-  <h1>Individal Block Diagram</h1>
+  <h1>Individual Block Diagram</h1>
 
 <h2 id="overview">Overview</h2>
-<p>This needs to be updated with a brief purpose for having the block diagram.
-Things to mention are:
-* power levels
-* sensor
-* Actuator
-* team connections
-* Power source
-* ...</p>
-<p>To get some initial formatting help, one can view <a href="https://embedded-systems-design.github.io/EGR304DataSheetTemplate/Appendix/basic-markdown-examples/">"here"</a> some basic techniques.</p>
-<h2 id="example-block-diagram">Example Block Diagram</h2>
-<p>Showing an example of how to import a screenshot of the block diagram created outside of git and brought into a page.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../individual-block-diagram.png" data-desc-position="bottom"><img alt="Example of Indivial Block diagram " src="../individual-block-diagram.png"></a></p>
+<p>This page shows the electrical architecture of my subsystem for Team 102's Modular Spider Leg. In the team's hub-and-spoke layout, my board is the spoke on <strong>hub connector 3</strong>. It drives the leg's small <strong>linear actuator</strong> (the actuator) and measures leg motion with an <strong>accelerometer</strong> for jerk and impulse sensing (the sensor). Commands come from Preston's hub board over the ribbon cable.</p>
+<p>The design follows the <a href="https://ras-embedded-systems.pages.dev/304/course-info/project-description/">RAS 304 project requirements</a>:</p>
+<ul>
+<li>PIC18F57Q43 Curiosity Nano as the microcontroller.</li>
+<li>A 9 V barrel jack feeding a 5 V <strong>linear</strong> regulator, with a fuse and a power-status LED.</li>
+<li>A 2x4 male IDC header using the class ribbon pinout.</li>
+<li>No daughter boards: every peripheral, including the accelerometer, is placed directly on this PCB.</li>
+</ul>
+<p>Parts were also chosen to stay within the team's $60–70 total budget.</p>
+<p>The block diagram shows:</p>
+<ul>
+<li><strong>Power levels:</strong> my own 9 V adapter → barrel jack → fuse → L7805 linear regulator (5 V) for the motor driver, the actuator motor, and the Curiosity Nano. The Curiosity Nano's on-board regulator supplies 3.3 V to the accelerometer and the position potentiometer.</li>
+<li><strong>Actuator:</strong> an N20 gear motor with an M3 lead screw, driven by a TI DRV8833 H-bridge. A current-sense resistor allows stall detection.</li>
+<li><strong>Position feedback:</strong> a Bourns slide potentiometer whose slider moves with the actuator's lead-screw nut.</li>
+<li><strong>Sensor:</strong> an ST LIS3DH 3-axis accelerometer chip on SPI, with a data-ready interrupt.</li>
+<li><strong>Team connection:</strong> an 8-pin ribbon cable to Preston's hub board. It carries position commands in and jerk/impulse data out over UART.</li>
+</ul>
+<h2 id="block-diagram">Block Diagram</h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../individual-block-diagram.png" data-desc-position="bottom"><img alt="Individual block diagram" src="../individual-block-diagram.png"></a><br>
+<strong>Figure 1:</strong> Individual block diagram for the linear actuator and accelerometer subsystem.</p>
+<p><a href="../individual-block-diagram.drawio">Download the draw.io source file</a></p>
+<h2 id="major-components-and-cost">Major Components and Cost</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Manufacturer</th>
+<th>Part Number</th>
+<th>Supply</th>
+<th>Approx. Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microcontroller</td>
+<td>Microchip</td>
+<td>PIC18F57Q43 Curiosity Nano (DM164150)</td>
+<td>5 V (VBUS)</td>
+<td>Course kit</td>
+</tr>
+<tr>
+<td>Linear actuator</td>
+<td>Generic</td>
+<td>N20 gear motor, 6 V, 300 RPM, with M3 lead-screw shaft</td>
+<td>5 V</td>
+<td>~$8</td>
+</tr>
+<tr>
+<td>Motor driver (H-bridge)</td>
+<td>Texas Instruments</td>
+<td>DRV8833PWPR</td>
+<td>5 V (VM)</td>
+<td>$2.34</td>
+</tr>
+<tr>
+<td>Position sensor</td>
+<td>Bourns</td>
+<td>PTA2043-2015CPB103 (10 kΩ slide pot, 20 mm travel)</td>
+<td>3.3 V</td>
+<td>~$1.60</td>
+</tr>
+<tr>
+<td>Accelerometer (bare chip)</td>
+<td>STMicroelectronics</td>
+<td>LIS3DHTR</td>
+<td>3.3 V</td>
+<td>~$2</td>
+</tr>
+<tr>
+<td>Linear regulator (9 V → 5 V)</td>
+<td>STMicroelectronics</td>
+<td>L7805CV</td>
+<td>9 V in</td>
+<td>~$0.60</td>
+</tr>
+<tr>
+<td>Fuse (1 A, fast-acting)</td>
+<td>Littelfuse</td>
+<td>0251001.MXL</td>
+<td>9 V</td>
+<td>~$1</td>
+</tr>
+<tr>
+<td>Barrel jack</td>
+<td>CUI Devices</td>
+<td>PJ-002A</td>
+<td>9 V</td>
+<td>~$1</td>
+</tr>
+<tr>
+<td>Power status LED (green) + 1 kΩ resistor</td>
+<td>Kingbright</td>
+<td>WP7113GD</td>
+<td>5 V</td>
+<td>~$0.30</td>
+</tr>
+<tr>
+<td>2x4 IDC header, sense resistor, capacitors</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>~$1.50</td>
+</tr>
+<tr>
+<td>9 V wall adapter</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Already owned</td>
+</tr>
+<tr>
+<td><strong>Total (new purchases)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>~$18.50</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This is roughly my even share of the <span class="arithmatex">\(60–70 team budget (\)</span>15–17.50). Buying the N20 lead-screw motor from a lower-cost supplier (about $5–6) brings the total to about $16.</p>
+<h2 id="power-domains">Power Domains</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Regulation</th>
+<th>Max Current</th>
+<th>Source</th>
+<th>Loads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+9 V DC</td>
+<td>Unregulated</td>
+<td>1.0 A</td>
+<td>My 9 V wall adapter, through the barrel jack and a 1 A fuse</td>
+<td>L7805CV input</td>
+</tr>
+<tr>
+<td>+5 V DC</td>
+<td>Regulated (linear)</td>
+<td>1.5 A</td>
+<td>ST L7805CV</td>
+<td>DRV8833 (VM) and N20 motor, Curiosity Nano (VBUS), power LED</td>
+</tr>
+<tr>
+<td>+3.3 V DC</td>
+<td>Regulated</td>
+<td>0.5 A</td>
+<td>Curiosity Nano on-board regulator (VTG pin)</td>
+<td>LIS3DHTR, slide potentiometer</td>
+</tr>
+</tbody>
+</table>
+<p>The L7805CV will need a small heatsink: at a 0.6 A motor load it dissipates about (9 V − 5 V) × 0.6 A ≈ 2.4 W.</p>
+<h2 id="microcontroller-peripherals-and-pins">Microcontroller Peripherals and Pins</h2>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>PIC18F57Q43 Pin(s)</th>
+<th>Connected To</th>
+<th>Signal (Type, Pins)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PWM (PWM1)</td>
+<td>RC2, RD0</td>
+<td>DRV8833 AIN1, AIN2</td>
+<td>Analog (0–3.3 VDC PWM, 2 pins)</td>
+</tr>
+<tr>
+<td>DO</td>
+<td>RD1</td>
+<td>DRV8833 nSLEEP</td>
+<td>Digital - Parallel (1 pin)</td>
+</tr>
+<tr>
+<td>DI (interrupt-on-change)</td>
+<td>RB1</td>
+<td>DRV8833 nFAULT</td>
+<td>Digital - Parallel (1 pin)</td>
+</tr>
+<tr>
+<td>ADC</td>
+<td>RA0 (ANA0)</td>
+<td>DRV8833 AISEN sense resistor</td>
+<td>Analog (0–0.2 VDC, 1 pin)</td>
+</tr>
+<tr>
+<td>ADC</td>
+<td>RA1 (ANA1)</td>
+<td>Slide potentiometer wiper</td>
+<td>Analog (0–3.3 VDC, 1 pin)</td>
+</tr>
+<tr>
+<td>SPI (SPI1)</td>
+<td>RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS</td>
+<td>LIS3DHTR</td>
+<td>Digital - Serial (SPI, 4 pins)</td>
+</tr>
+<tr>
+<td>DI (INT0)</td>
+<td>RB0</td>
+<td>LIS3DHTR INT1 (data ready)</td>
+<td>Digital - Parallel (1 pin)</td>
+</tr>
+<tr>
+<td>UART (UART1)</td>
+<td>RC7 RX, RC6 TX</td>
+<td>Ribbon connector pins 1 and 2</td>
+<td>Digital - Serial (UART, 2 pins)</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>On-board debugger</td>
+<td>PC (programming / debugging)</td>
+<td>USB</td>
+</tr>
+</tbody>
+</table>
+<p>The DRV8833 drives the motor through AOUT1 and AOUT2: Analog (0–5 VDC PWM, 2 pins).</p>
+<h2 id="team-connection">Team Connection</h2>
+<p>My board connects to Preston's hub board (Leg Kinematics) through <strong>hub connector 3</strong>, using the class-standard 8-pin ribbon cable and a 2x4 male IDC header. The ribbon carries signals and a shared ground only; my board is powered by its own 9 V adapter.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Pin</th>
+<th>Type</th>
+<th>Signal</th>
+<th>Direction</th>
+<th>MCU Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Digital</td>
+<td>UART RX: position commands from the hub</td>
+<td>Hub → my board</td>
+<td>RC7 (U1RX)</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Digital</td>
+<td>UART TX: jerk / impulse data to the hub</td>
+<td>My board → hub</td>
+<td>RC6 (U1TX)</td>
+</tr>
+<tr>
+<td style="text-align: center;">3–5</td>
+<td>Digital</td>
+<td>Not used</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td style="text-align: center;">6–7</td>
+<td>Analog</td>
+<td>Not used</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>GND</td>
+<td>Common ground</td>
+<td>—</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-notes">Design Notes</h2>
+<ul>
+<li><strong>Closed-loop position control:</strong> the hub sends a target position over UART. The PIC compares it with the slide-pot reading on RA1, then drives the two PWM outputs (RC2, RD0) to move the lead screw forward or back.</li>
+<li><strong>Stall and fault protection (Req. 6.1):</strong> current through the DRV8833 flows through a 0.2 Ω sense resistor on AISEN. The PIC reads that voltage on RA0 and stops the motor if the current stays high, which indicates a stall. The same resistor also sets the driver's built-in current limit at about 1 A. The nFAULT pin (RB1) reports over-current or over-temperature, and the PIC then disables the driver through nSLEEP (RD1).</li>
+<li><strong>Jerk and impulse sensing:</strong> the LIS3DH data-ready interrupt (RB0) triggers an SPI read of acceleration at up to about 1.3 kHz. Jerk is found by differentiating acceleration, and impulse by integrating force (mass × acceleration) over the foot-contact time. The results are sent to the hub over UART.</li>
+<li><strong>Accelerometer soldering:</strong> the LIS3DHTR is a 3 × 3 mm LGA-16 package. Because daughter boards aren't allowed, it is soldered directly to the PCB with a stencil and hot air or reflow.</li>
+<li><strong>Speed vs. cost:</strong> an M3 lead screw moves 0.5 mm per turn, so a 300 RPM motor gives about 2.5 mm/s at full speed. That is slow, but adequate for a small demonstration leg, and much cheaper than a commercial linear actuator with built-in feedback (about $80 or more).</li>
+</ul>
 
 
 
