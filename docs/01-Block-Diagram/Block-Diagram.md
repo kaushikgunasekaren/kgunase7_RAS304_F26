@@ -51,7 +51,7 @@ The block diagram shows:
 | 9 V wall adapter | &mdash; | &mdash; | &mdash; | Already owned |
 | **Total (new purchases)** | | | | **~$18.50** |
 
-This is roughly my even share of the $60&ndash;70 team budget ($15&ndash;17.50). Buying the N20 lead-screw motor from a lower-cost supplier (about $5&ndash;6) brings the total to about $16.
+This is roughly my even share of the team budget. Buying the N20 lead-screw motor from a lower-cost supplier brings the total to about $16.
 
 ## Power Domains
 
