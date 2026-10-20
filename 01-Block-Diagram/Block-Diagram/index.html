@@ -1116,7 +1116,7 @@
 <li>A 2x4 male IDC header using the class ribbon pinout.</li>
 <li>No daughter boards: every peripheral, including the accelerometer, is placed directly on this PCB.</li>
 </ul>
-<p>Parts were also chosen to stay within the team's $70–80 total budget.</p>
+<p>Parts were also chosen to stay within the team's \$70–80 total budget.</p>
 <p>The block diagram shows:</p>
 <ul>
 <li><strong>Power levels:</strong> my own 9 V adapter → barrel jack → fuse → L7805 linear regulator (5 V) for the motor driver, the actuator motor, and the Curiosity Nano. The Curiosity Nano's on-board regulator supplies 3.3 V to the accelerometer and the position potentiometer.</li>
@@ -1153,63 +1153,63 @@
 <td>DFRobot</td>
 <td>FIT0577 N20 gear motor, 6 V, 98 RPM, with M3 × 20 mm lead-screw shaft</td>
 <td>5 V</td>
-<td>$9.00</td>
+<td>\$9.00</td>
 </tr>
 <tr>
 <td>Motor driver (H-bridge)</td>
 <td>Texas Instruments</td>
 <td>DRV8833PWPR</td>
 <td>5 V (VM)</td>
-<td>$3.02</td>
+<td>\$3.02</td>
 </tr>
 <tr>
 <td>Position sensor</td>
 <td>Bourns</td>
 <td>PTA2043-2015CPB103 (10 kΩ slide pot, 20 mm travel)</td>
 <td>3.3 V</td>
-<td>$1.84</td>
+<td>\$1.84</td>
 </tr>
 <tr>
 <td>Accelerometer (bare chip)</td>
 <td>STMicroelectronics</td>
 <td>LIS3DHTR</td>
 <td>3.3 V</td>
-<td>$1.94</td>
+<td>\$1.94</td>
 </tr>
 <tr>
 <td>Linear regulator (9 V → 5 V)</td>
 <td>STMicroelectronics</td>
 <td>L7805CV</td>
 <td>9 V in</td>
-<td>$0.65</td>
+<td>\$0.65</td>
 </tr>
 <tr>
 <td>Fuse (1 A, fast-acting)</td>
 <td>Littelfuse</td>
 <td>0251001.MXL</td>
 <td>9 V</td>
-<td>~$1</td>
+<td>~\$1</td>
 </tr>
 <tr>
 <td>Barrel jack</td>
 <td>CUI Devices</td>
 <td>PJ-002A</td>
 <td>9 V</td>
-<td>~$1</td>
+<td>~\$1</td>
 </tr>
 <tr>
 <td>Power status LED (green) + 1 kΩ resistor</td>
 <td>Kingbright</td>
 <td>WP7113GD</td>
 <td>5 V</td>
-<td>~$0.30</td>
+<td>~\$0.30</td>
 </tr>
 <tr>
 <td>2x4 IDC header, sense resistor, capacitors</td>
 <td>—</td>
 <td>—</td>
 <td>—</td>
-<td>~$1.50</td>
+<td>~\$1.50</td>
 </tr>
 <tr>
 <td>9 V wall adapter</td>
@@ -1223,11 +1223,11 @@
 <td></td>
 <td></td>
 <td></td>
-<td><strong>~$20.25</strong></td>
+<td><strong>~\$20.25</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The team budget is $70–80 for four boards, so an even share is $17.50–$20.00. This board is just above the top of that range, so the team total should be checked. The fuse, jack, LED and passive costs are estimates. A plain 300 RPM N20 motor ($6.95) with a separate threaded rod and coupler would save about $2 but needs extra mechanical work. See the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</p>
+<p>The team budget is \$70–80 for four boards, so an even share is \$17.50–\$20.00. This board is just above the top of that range, so the team total should be checked. The fuse, jack, LED and passive costs are estimates. A plain 300 RPM N20 motor (\$6.95) with a separate threaded rod and coupler would save about \$2 but needs extra mechanical work. See the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</p>
 <h2 id="power-domains">Power Domains</h2>
 <table>
 <thead>
@@ -1388,7 +1388,7 @@
 <li><strong>Stall and fault protection (Req. 6.1):</strong> current through the DRV8833 flows through a 0.3 Ω sense resistor on AISEN. The PIC reads that voltage on RA0 and stops the motor if the current stays high, which indicates a stall. The same resistor also sets the driver's built-in current limit at about 0.67 A (0.2 V ÷ 0.3 Ω), which keeps a motor fault within what my 1 A adapter can supply. The nFAULT pin (RB1) reports over-current or over-temperature, and the PIC then disables the driver through nSLEEP (RD1).</li>
 <li><strong>Jerk and impulse sensing:</strong> the LIS3DH data-ready interrupt (RB0) triggers an SPI read of acceleration at up to about 1.3 kHz. Jerk is found by differentiating acceleration, and impulse by integrating force (mass × acceleration) over the foot-contact time. The results are sent to the hub over UART.</li>
 <li><strong>Accelerometer soldering:</strong> the LIS3DHTR is a 3 × 3 mm LGA-16 package. Because daughter boards aren't allowed, it is soldered directly to the PCB with a stencil and hot air or reflow.</li>
-<li><strong>Speed vs. cost:</strong> a standard M3 lead screw moves 0.5 mm per turn, so the 98 RPM (60 RPM under load) FIT0577 gives about 0.5–0.8 mm/s. That is slow, but adequate for a small demonstration leg, and much cheaper than a commercial linear actuator with built-in feedback (about $80 or more).</li>
+<li><strong>Speed vs. cost:</strong> a standard M3 lead screw moves 0.5 mm per turn, so the 98 RPM (60 RPM under load) FIT0577 gives about 0.5–0.8 mm/s. That is slow, but adequate for a small demonstration leg, and much cheaper than a commercial linear actuator with built-in feedback (about \$80 or more).</li>
 </ul>
 
 
@@ -1504,10 +1504,6 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
-      
-        <script src="../../javascripts/mathjax.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   
