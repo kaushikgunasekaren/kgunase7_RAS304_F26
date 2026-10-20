@@ -117,7 +117,7 @@ The team message format is still to be defined in the software and message-struc
 
 **Choice: Option 1, PTA2043-2015CPB103 [Actuator B subsystem]**
 
-**Rationale:** The software flow needs continuous position control, and the potentiometer is the cheapest way to get an absolute position on a single ADC pin. The 20 mm travel suits a small joint, and the slider can ride on the lead-screw nut. I accept the tolerance and wear limits and will calibrate each unit in firmware.
+**Rationale:** The software flow needs continuous position control, and the potentiometer is the lowest-cost way to get an absolute position on a single ADC pin. The 20 mm travel suits a small joint, and the slider can ride on the lead-screw nut. I accept the tolerance and wear limits and will calibrate each unit in firmware.
 
 ---
 
@@ -131,7 +131,7 @@ The team message format is still to be defined in the software and message-struc
 
 **Choice: Option 1, LIS3DHTR [IMU subsystem]**
 
-**Rationale:** The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the cheapest option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost about three and eleven times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.
+**Rationale:** The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the lowest-cost option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost about three and eleven times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.
 
 ---
 
