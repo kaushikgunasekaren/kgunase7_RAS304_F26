@@ -11,14 +11,23 @@ Project: Single Robotic Spider Leg
 
 ## 1. Subsystem summary
 
-Driver Nano 2 receives a target position for Linear Actuator A from the Main Processor Nano over the team bus, drives the actuator with PWM and direction signals, reads the actuator's position feedback and a foot pressure sensor, decides whether contact or a force threshold has been reached, and reports status and pressure back to the Main Processor.
+Driver Nano 2 handles Linear Actuator A control and pressure sensing, and follows this loop from the team software flow diagram:
+
+1. Receive the actuator A target position from the Main Processor over I2C / serial.
+2. Drive Linear Actuator A (PWM and direction).
+3. Read the pressure sensor (analog or digital).
+4. Check whether contact is detected or the force threshold is reached. If yes, hold or adjust the actuator (position control). If no, continue the motion.
+5. Send actuator A status and pressure data back to the Main Processor over I2C / serial.
+6. Loop, waiting for the next command.
+
+When the Main Processor sends a stop command, Driver Nano 2 disables the driver and reports a safe status. The Main Processor does the kinematics; Driver Nano 2 only runs local control and returns feedback continuously.
 
 Project constraints that drive the selections:
 
 - Through-hole parts only (no daughter boards), PIC18F57Q43 Curiosity Nano as the MCU.
 - External 9 V barrel-jack supply, on-board 5 V linear regulator, fuse and power indicator.
 - The Curiosity Nano runs its I/O and ADC at its target voltage, which is 3.3 V as shipped ([Curiosity Nano user guide](https://www.farnell.com/datasheets/3110754.pdf), section 3.3.1). Every analog signal into the MCU must stay at or below 3.3 V.
-- 2x4 IDC bus connector to the rest of the leg.
+- 2x4 IDC bus connector to the Main Processor Nano, carrying I2C / serial per the software flow diagram.
 
 Assumptions to confirm with the team (they change the actuator and driver choices if they move):
 
@@ -34,24 +43,27 @@ Assumptions to confirm with the team (they change the actuator and driver choice
                                                                   |                       |
                          PWM + 2 direction pins ------------------+                       +-> actuator pot reference
                          SN754410 logic supply (5V)                                       +-> MCP6002 supply
-                         2 ADC inputs <- actuator pot wiper, FSR 402 via MCP6002
-                         I2C / UART <-> 2x4 IDC team bus
+                         2 ADC inputs <- actuator pot wiper, FSR 402 via MCP6002 (analog read)
+                         1 digital input <- MCP6002 spare amplifier as comparator (contact flag, digital read)
+                         I2C / serial <-> 2x4 IDC bus to Main Processor
 ```
 
 ### Pin table (2x4 IDC team bus) – DRAFT, must match the team block diagram
 
 | IDC pin | Type | Signal on my board | Direction |
 |---|---|---|---|
-| 1 | Digital I/O | Bus data 1 (I2C SDA or UART RX, per team protocol) | Bidirectional / in |
-| 2 | Digital I/O | Bus data 2 (I2C SCL or UART TX, per team protocol) | Bidirectional / out |
-| 3 | Digital I/O | Spare / reserved | – |
-| 4 | Digital I/O | Spare / reserved | – |
-| 5 | Digital I/O | Stop / fault line (active low) | In |
+| 1 | Digital I/O | I2C SDA: target position commands in, actuator status and pressure data out | Bidirectional |
+| 2 | Digital I/O | I2C SCL | In (clock from Main Processor) |
+| 3 | Digital I/O | Serial (UART) RX, alternate to I2C if the team chooses serial | In |
+| 4 | Digital I/O | Serial (UART) TX, alternate to I2C if the team chooses serial | Out |
+| 5 | Digital I/O | Not used (the stop command arrives as a bus message) | – |
 | 6 | Analog I/O | Not used (reserved for pressure signal pass-through) | – |
 | 7 | Analog I/O | Not used (reserved for actuator position pass-through) | – |
 | 8 | Ground | Common ground | – |
 
-MCU resources needed on my board (pin mapping is done in the schematic assignment): 1 PWM output, 2 digital outputs (direction), 2 ADC inputs, the bus peripheral pins, 1 digital input (stop line).
+Only one of I2C or serial is used at a time, as the team decides. If I2C is used, the pull-up resistors go on one board only, to be agreed with the team.
+
+MCU resources needed on my board (pin mapping is done in the schematic assignment): 1 PWM output, 2 digital outputs (direction), 2 ADC inputs (actuator position, pressure), 1 digital input (contact flag), and the I2C or UART pins for the bus.
 
 **Labels used below:** **[Actuator A subsystem]**, **[Pressure sensor subsystem]**, **[Power subsystem]**.
 
@@ -113,7 +125,7 @@ MCU resources needed on my board (pin mapping is done in the schematic assignmen
 
 **Choice: Option 1, MCP6002-I/P [Pressure sensor subsystem]**
 
-**Rationale:** The key constraint is that the Nano's ADC only accepts up to 3.3 V. The MCP6002 runs directly from the 3.3 V rail with rail-to-rail output, so its output physically cannot exceed the ADC range, and no clamp is needed. The LM358P cannot give a useful swing at 3.3 V, and on 5 V it could overdrive the input. The MCP6022's extra bandwidth does not help a slowly varying force signal. The spare amplifier in the package is available for a second filter stage if the FSR signal is noisy.
+**Rationale:** The key constraint is that the Nano's ADC only accepts up to 3.3 V. The MCP6002 runs directly from the 3.3 V rail with rail-to-rail output, so its output physically cannot exceed the ADC range, and no clamp is needed. The LM358P cannot give a useful swing at 3.3 V, and on 5 V it could overdrive the input. The MCP6022's extra bandwidth does not help a slowly varying force signal. The spare amplifier in the package can be used as a comparator to produce a digital contact flag, which covers the "analog / digital" pressure read in the software flow, or as a second filter stage if the FSR signal is noisy.
 
 ---
 
