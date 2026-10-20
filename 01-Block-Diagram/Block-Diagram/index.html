@@ -1116,7 +1116,7 @@
 <li>A 2x4 male IDC header using the class ribbon pinout.</li>
 <li>No daughter boards: every peripheral, including the accelerometer, is placed directly on this PCB.</li>
 </ul>
-<p>Parts were also chosen to stay within the team's $60–70 total budget.</p>
+<p>Parts were also chosen to stay within the team's $70–80 total budget.</p>
 <p>The block diagram shows:</p>
 <ul>
 <li><strong>Power levels:</strong> my own 9 V adapter → barrel jack → fuse → L7805 linear regulator (5 V) for the motor driver, the actuator motor, and the Curiosity Nano. The Curiosity Nano's on-board regulator supplies 3.3 V to the accelerometer and the position potentiometer.</li>
@@ -1150,38 +1150,38 @@
 </tr>
 <tr>
 <td>Linear actuator</td>
-<td>Generic</td>
-<td>N20 gear motor, 6 V, 300 RPM, with M3 lead-screw shaft</td>
+<td>DFRobot</td>
+<td>FIT0577 N20 gear motor, 6 V, 98 RPM, with M3 × 20 mm lead-screw shaft</td>
 <td>5 V</td>
-<td>~$8</td>
+<td>$9.00</td>
 </tr>
 <tr>
 <td>Motor driver (H-bridge)</td>
 <td>Texas Instruments</td>
 <td>DRV8833PWPR</td>
 <td>5 V (VM)</td>
-<td>$2.34</td>
+<td>$3.02</td>
 </tr>
 <tr>
 <td>Position sensor</td>
 <td>Bourns</td>
 <td>PTA2043-2015CPB103 (10 kΩ slide pot, 20 mm travel)</td>
 <td>3.3 V</td>
-<td>~$1.60</td>
+<td>$1.84</td>
 </tr>
 <tr>
 <td>Accelerometer (bare chip)</td>
 <td>STMicroelectronics</td>
 <td>LIS3DHTR</td>
 <td>3.3 V</td>
-<td>~$2</td>
+<td>$1.94</td>
 </tr>
 <tr>
 <td>Linear regulator (9 V → 5 V)</td>
 <td>STMicroelectronics</td>
 <td>L7805CV</td>
 <td>9 V in</td>
-<td>~$0.60</td>
+<td>$0.65</td>
 </tr>
 <tr>
 <td>Fuse (1 A, fast-acting)</td>
@@ -1219,15 +1219,15 @@
 <td>Already owned</td>
 </tr>
 <tr>
-<td><strong>Total (new purchases)</strong></td>
+<td><strong>Total (new purchases, before shipping and the heatsink)</strong></td>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>~$18.50</strong></td>
+<td><strong>~$20.25</strong></td>
 </tr>
 </tbody>
 </table>
-<p>This is roughly my even share of the team budget. Buying the N20 lead-screw motor from a lower-cost supplier brings the total to about $16.</p>
+<p>The team budget is $70–80 for four boards, so an even share is <span class="arithmatex">\(17.50–\)</span>20.00. This board is just above the top of that range, so the team total should be checked. The fuse, jack, LED and passive costs are estimates. A plain 300 RPM N20 motor ($6.95) with a separate threaded rod and coupler would save about $2 but needs extra mechanical work. See the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</p>
 <h2 id="power-domains">Power Domains</h2>
 <table>
 <thead>
@@ -1263,7 +1263,7 @@
 </tr>
 </tbody>
 </table>
-<p>The L7805CV will need a small heatsink: at a 0.6 A motor load it dissipates about (9 V − 5 V) × 0.6 A ≈ 2.4 W.</p>
+<p>The L7805CV will need a small heatsink of about 20 °C/W or better: with the motor stalled and the 25% margin the 5 V rail carries about 0.66 A, so it dissipates about (9 V − 5 V) × 0.66 A ≈ 2.6 W. See the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a> page.</p>
 <h2 id="microcontroller-peripherals-and-pins">Microcontroller Peripherals and Pins</h2>
 <table>
 <thead>
@@ -1385,10 +1385,10 @@
 <h2 id="design-notes">Design Notes</h2>
 <ul>
 <li><strong>Closed-loop position control:</strong> the hub sends a target position over UART. The PIC compares it with the slide-pot reading on RA1, then drives the two PWM outputs (RC2, RD0) to move the lead screw forward or back.</li>
-<li><strong>Stall and fault protection (Req. 6.1):</strong> current through the DRV8833 flows through a 0.2 Ω sense resistor on AISEN. The PIC reads that voltage on RA0 and stops the motor if the current stays high, which indicates a stall. The same resistor also sets the driver's built-in current limit at about 1 A. The nFAULT pin (RB1) reports over-current or over-temperature, and the PIC then disables the driver through nSLEEP (RD1).</li>
+<li><strong>Stall and fault protection (Req. 6.1):</strong> current through the DRV8833 flows through a 0.3 Ω sense resistor on AISEN. The PIC reads that voltage on RA0 and stops the motor if the current stays high, which indicates a stall. The same resistor also sets the driver's built-in current limit at about 0.67 A (0.2 V ÷ 0.3 Ω), which keeps a motor fault within what my 1 A adapter can supply. The nFAULT pin (RB1) reports over-current or over-temperature, and the PIC then disables the driver through nSLEEP (RD1).</li>
 <li><strong>Jerk and impulse sensing:</strong> the LIS3DH data-ready interrupt (RB0) triggers an SPI read of acceleration at up to about 1.3 kHz. Jerk is found by differentiating acceleration, and impulse by integrating force (mass × acceleration) over the foot-contact time. The results are sent to the hub over UART.</li>
 <li><strong>Accelerometer soldering:</strong> the LIS3DHTR is a 3 × 3 mm LGA-16 package. Because daughter boards aren't allowed, it is soldered directly to the PCB with a stencil and hot air or reflow.</li>
-<li><strong>Speed vs. cost:</strong> an M3 lead screw moves 0.5 mm per turn, so a 300 RPM motor gives about 2.5 mm/s at full speed. That is slow, but adequate for a small demonstration leg, and much cheaper than a commercial linear actuator with built-in feedback (about $80 or more).</li>
+<li><strong>Speed vs. cost:</strong> a standard M3 lead screw moves 0.5 mm per turn, so the 98 RPM (60 RPM under load) FIT0577 gives about 0.5–0.8 mm/s. That is slow, but adequate for a small demonstration leg, and much cheaper than a commercial linear actuator with built-in feedback (about $80 or more).</li>
 </ul>
 
 
