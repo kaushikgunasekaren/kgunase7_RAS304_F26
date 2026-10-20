@@ -1112,18 +1112,19 @@
 
 
 <h1 id="power-budget">Power Budget</h1>
-<p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 2: Linear Actuator A + Pressure Sensor</strong></p>
+<p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU</strong></p>
 <blockquote>
-<p>Draft values for the individual board only. Part 2 is optional for the initial submission but required for the external design review. Estimates marked "est." should be replaced with measured values once the board is built. These numbers still need to be copied into the course's power budget spreadsheet template.</p>
+<p>Draft values for my individual board only. Part 2 is optional for the initial submission but required for the external design review. Values marked "est." should be replaced with measured values once the board is built. These numbers still need to be copied into the course's power budget spreadsheet template.</p>
 </blockquote>
 <h2 id="power-architecture">Power architecture</h2>
 <ul>
-<li>One external source: a 9 V wall adapter on the barrel jack (the course supply).</li>
-<li>Two rails: <strong>9 V</strong> (raw adapter voltage) and <strong>5 V</strong> (L7805CV linear regulator from the 9 V rail).</li>
-<li>The Curiosity Nano takes the 5 V rail on its VBUS pin and makes its own 3.3 V (VTG), which powers the MCP6002 and the actuator potentiometer reference, so all analog signals stay within the ADC range. That 3.3 V load is counted on the 5 V rail below because the Nano's regulator draws it from the 5 V input.</li>
+<li>One external source: my own 9 V wall adapter (1 A) on the barrel jack, through a 1 A fuse.</li>
+<li>Two rails: <strong>9 V</strong> (raw adapter voltage, feeding only the regulator) and <strong>5 V</strong> (L7805CV linear regulator).</li>
+<li>The 5 V rail powers the DRV8833 motor supply (VM), the N20 gearmotor, and the Curiosity Nano (VBUS pin).</li>
+<li>The Curiosity Nano makes its own 3.3 V (VTG), which powers the LIS3DH and the slide-potentiometer reference. That load is counted on the 5 V rail because the Nano's regulator draws it from the 5 V input.</li>
 </ul>
 <h2 id="section-a-components-that-consume-power-absolute-maximum-current">Section A. Components that consume power (absolute maximum current)</h2>
-<p>Regulators, the power source, switches and passives are not listed here.</p>
+<p>Regulators, the power source, switches, the fuse, the LED and passives are not listed.</p>
 <table>
 <thead>
 <tr>
@@ -1135,50 +1136,38 @@
 </thead>
 <tbody>
 <tr>
+<td>N20 6 V gearmotor with M3 lead screw (Actuator B)</td>
+<td>5 V via DRV8833</td>
+<td>600</td>
+<td>Stall current est.: the seller does not publish it. A similar 6 V N20 lead-screw motor (DFRobot FIT0577) lists 420 mA stall at 6 V; 600 mA is a conservative allowance for the faster 300 RPM motor. Measure on the bench</td>
+</tr>
+<tr>
 <td>PIC18F57Q43 Curiosity Nano (MCU, on-board debugger, 3.3 V regulator)</td>
 <td>5 V</td>
 <td>100</td>
-<td>Conservative allowance (est.); the board's own 3.3 V regulator is rated for a 500 mA load, so this is not its limit. Measure on the bench</td>
+<td>Conservative allowance (est.); not the board's own 500 mA regulator limit</td>
 </tr>
 <tr>
-<td>SN754410NE, logic supply (VCC1)</td>
-<td>5 V</td>
-<td>70</td>
-<td>Highest quiescent figure in the datasheet table (outputs low); confirm units against the datasheet</td>
+<td>DRV8833PWPR (own supply current, motor current not included)</td>
+<td>5 V (VM)</td>
+<td>5</td>
+<td>Allowance (est.); the datasheet gives only a 1.6 µA sleep current in the portion I read</td>
 </tr>
 <tr>
-<td>SN754410NE, motor supply quiescent (VCC2)</td>
-<td>9 V</td>
-<td>33</td>
-<td>Highest quiescent figure in the datasheet table; the motor current itself is listed on the actuator line below</td>
-</tr>
-<tr>
-<td>MCP6002-I/P dual op-amp</td>
+<td>LIS3DHTR accelerometer</td>
 <td>3.3 V (from Nano)</td>
 <td>0.5</td>
-<td>Allowance for two amplifiers (est.); typical supply current is on the order of 0.1 mA per amplifier</td>
+<td>Allowance (est.) for operating mode</td>
 </tr>
 <tr>
-<td>FSR 402 divider / bias network</td>
+<td>Bourns PTA2043 slide pot, 10 kΩ ±20%</td>
 <td>3.3 V (from Nano)</td>
-<td>1</td>
-<td>Design allowance for the divider resistor (est.)</td>
-</tr>
-<tr>
-<td>PQ12-P potentiometer reference (5 kΩ ±50%)</td>
-<td>3.3 V (from Nano)</td>
-<td>2</td>
-<td>3.3 V divided by the 2.5 kΩ low-tolerance case is about 1.3 mA, rounded up</td>
-</tr>
-<tr>
-<td>Linear Actuator A (Actuonix PQ12-P 6 V)</td>
-<td>9 V via driver</td>
-<td>600</td>
-<td>Datasheet stall current is 550 mA at 6 V; with about 6.4 V at the motor in the worst case this is about 590 mA, rounded to 600</td>
+<td>0.5</td>
+<td>3.3 V ÷ 8 kΩ (worst-case low resistance) is about 0.41 mA, rounded up</td>
 </tr>
 </tbody>
 </table>
-<p>Note: the SN754410 does not itself draw the motor current, the actuator does, so the driver is not counted twice. The power LED is not listed because the assignment excludes LEDs.</p>
+<p>Note: the DRV8833 does not itself draw the motor current; the motor does, so the driver is not counted twice. The power LED is not listed because the assignment excludes LEDs.</p>
 <h2 id="section-b-rail-assignment-with-25-safety-margin">Section B. Rail assignment with 25% safety margin</h2>
 <table>
 <thead>
@@ -1191,58 +1180,43 @@
 <tbody>
 <tr>
 <td><strong>5 V</strong></td>
+<td>N20 gearmotor (stall)</td>
+<td>600</td>
+</tr>
+<tr>
+<td>5 V</td>
 <td>Curiosity Nano</td>
 <td>100</td>
 </tr>
 <tr>
 <td>5 V</td>
-<td>SN754410 VCC1</td>
-<td>70</td>
+<td>DRV8833 supply</td>
+<td>5</td>
 </tr>
 <tr>
 <td>5 V</td>
-<td>MCP6002 (via Nano 3.3 V)</td>
+<td>LIS3DHTR (via Nano 3.3 V)</td>
 <td>0.5</td>
 </tr>
 <tr>
 <td>5 V</td>
-<td>FSR bias (via Nano 3.3 V)</td>
-<td>1</td>
-</tr>
-<tr>
-<td>5 V</td>
-<td>Actuator potentiometer reference (via Nano 3.3 V)</td>
-<td>2</td>
+<td>Slide pot (via Nano 3.3 V)</td>
+<td>0.5</td>
 </tr>
 <tr>
 <td></td>
 <td><strong>5 V rail total</strong></td>
-<td><strong>173.5</strong></td>
+<td><strong>706.0</strong></td>
 </tr>
 <tr>
 <td></td>
 <td><strong>× 1.25 safety margin</strong></td>
-<td><strong>216.9</strong></td>
+<td><strong>882.5</strong></td>
 </tr>
 <tr>
 <td><strong>9 V</strong></td>
-<td>SN754410 VCC2 quiescent</td>
-<td>33</td>
-</tr>
-<tr>
-<td>9 V</td>
-<td>Linear Actuator A (stall)</td>
-<td>600</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>9 V rail direct loads total</strong></td>
-<td><strong>633</strong></td>
-</tr>
-<tr>
-<td></td>
-<td><strong>× 1.25 safety margin</strong></td>
-<td><strong>791.3</strong></td>
+<td>No direct loads</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -1258,17 +1232,17 @@
 <tbody>
 <tr>
 <td>5 V</td>
-<td>ST L7805CV (TO-220)</td>
-<td>Specified for 7 to 18 V input, so the 9 V adapter has 4 V of headroom over its 2 V dropout. Rated up to 1.5 A against a 0.22 A load with margin. Has internal current limiting and thermal shutdown. Compared with the LM2940CT-5.0 in the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</td>
+<td>ST L7805CV (TO-220) with heatsink</td>
+<td>Specified for 7 to 18 V input, so the 9 V adapter has 4 V of headroom over its 2 V dropout. Rated up to 1.5 A against a 0.88 A load with margin. Has internal current limiting and thermal shutdown. Compared with the LM2940CT-5.0 in the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</td>
 </tr>
 <tr>
 <td>9 V</td>
 <td>Straight from the wall adapter</td>
-<td>The actuator and driver run directly from the adapter, so no second regulator is needed</td>
+<td>Only feeds the regulator, so no second regulator is needed</td>
 </tr>
 </tbody>
 </table>
-<p>Regulator check:</p>
+<p>Regulator thermal check:</p>
 <table>
 <thead>
 <tr>
@@ -1279,26 +1253,27 @@
 <tbody>
 <tr>
 <td>Load current including margin</td>
-<td>216.9 mA</td>
+<td>882.5 mA</td>
 </tr>
 <tr>
 <td>Regulator quiescent current (datasheet, about 8 mA) × 1.25</td>
 <td>10 mA</td>
 </tr>
 <tr>
-<td>Power dissipated: (9 V − 5 V) × 0.217 A</td>
-<td>0.87 W</td>
+<td>Power dissipated: (9 V − 5 V) × 0.8825 A</td>
+<td>3.53 W</td>
 </tr>
 <tr>
 <td>Junction rise at 50 °C/W (TO-220, no heatsink)</td>
-<td>about 43 °C</td>
+<td>about 177 °C, so it would hit thermal shutdown</td>
 </tr>
 <tr>
-<td>Junction temperature at 40 °C ambient</td>
-<td>about 83 °C (limit 125 °C)</td>
+<td>Junction-to-ambient resistance needed to stay under 125 °C at 40 °C ambient</td>
+<td>24 °C/W or lower</td>
 </tr>
 </tbody>
 </table>
+<p>The regulator therefore <strong>needs a heatsink</strong>. Junction-to-case is about 5 °C/W, so a heatsink of roughly 15 °C/W or better is required. At the nominal 0.6 A motor load without margin the dissipation is still about 2.8 W, so the heatsink is needed in normal operation too. My Block Diagram page says a "small" heatsink; it should be sized to this calculation.</p>
 <h2 id="section-d-external-power-source">Section D. External power source</h2>
 <table>
 <thead>
@@ -1310,38 +1285,35 @@
 <tbody>
 <tr>
 <td>Source choice</td>
-<td>SparkFun 9 V 2 A regulated wall adapter</td>
+<td>My existing 9 V 1 A regulated wall adapter</td>
 </tr>
 <tr>
-<td>Current into 9 V rail loads (with margin)</td>
-<td>791.3 mA</td>
-</tr>
-<tr>
-<td>Current into the L7805CV input: (173.5 + 8) × 1.25</td>
-<td>226.9 mA</td>
+<td>Current into the L7805CV input: (706 + 8) × 1.25</td>
+<td>892.5 mA</td>
 </tr>
 <tr>
 <td><strong>Total required from adapter</strong></td>
-<td><strong>1018.1 mA</strong></td>
+<td><strong>892.5 mA</strong></td>
 </tr>
 <tr>
 <td>Adapter capacity</td>
-<td>2000 mA</td>
+<td>1000 mA</td>
 </tr>
 <tr>
 <td><strong>Total remaining current available</strong></td>
-<td><strong>981.9 mA (not negative)</strong></td>
+<td><strong>107.5 mA (not negative)</strong></td>
 </tr>
 </tbody>
 </table>
-<p>For comparison, a 1 A adapter would leave 1000 − 1018.1 = <strong>−18.1 mA</strong>, which fails the check. That is why the 2 A adapter was selected. The adapter's plug polarity must be confirmed before first power-up (see the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page).</p>
+<p>This check depends on the motor current staying near 600 mA. The DRV8833 current limit in my Block Diagram page is about 1 A (a 0.2 Ω sense resistor). A stalled motor could then draw up to 1 A, giving (1000 + 114) × 1.25 = 1,393 mA from the adapter, which is more than it can supply. The limit must be lowered: a sense resistor of about 0.3 Ω gives a limit near 0.67 A, which gives 976 mA from the adapter and keeps the remaining current positive (about 24 mA).</p>
 <h2 id="section-e-battery-life">Section E. Battery life</h2>
 <p>Not applicable. The design runs from a wall adapter and has no battery.</p>
 <h2 id="open-items-before-the-design-review">Open items before the design review</h2>
 <ol>
-<li>Replace the Nano (100 mA) and op-amp (0.5 mA) estimates with measured current.</li>
-<li>Confirm the SN754410 quiescent currents and units against the datasheet tables.</li>
-<li>Measure the motor-terminal voltage and stall current of the 6 V actuator on the 9 V rail, and cap the PWM duty accordingly.</li>
+<li>Measure the stall current of the 300 RPM N20 motor at 5 V and replace the 600 mA estimate.</li>
+<li>Change the DRV8833 sense resistor from 0.2 Ω to about 0.3 Ω so the current limit is near 0.67 A, and update the Block Diagram page.</li>
+<li>Choose and price a TO-220 heatsink of about 15 °C/W or better, or consider powering the motor driver from the 9 V rail with the PWM duty capped near 66% (a 6 V motor on 9 V), which would remove most of the regulator's heat.</li>
+<li>Replace the Nano (100 mA), DRV8833 (5 mA) and LIS3DH (0.5 mA) estimates with measured current.</li>
 <li>Copy these numbers into the course power budget spreadsheet template.</li>
 </ol>
 
