@@ -1,7 +1,7 @@
   MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
       processEscapes: true,
       processEnvironments: true
     },
