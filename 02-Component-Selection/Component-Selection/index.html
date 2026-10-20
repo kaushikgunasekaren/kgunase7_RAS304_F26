@@ -1230,13 +1230,22 @@ Project: Single Robotic Spider Leg</p>
 <p>Scope: this page covers only my individual board (Driver Nano 2). Team-level decisions live in the team repository. Prices were checked on 2026-10-19 and will change.</p>
 </blockquote>
 <h2 id="1-subsystem-summary">1. Subsystem summary</h2>
-<p>Driver Nano 2 receives a target position for Linear Actuator A from the Main Processor Nano over the team bus, drives the actuator with PWM and direction signals, reads the actuator's position feedback and a foot pressure sensor, decides whether contact or a force threshold has been reached, and reports status and pressure back to the Main Processor.</p>
+<p>Driver Nano 2 handles Linear Actuator A control and pressure sensing, and follows this loop from the team software flow diagram:</p>
+<ol>
+<li>Receive the actuator A target position from the Main Processor over I2C / serial.</li>
+<li>Drive Linear Actuator A (PWM and direction).</li>
+<li>Read the pressure sensor (analog or digital).</li>
+<li>Check whether contact is detected or the force threshold is reached. If yes, hold or adjust the actuator (position control). If no, continue the motion.</li>
+<li>Send actuator A status and pressure data back to the Main Processor over I2C / serial.</li>
+<li>Loop, waiting for the next command.</li>
+</ol>
+<p>When the Main Processor sends a stop command, Driver Nano 2 disables the driver and reports a safe status. The Main Processor does the kinematics; Driver Nano 2 only runs local control and returns feedback continuously.</p>
 <p>Project constraints that drive the selections:</p>
 <ul>
 <li>Through-hole parts only (no daughter boards), PIC18F57Q43 Curiosity Nano as the MCU.</li>
 <li>External 9 V barrel-jack supply, on-board 5 V linear regulator, fuse and power indicator.</li>
 <li>The Curiosity Nano runs its I/O and ADC at its target voltage, which is 3.3 V as shipped (<a href="https://www.farnell.com/datasheets/3110754.pdf">Curiosity Nano user guide</a>, section 3.3.1). Every analog signal into the MCU must stay at or below 3.3 V.</li>
-<li>2x4 IDC bus connector to the rest of the leg.</li>
+<li>2x4 IDC bus connector to the Main Processor Nano, carrying I2C / serial per the software flow diagram.</li>
 </ul>
 <p>Assumptions to confirm with the team (they change the actuator and driver choices if they move):</p>
 <ul>
@@ -1250,8 +1259,9 @@ Project: Single Robotic Spider Leg</p>
                                                                   |                       |
                          PWM + 2 direction pins ------------------+                       +-&gt; actuator pot reference
                          SN754410 logic supply (5V)                                       +-&gt; MCP6002 supply
-                         2 ADC inputs &lt;- actuator pot wiper, FSR 402 via MCP6002
-                         I2C / UART &lt;-&gt; 2x4 IDC team bus
+                         2 ADC inputs &lt;- actuator pot wiper, FSR 402 via MCP6002 (analog read)
+                         1 digital input &lt;- MCP6002 spare amplifier as comparator (contact flag, digital read)
+                         I2C / serial &lt;-&gt; 2x4 IDC bus to Main Processor
 </code></pre></div>
 <h3 id="pin-table-2x4-idc-team-bus-draft-must-match-the-team-block-diagram">Pin table (2x4 IDC team bus) – DRAFT, must match the team block diagram</h3>
 <table>
@@ -1267,32 +1277,32 @@ Project: Single Robotic Spider Leg</p>
 <tr>
 <td>1</td>
 <td>Digital I/O</td>
-<td>Bus data 1 (I2C SDA or UART RX, per team protocol)</td>
-<td>Bidirectional / in</td>
+<td>I2C SDA: target position commands in, actuator status and pressure data out</td>
+<td>Bidirectional</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Digital I/O</td>
-<td>Bus data 2 (I2C SCL or UART TX, per team protocol)</td>
-<td>Bidirectional / out</td>
+<td>I2C SCL</td>
+<td>In (clock from Main Processor)</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Digital I/O</td>
-<td>Spare / reserved</td>
-<td>–</td>
+<td>Serial (UART) RX, alternate to I2C if the team chooses serial</td>
+<td>In</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Digital I/O</td>
-<td>Spare / reserved</td>
-<td>–</td>
+<td>Serial (UART) TX, alternate to I2C if the team chooses serial</td>
+<td>Out</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Digital I/O</td>
-<td>Stop / fault line (active low)</td>
-<td>In</td>
+<td>Not used (the stop command arrives as a bus message)</td>
+<td>–</td>
 </tr>
 <tr>
 <td>6</td>
@@ -1314,7 +1324,8 @@ Project: Single Robotic Spider Leg</p>
 </tr>
 </tbody>
 </table>
-<p>MCU resources needed on my board (pin mapping is done in the schematic assignment): 1 PWM output, 2 digital outputs (direction), 2 ADC inputs, the bus peripheral pins, 1 digital input (stop line).</p>
+<p>Only one of I2C or serial is used at a time, as the team decides. If I2C is used, the pull-up resistors go on one board only, to be agreed with the team.</p>
+<p>MCU resources needed on my board (pin mapping is done in the schematic assignment): 1 PWM output, 2 digital outputs (direction), 2 ADC inputs (actuator position, pressure), 1 digital input (contact flag), and the I2C or UART pins for the bus.</p>
 <p><strong>Labels used below:</strong> <strong>[Actuator A subsystem]</strong>, <strong>[Pressure sensor subsystem]</strong>, <strong>[Power subsystem]</strong>.</p>
 <hr>
 <h2 id="2-major-component-selections">2. Major component selections</h2>
@@ -1446,7 +1457,7 @@ Project: Single Robotic Spider Leg</p>
 </tbody>
 </table>
 <p><strong>Choice: Option 1, MCP6002-I/P [Pressure sensor subsystem]</strong></p>
-<p><strong>Rationale:</strong> The key constraint is that the Nano's ADC only accepts up to 3.3 V. The MCP6002 runs directly from the 3.3 V rail with rail-to-rail output, so its output physically cannot exceed the ADC range, and no clamp is needed. The LM358P cannot give a useful swing at 3.3 V, and on 5 V it could overdrive the input. The MCP6022's extra bandwidth does not help a slowly varying force signal. The spare amplifier in the package is available for a second filter stage if the FSR signal is noisy.</p>
+<p><strong>Rationale:</strong> The key constraint is that the Nano's ADC only accepts up to 3.3 V. The MCP6002 runs directly from the 3.3 V rail with rail-to-rail output, so its output physically cannot exceed the ADC range, and no clamp is needed. The LM358P cannot give a useful swing at 3.3 V, and on 5 V it could overdrive the input. The MCP6022's extra bandwidth does not help a slowly varying force signal. The spare amplifier in the package can be used as a comparator to produce a digital contact flag, which covers the "analog / digital" pressure read in the software flow, or as a second filter stage if the FSR signal is noisy.</p>
 <hr>
 <h3 id="25-power-subsystem-5-v-linear-voltage-regulator">2.5 [Power subsystem] 5 V linear voltage regulator</h3>
 <table>
