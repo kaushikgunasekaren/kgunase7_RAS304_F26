@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#power-budget" class="md-skip">
           Skip to content
         </a>
       
@@ -724,6 +724,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -766,6 +768,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -774,10 +778,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#power-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Power architecture
       
     </span>
   </a>
@@ -785,10 +789,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusions" class="md-nav__link">
+  <a href="#section-a-components-that-consume-power-absolute-maximum-current" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusions
+        Section A. Components that consume power (absolute maximum current)
       
     </span>
   </a>
@@ -796,10 +800,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resouces" class="md-nav__link">
+  <a href="#section-b-rail-assignment-with-25-safety-margin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resouces
+        Section B. Rail assignment with 25% safety margin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-c-regulator-or-source-choice-per-rail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section C. Regulator or source choice per rail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-d-external-power-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section D. External power source
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-e-battery-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section E. Battery life
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-items-before-the-design-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open items before the design review
       
     </span>
   </a>
@@ -904,6 +952,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -912,10 +962,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#power-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Power architecture
       
     </span>
   </a>
@@ -923,10 +973,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusions" class="md-nav__link">
+  <a href="#section-a-components-that-consume-power-absolute-maximum-current" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusions
+        Section A. Components that consume power (absolute maximum current)
       
     </span>
   </a>
@@ -934,10 +984,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resouces" class="md-nav__link">
+  <a href="#section-b-rail-assignment-with-25-safety-margin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resouces
+        Section B. Rail assignment with 25% safety margin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-c-regulator-or-source-choice-per-rail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section C. Regulator or source choice per rail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-d-external-power-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section D. External power source
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-e-battery-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section E. Battery life
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-items-before-the-design-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open items before the design review
       
     </span>
   </a>
@@ -1017,21 +1111,239 @@
   
 
 
-  <h1>Power Budget</h1>
-
-<h2 id="overview">Overview</h2>
-<p>Write a overview of what you did and why you did a Power Budget.</p>
+<h1 id="power-budget">Power Budget</h1>
+<p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 2: Linear Actuator A + Pressure Sensor</strong></p>
 <blockquote>
-<p>Capture your power budge as a image to display. Take time to get clean breaks and a well organized layout.</p>
+<p>Draft values for the individual board only. Part 2 is optional for the initial submission but required for the external design review. Estimates marked "est." should be replaced with measured values once the board is built. These numbers still need to be copied into the course's power budget spreadsheet template.</p>
 </blockquote>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budgetPg1.png" data-desc-position="bottom"><img alt="budget1" height:_300_="height:&quot;300;&quot;" src="../budgetPg1.png" style="style" width:_350_="width:&quot;350&quot;"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budgetPg2.png" data-desc-position="bottom"><img alt="budget2" height:_300_="height:&quot;300;&quot;" src="../budgetPg2.png" style="style" width:_350_="width:&quot;350&quot;"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budgetPg3.png" data-desc-position="bottom"><img alt="budget3" height:_300_="height:&quot;300;&quot;" src="../budgetPg3.png" style="style" width:_350_="width:&quot;350&quot;"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Power-Budge-Example.jpg" data-desc-position="bottom"><img alt="budget4" height:_300_="height:&quot;300;&quot;" src="../Power-Budge-Example.jpg" style="style" width:_350_="width:&quot;350&quot;"></a></p>
-<h2 id="conclusions">Conclusions</h2>
-<p>From the prepare Power Budget, .....</p>
-<h2 id="resouces">Resouces</h2>
-<p>The power budget as a PDF download is available <a href="../PowerBudgetExample.pdf"><em>here</em></a>, and a Microsoft Excel Sheet <a href="../PowerBudgetExample.xlsx"><em>here</em></a>.</p>
+<h2 id="power-architecture">Power architecture</h2>
+<ul>
+<li>One external source: a 9 V wall adapter on the barrel jack (the course supply).</li>
+<li>Two rails: <strong>9 V</strong> (raw adapter voltage) and <strong>5 V</strong> (L7805CV linear regulator from the 9 V rail).</li>
+<li>The Curiosity Nano takes the 5 V rail on its VBUS pin and makes its own 3.3 V (VTG), which powers the MCP6002 and the actuator potentiometer reference, so all analog signals stay within the ADC range. That 3.3 V load is counted on the 5 V rail below because the Nano's regulator draws it from the 5 V input.</li>
+</ul>
+<h2 id="section-a-components-that-consume-power-absolute-maximum-current">Section A. Components that consume power (absolute maximum current)</h2>
+<p>Regulators, the power source, switches and passives are not listed here.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Supply voltage</th>
+<th>Max current (mA)</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PIC18F57Q43 Curiosity Nano (MCU, on-board debugger, 3.3 V regulator)</td>
+<td>5 V</td>
+<td>100</td>
+<td>Conservative allowance (est.); the board's own 3.3 V regulator is rated for a 500 mA load, so this is not its limit. Measure on the bench</td>
+</tr>
+<tr>
+<td>SN754410NE, logic supply (VCC1)</td>
+<td>5 V</td>
+<td>70</td>
+<td>Highest quiescent figure in the datasheet table (outputs low); confirm units against the datasheet</td>
+</tr>
+<tr>
+<td>SN754410NE, motor supply quiescent (VCC2)</td>
+<td>9 V</td>
+<td>33</td>
+<td>Highest quiescent figure in the datasheet table; the motor current itself is listed on the actuator line below</td>
+</tr>
+<tr>
+<td>MCP6002-I/P dual op-amp</td>
+<td>3.3 V (from Nano)</td>
+<td>0.5</td>
+<td>Allowance for two amplifiers (est.); typical supply current is on the order of 0.1 mA per amplifier</td>
+</tr>
+<tr>
+<td>FSR 402 divider / bias network</td>
+<td>3.3 V (from Nano)</td>
+<td>1</td>
+<td>Design allowance for the divider resistor (est.)</td>
+</tr>
+<tr>
+<td>PQ12-P potentiometer reference (5 kΩ ±50%)</td>
+<td>3.3 V (from Nano)</td>
+<td>2</td>
+<td>3.3 V divided by the 2.5 kΩ low-tolerance case is about 1.3 mA, rounded up</td>
+</tr>
+<tr>
+<td>Linear Actuator A (Actuonix PQ12-P 6 V)</td>
+<td>9 V via driver</td>
+<td>600</td>
+<td>Datasheet stall current is 550 mA at 6 V; with about 6.4 V at the motor in the worst case this is about 590 mA, rounded to 600</td>
+</tr>
+</tbody>
+</table>
+<p>Note: the SN754410 does not itself draw the motor current, the actuator does, so the driver is not counted twice. The power LED is not listed because the assignment excludes LEDs.</p>
+<h2 id="section-b-rail-assignment-with-25-safety-margin">Section B. Rail assignment with 25% safety margin</h2>
+<table>
+<thead>
+<tr>
+<th>Rail</th>
+<th>Component</th>
+<th>Current (mA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5 V</strong></td>
+<td>Curiosity Nano</td>
+<td>100</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>SN754410 VCC1</td>
+<td>70</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>MCP6002 (via Nano 3.3 V)</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>FSR bias (via Nano 3.3 V)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>Actuator potentiometer reference (via Nano 3.3 V)</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>5 V rail total</strong></td>
+<td><strong>173.5</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>× 1.25 safety margin</strong></td>
+<td><strong>216.9</strong></td>
+</tr>
+<tr>
+<td><strong>9 V</strong></td>
+<td>SN754410 VCC2 quiescent</td>
+<td>33</td>
+</tr>
+<tr>
+<td>9 V</td>
+<td>Linear Actuator A (stall)</td>
+<td>600</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>9 V rail direct loads total</strong></td>
+<td><strong>633</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>× 1.25 safety margin</strong></td>
+<td><strong>791.3</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-c-regulator-or-source-choice-per-rail">Section C. Regulator or source choice per rail</h2>
+<table>
+<thead>
+<tr>
+<th>Rail</th>
+<th>Choice</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 V</td>
+<td>ST L7805CV (TO-220)</td>
+<td>Specified for 7 to 18 V input, so the 9 V adapter has 4 V of headroom over its 2 V dropout. Rated up to 1.5 A against a 0.22 A load with margin. Has internal current limiting and thermal shutdown. Compared with the LM2940CT-5.0 in the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</td>
+</tr>
+<tr>
+<td>9 V</td>
+<td>Straight from the wall adapter</td>
+<td>The actuator and driver run directly from the adapter, so no second regulator is needed</td>
+</tr>
+</tbody>
+</table>
+<p>Regulator check:</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load current including margin</td>
+<td>216.9 mA</td>
+</tr>
+<tr>
+<td>Regulator quiescent current (datasheet, about 8 mA) × 1.25</td>
+<td>10 mA</td>
+</tr>
+<tr>
+<td>Power dissipated: (9 V − 5 V) × 0.217 A</td>
+<td>0.87 W</td>
+</tr>
+<tr>
+<td>Junction rise at 50 °C/W (TO-220, no heatsink)</td>
+<td>about 43 °C</td>
+</tr>
+<tr>
+<td>Junction temperature at 40 °C ambient</td>
+<td>about 83 °C (limit 125 °C)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-d-external-power-source">Section D. External power source</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source choice</td>
+<td>SparkFun 9 V 2 A regulated wall adapter</td>
+</tr>
+<tr>
+<td>Current into 9 V rail loads (with margin)</td>
+<td>791.3 mA</td>
+</tr>
+<tr>
+<td>Current into the L7805CV input: (173.5 + 8) × 1.25</td>
+<td>226.9 mA</td>
+</tr>
+<tr>
+<td><strong>Total required from adapter</strong></td>
+<td><strong>1018.1 mA</strong></td>
+</tr>
+<tr>
+<td>Adapter capacity</td>
+<td>2000 mA</td>
+</tr>
+<tr>
+<td><strong>Total remaining current available</strong></td>
+<td><strong>981.9 mA (not negative)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>For comparison, a 1 A adapter would leave 1000 − 1018.1 = <strong>−18.1 mA</strong>, which fails the check. That is why the 2 A adapter was selected. The adapter's plug polarity must be confirmed before first power-up (see the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page).</p>
+<h2 id="section-e-battery-life">Section E. Battery life</h2>
+<p>Not applicable. The design runs from a wall adapter and has no battery.</p>
+<h2 id="open-items-before-the-design-review">Open items before the design review</h2>
+<ol>
+<li>Replace the Nano (100 mA) and op-amp (0.5 mA) estimates with measured current.</li>
+<li>Confirm the SN754410 quiescent currents and units against the datasheet tables.</li>
+<li>Measure the motor-terminal voltage and stall current of the 6 V actuator on the 9 V rail, and cap the PWM duty accordingly.</li>
+<li>Copy these numbers into the course power budget spreadsheet template.</li>
+</ol>
 
 
 
