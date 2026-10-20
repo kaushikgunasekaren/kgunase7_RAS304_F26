@@ -1512,7 +1512,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tbody>
 </table>
 <p><strong>Choice: Option 1, PTA2043-2015CPB103 [Actuator B subsystem]</strong></p>
-<p><strong>Rationale:</strong> The software flow needs continuous position control, and the potentiometer is the cheapest way to get an absolute position on a single ADC pin. The 20 mm travel suits a small joint, and the slider can ride on the lead-screw nut. I accept the tolerance and wear limits and will calibrate each unit in firmware.</p>
+<p><strong>Rationale:</strong> The software flow needs continuous position control, and the potentiometer is the lowest-cost way to get an absolute position on a single ADC pin. The 20 mm travel suits a small joint, and the slider can ride on the lead-screw nut. I accept the tolerance and wear limits and will calibrate each unit in firmware.</p>
 <hr>
 <h3 id="24-imu-subsystem-accelerometer-imu">2.4 [IMU subsystem] Accelerometer / IMU</h3>
 <table>
@@ -1542,7 +1542,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tbody>
 </table>
 <p><strong>Choice: Option 1, LIS3DHTR [IMU subsystem]</strong></p>
-<p><strong>Rationale:</strong> The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the cheapest option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost about three and eleven times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.</p>
+<p><strong>Rationale:</strong> The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the lowest-cost option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost about three and eleven times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.</p>
 <hr>
 <h3 id="25-power-subsystem-5-v-linear-voltage-regulator">2.5 [Power subsystem] 5 V linear voltage regulator</h3>
 <table>
