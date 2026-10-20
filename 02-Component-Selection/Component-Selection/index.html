@@ -1271,7 +1271,7 @@
 <p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU</strong>
 Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)</p>
 <blockquote>
-<p>Scope: this page covers only my individual board (Driver Nano 3). Team-level decisions are in the team repository. The selected parts are the same ones shown on my <a href="../../01-Block-Diagram/Block-Diagram/">Block Diagram</a> page. Prices were checked on 2026-10-19 and will change.</p>
+<p>Scope: this page covers only my individual board (Driver Nano 3). Team-level decisions are in the team repository. The selected part types are the same ones shown on my <a href="../../01-Block-Diagram/Block-Diagram/">Block Diagram</a> page. Every product link below goes to a supplier that sells to customers in the United States, and prices are US dollar prices for quantity 1 checked on 2026-10-19 (they will change, and shipping and tax are not included).</p>
 </blockquote>
 <h2 id="1-subsystem-summary">1. Subsystem summary</h2>
 <p>Driver Nano 3 handles Linear Actuator B control and IMU sensing. It follows this loop from the team software flow diagram:</p>
@@ -1430,14 +1430,14 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </thead>
 <tbody>
 <tr>
-<td><strong>Option 1. Generic N20 6 V micro metal gearmotor with M3 lead-screw shaft (selected speed: 300 RPM)</strong><br><br>About $8 each (estimate from my Block Diagram page)<br>Same product family as the verified listings: <a href="https://probots.co.in/200-rpm-6v-linear-actuator-n20-micro-metal-gear-dc-motor-with-m3-screw-lead-shaft.html">Probots 200 RPM listing</a> and <a href="https://probots.co.in/750-rpm-6v-linear-actuator-n20-micro-metal-gear-dc-motor-with-m3-screw-lead-shaft.html">Probots 750 RPM listing</a>, each ₹499 (about $6)</td>
-<td>• Lowest cost of the options (about $8), comfortably inside a $17.50 to $20.00 per-board share<br>• Faster than the DFRobot unit at the same price class (300 RPM against 98 RPM)<br>• Rated 6 V (3 to 6 V range), so it runs from the 5 V rail through the DRV8833<br>• The lead screw turns rotation into linear motion directly, with no extra mechanism<br>• Small N20 body fits a spider leg<br>• Easy to buy in several speeds</td>
-<td>• Slow: with a standard M3 screw of 0.5 mm pitch, 300 RPM gives about 2.5 mm/s<br>• No built-in position feedback, so it needs the slide potentiometer<br>• Sellers do not publish stall current or stall torque, so I must measure them<br>• Lead screw has backlash and is not precision<br>• I could not find a 300 RPM M3 listing with a US price, so the exact SKU must be confirmed before ordering</td>
+<td><strong>Option 1. DFRobot Micro Metal DC Geared Motor with Lead Screw (FIT0577), 6 V, 98 RPM, M3 × 20 mm</strong><br><br><span class="arithmatex">\(9.00 each (\)</span>11.76 at RobotShop)<br><a href="https://www.dfrobot.com/product-1733.html">DFRobot product page</a> · <a href="https://www.robotshop.com/products/dfrobot-micro-metal-dc-geared-motor-w-lead-screw-6v-98rpm-m320">RobotShop listing</a></td>
+<td>• Same design as my Block Diagram choice: an N20 6 V gearmotor with the M3 lead screw built onto the shaft<br>• Ready-made part that can be ordered in the US (DFRobot, or RobotShop's US store)<br>• Published electrical data: 24 mA no load and 420 mA stall at 6 V, so the power budget is based on real numbers<br>• $9.00 fits the board's share of the team budget<br>• Rated 6 V, so it runs from the 5 V rail through the DRV8833</td>
+<td>• Slow: 98 RPM no load and 60 RPM under load, which is about 0.5 to 0.8 mm/s with a standard 0.5 mm M3 pitch (the page does not state the pitch)<br>• The 20 mm screw limits the stroke to under 20 mm<br>• No built-in position feedback, so it needs the slide potentiometer<br>• Shipping cost and time are not included</td>
 </tr>
 <tr>
-<td><strong>Option 2. DFRobot Micro Metal DC Geared Motor with Lead Screw (FIT0577), 6 V, 98 RPM, M3 × 20 mm</strong><br><br>$9.00 each<br><a href="https://www.dfrobot.com/product-1733.html">DFRobot product page</a></td>
-<td>• Published electrical data: 24 mA no load, 420 mA stall at 6 V, which makes budgeting reliable<br>• Same 6 V N20 class as Option 1<br>• Documented supplier with a clear product page</td>
-<td>• Only 98 RPM, so well under 1 mm/s with a standard M3 pitch<br>• The 20 mm screw limits travel<br>• Costs more than the generic motor<br>• Still has no position feedback</td>
+<td><strong>Option 2. Aslong N20 6 V 300 RPM gearmotor (3 mm shaft) plus an M3 threaded rod and shaft coupler</strong><br><br>$6.95 for the motor; rod and coupler not priced<br><a href="https://robotshop.com/products/aslong-motor-dc-6v-300rpm-3mm-shaft-mini-metal-gearwheel-n20-geared-motor">RobotShop product page</a></td>
+<td>• 300 RPM, about three times the speed of Option 1 (about 2.5 mm/s with a 0.5 mm pitch)<br>• Lowest price for the motor itself<br>• Rated 6 V, all-metal gears<br>• Longer screw possible, so more stroke</td>
+<td>• Sold as a plain gearmotor, so the lead screw, a coupler or adapter between the 3 mm shaft and the screw, and a nut must be sourced and aligned<br>• Extra cost and mechanical work that is not in the $6.95 price<br>• The page lists no stall current or torque, so the power budget would rest on an estimate<br>• More risk of misalignment and backlash</td>
 </tr>
 <tr>
 <td><strong>Option 3. Pololu 298:1 Micro Metal Gearmotor LP 6 V</strong> (plain gearmotor, no lead screw)<br><br>$23.95 each<br><a href="https://www.pololu.com/product/1094">Pololu product page</a></td>
@@ -1451,8 +1451,8 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 </tbody>
 </table>
-<p><strong>Choice: Option 1, N20 6 V gearmotor with M3 lead screw [Actuator B subsystem]</strong></p>
-<p><strong>Rationale:</strong> The team budget is $70 to $80 for four boards, so my board has about $17.50 to <span class="arithmatex">\(20.00 to spend in total. The generic N20 gearmotor is the lowest-cost option and about three times faster than the DFRobot unit, which costs a little more and gives nothing I need in return (its published stall data helps, but I can measure mine). The Pololu motor alone (\)</span>23.95) is more than the board's whole share, and the commercial actuator costs more than the entire team budget. Its 6 V rating works from the regulated 5 V rail through a low-drop MOSFET driver. I accept the slow speed (a leg joint demonstration does not need fast motion), the missing feedback (covered by the slide potentiometer in 2.3), and the unpublished stall data (I will measure stall current on the bench and set the driver's current limit from it). If the 300 RPM variant is hard to source, the 200 or 750 RPM listings give the same mechanical interface.</p>
+<p><strong>Choice: Option 1, DFRobot FIT0577 N20 gearmotor with M3 lead screw [Actuator B subsystem]</strong></p>
+<p><strong>Rationale:</strong> The team budget is $70 to $80 for four boards, so my board has about $17.50 to $20.00 to spend in total, and the actuator must also be orderable in the US. Option 1 keeps the design from my Block Diagram page (an N20 6 V gearmotor driving an M3 lead screw) as one ready-made part, costs <span class="arithmatex">\(9.00, and comes with published stall and no-load currents. Option 2 gives the original 300 RPM speed for a little less money, but it leaves me to buy and align the screw and coupler, and it has no published current data. The Pololu motor alone (\)</span>23.95) is more than the board's whole share, and the commercial actuator costs more than the entire team budget. I accept the slow speed (a joint demonstration does not need fast motion) and the missing feedback (covered by the slide potentiometer in 2.3). If the team needs more speed later, Option 2 is the fallback.</p>
 <hr>
 <h3 id="22-actuator-b-subsystem-motor-driver-h-bridge">2.2 [Actuator B subsystem] Motor driver (H-bridge)</h3>
 <table>
@@ -1465,14 +1465,14 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </thead>
 <tbody>
 <tr>
-<td><strong>Option 1. TI DRV8833PWPR dual H-bridge, HTSSOP-16 with PowerPAD</strong><br><br>$1.70 each at LCSC; about $2.34 at Digi-Key (price on my Block Diagram page)<br><a href="https://www.lcsc.com/product-detail/C50506.html">LCSC product page</a> · <a href="https://www.ti.com/lit/ds/symlink/drv8833.pdf">TI datasheet</a></td>
-<td>• MOSFET bridge: only about 0.36 Ω total on-resistance at 5 V, so about 0.2 V is lost at 0.6 A and the motor sees nearly the full 5 V<br>• 2.7 to 10.8 V motor supply, 1.5 A RMS and 2 A peak per bridge, plenty of margin over a small N20<br>• Adjustable current limit with one sense resistor (0.2 V ÷ R), which also gives stall detection<br>• nFAULT output, nSLEEP pin and thermal shutdown<br>• Logic threshold of 2 V (2.5 V on nSLEEP) works with the Nano's 3.3 V outputs<br>• Very low sleep current<br>• Inexpensive</td>
+<td><strong>Option 1. TI DRV8833PWPR dual H-bridge, HTSSOP-16 with PowerPAD</strong><br><br>$3.02 each (Digi-Key and Mouser)<br><a href="https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167">Digi-Key product page</a> · <a href="https://www.ti.com/lit/ds/symlink/drv8833.pdf">TI datasheet</a></td>
+<td>• MOSFET bridge: only about 0.36 Ω total on-resistance at 5 V, so about 0.2 V is lost at 0.6 A and the motor sees nearly the full 5 V<br>• 2.7 to 10.8 V motor supply, 1.5 A RMS and 2 A peak per bridge, plenty of margin over a small N20<br>• Adjustable current limit with one sense resistor (0.2 V ÷ R), which also gives stall detection<br>• nFAULT output, nSLEEP pin and thermal shutdown<br>• Logic threshold of 2 V (2.5 V on nSLEEP) works with the Nano's 3.3 V outputs<br>• Very low sleep current<br>• Lowest cost of the three options</td>
 <td>• Surface-mount only: 5.0 × 4.4 mm package with an exposed pad, which needs hot air or reflow to solder properly<br>• No built-in current sense output, so an external sense resistor and ADC reading are needed<br>• Dissipation goes through the exposed pad, so the PCB needs a copper pour under it</td>
 </tr>
 <tr>
 <td><strong>Option 2. TI SN754410NE quadruple half-H driver, DIP-16</strong><br><br>$4.50 each<br><a href="https://www.sparkfun.com/h-bridge-motor-driver-1a.html">SparkFun product page</a> · <a href="https://www.ti.com/lit/ds/symlink/sn754410.pdf">TI datasheet</a></td>
 <td>• Through-hole DIP, easiest to solder and replace<br>• 1 A continuous per channel, built-in clamp diodes<br>• Thermal shutdown</td>
-<td>• Bipolar outputs lose roughly 2.6 to 3.6 V in total near 0.6 A, so on a 5 V rail a 6 V motor would see only about 1.5 to 2.5 V and barely turn<br>• No current limit or fault output<br>• About 2.6 times the cost of the DRV8833<br>• Large quiescent supply current</td>
+<td>• Bipolar outputs lose roughly 2.6 to 3.6 V in total near 0.6 A, so on a 5 V rail a 6 V motor would see only about 1.5 to 2.5 V and barely turn<br>• No current limit or fault output<br>• About 1.5 times the cost of the DRV8833<br>• Large quiescent supply current</td>
 </tr>
 <tr>
 <td><strong>Option 3. L293D dual H-bridge, DIP-16</strong><br><br>$8.95 each (price as listed)<br><a href="https://www.adafruit.com/product/807">Adafruit product page</a> · <a href="https://www.ti.com/lit/ds/symlink/l293d.pdf">TI datasheet</a></td>
@@ -1495,12 +1495,12 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </thead>
 <tbody>
 <tr>
-<td><strong>Option 1. Bourns PTA2043-2015CPB103 slide potentiometer, 10 kΩ, 20 mm travel</strong><br><br>About €1.42 each (about $1.60)<br><a href="https://ie.farnell.com/bourns/pta2043-2015cpb103/pot-slide-10kohm-0-1w/dp/2519588">Farnell product page</a> · <a href="https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176">Digi-Key product page</a></td>
+<td><strong>Option 1. Bourns PTA2043-2015CPB103 slide potentiometer, 10 kΩ, 20 mm travel</strong><br><br>$1.84 each (Newark and Avnet)<br><a href="https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176">Digi-Key product page</a></td>
 <td>• Gives an absolute position reading directly on one ADC pin<br>• Through-hole, simple to mount<br>• Very inexpensive<br>• Slider can be coupled to the lead-screw nut for closed-loop control<br>• Runs from the Nano's 3.3 V rail, so the signal stays within the ADC range</td>
 <td>• Only 20 mm of travel, which limits the usable stroke<br>• ±20% resistance tolerance, so each unit needs calibration<br>• Mechanical wear and slider noise over time<br>• Needs a mechanical link between the slider and the nut</td>
 </tr>
 <tr>
-<td><strong>Option 2. Bourns PTA4543-2015DPB103 slide potentiometer, 10 kΩ, 45 mm travel</strong><br><br>About €1.78 each<br><a href="https://ie.farnell.com/bourns/pta4543-2015dpb103/potentiometer-slide-10k-45mm/dp/1688415">Farnell product page</a></td>
+<td><strong>Option 2. Bourns PTA4543-2015DPB103 slide potentiometer, 10 kΩ, 45 mm travel</strong><br><br>$2.21 each (Avnet), $2.35 (Newark)<br><a href="https://www.digikey.com/en/products/detail/bourns-inc/PTA4543-2015DPB103/3534245">Digi-Key product page</a></td>
 <td>• 45 mm of travel allows a longer stroke<br>• Same signal type and ADC interface as Option 1<br>• Still inexpensive</td>
 <td>• Larger body is hard to fit on a small leg<br>• Travel is longer than the short N20 stroke needs, so resolution per millimetre of actuator motion is lower<br>• Same tolerance and wear limits as Option 1</td>
 </tr>
@@ -1525,24 +1525,24 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </thead>
 <tbody>
 <tr>
-<td><strong>Option 1. ST LIS3DHTR 3-axis accelerometer, LGA-16 (3 × 3 mm)</strong><br><br>$1.90 each<br><a href="https://www.lcsc.com/product-detail/C15134.html">LCSC product page</a> · <a href="https://www.st.com/resource/en/datasheet/lis3dh.pdf">ST datasheet</a></td>
+<td><strong>Option 1. ST LIS3DHTR 3-axis accelerometer, LGA-16 (3 × 3 mm)</strong><br><br>$1.94 each (Newark and Avnet)<br><a href="https://www.digikey.com/en/products/detail/stmicroelectronics/LIS3DHTR/2334338">Digi-Key product page</a> · <a href="https://www.st.com/resource/en/datasheet/lis3dh.pdf">ST datasheet</a></td>
 <td>• Lowest cost of the sensors that fit the budget<br>• 1.71 to 3.6 V supply, so it runs from the Nano's 3.3 V<br>• SPI and I2C, and selectable ±2, ±4, ±8 and ±16 g ranges<br>• Data-ready interrupt lets the PIC read samples only when new data exist<br>• Gravity vector gives roll and pitch for the "orientation within range" check<br>• Fast enough to estimate jerk and impulse</td>
 <td>• 3 × 3 mm LGA is hard to solder by hand and needs a stencil and hot air or reflow<br>• Accelerometer only, so no gyroscope and no yaw<br>• Jerk must be computed in firmware by differentiating the samples</td>
 </tr>
 <tr>
-<td><strong>Option 2. Analog Devices ADXL345BCCZ 3-axis accelerometer, LGA-14 (3 × 5 mm)</strong><br><br>$5.91 each<br><a href="https://www.lcsc.com/product-detail/C9667.html">LCSC product page</a> · <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">Analog Devices datasheet</a></td>
+<td><strong>Option 2. Analog Devices ADXL345BCCZ 3-axis accelerometer, LGA-14 (3 × 5 mm)</strong><br><br><span class="arithmatex">\(8.66 each at Newark (\)</span>7.05 at Arrow, $10.36 at Mouser)<br><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL345BCCZ-RL7/ADXL345BCCZ-RL7CT-ND/2038984">Digi-Key product page</a> · <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">Analog Devices datasheet</a></td>
 <td>• ±16 g range with SPI and I2C<br>• 2 to 3.6 V supply, works from 3.3 V<br>• Built-in shock/tap and activity detection, useful for impulse events<br>• Well documented</td>
-<td>• About three times the price of the LIS3DH, using a large part of the board's budget share<br>• Larger 3 × 5 mm LGA is still hard to solder<br>• Still no gyroscope</td>
+<td>• About four times the price of the LIS3DH, using a large part of the board's budget share<br>• Larger 3 × 5 mm LGA is still hard to solder<br>• Still no gyroscope</td>
 </tr>
 <tr>
-<td><strong>Option 3. TDK InvenSense MPU-6050 6-axis IMU, QFN-24 (4 × 4 mm)</strong><br><br>$20.99 each<br><a href="https://www.lcsc.com/product-detail/C24112.html">LCSC product page</a> · <a href="https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">InvenSense datasheet</a></td>
+<td><strong>Option 3. TDK InvenSense MPU-6050 6-axis IMU, QFN-24 (4 × 4 mm)</strong><br><br>US price not confirmed (I found $5.78 at one reseller and $20.99 at LCSC)<br><a href="https://www.digikey.com/en/products/detail/tdk-invensense/MPU-6050/4038009">Digi-Key product page</a> · <a href="https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">InvenSense datasheet</a></td>
 <td>• Adds a 3-axis gyroscope for true orientation<br>• I2C interface, 2.375 to 3.46 V supply</td>
-<td>• $20.99 is more than a board's entire budget share<br>• I2C only<br>• 4 × 4 mm QFN with an exposed pad is the hardest to solder<br>• More capability than the jerk and impulse sensing needs</td>
+<td>• Even at the lowest price I found it is about three times the cost of the LIS3DH, and the price varies widely between sellers<br>• I2C only<br>• 4 × 4 mm QFN with an exposed pad is the hardest to solder<br>• More capability than the jerk and impulse sensing needs</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Choice: Option 1, LIS3DHTR [IMU subsystem]</strong></p>
-<p><strong>Rationale:</strong> The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the lowest-cost option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost about three and eleven times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.</p>
+<p><strong>Rationale:</strong> The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the lowest-cost option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost at least about three to four times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.</p>
 <hr>
 <h3 id="25-power-subsystem-5-v-linear-voltage-regulator">2.5 [Power subsystem] 5 V linear voltage regulator</h3>
 <table>
@@ -1557,7 +1557,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td><strong>Option 1. ST L7805CV 5 V regulator, TO-220</strong><br><br>$0.65 each<br><a href="https://www.jameco.com/z/L7805CV-STMicroelectronics-Voltage-Regulator-5-Volt-1-5-Amp-TO-220_51262.html">Jameco product page</a> · <a href="https://www.st.com/resource/en/datasheet/l78.pdf">ST datasheet</a></td>
 <td>• Up to 1.5 A with internal current limiting and thermal shutdown<br>• Specified for 7 to 18 V input, which brackets the 9 V adapter<br>• Output capacitor is not needed for stability<br>• Very inexpensive and easy to source<br>• TO-220 accepts a heatsink</td>
-<td>• Dropout of about 2 V at 1 A<br>• Quiescent current of about 8 mA<br>• Dissipates (9 V − 5 V) × load, about 3.5 W at my worst case, so a heatsink is required (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>)<br>• About 50 °C/W without a heatsink</td>
+<td>• Dropout of about 2 V at 1 A<br>• Quiescent current of about 8 mA<br>• Dissipates (9 V − 5 V) × load, about 2.6 W at my worst case, so a heatsink is required (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>)<br>• About 50 °C/W without a heatsink</td>
 </tr>
 <tr>
 <td><strong>Option 2. TI LM2940CT-5.0 low-dropout 5 V regulator, TO-220</strong><br><br>$1.94 each<br><a href="https://www.digikey.com/en/products/detail/texas-instruments/LM2940CT-5-0-NOPB/32575">Digi-Key product page</a> · <a href="https://www.ti.com/lit/ds/symlink/lm2940.pdf">TI datasheet</a></td>
@@ -1567,7 +1567,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tbody>
 </table>
 <p><strong>Choice: Option 1, L7805CV [Power subsystem]</strong></p>
-<p><strong>Rationale:</strong> The input is a regulated 9 V adapter, so low dropout buys nothing. The L7805CV is the lowest-cost, most forgiving choice, and its built-in protection suits a board that drives a motor. The heat is the main issue: with the motor on the 5 V rail the regulator dissipates about 3.5 W in the worst case, so the TO-220 needs a heatsink of about 15 °C/W or better (the Power Budget page shows the calculation).</p>
+<p><strong>Rationale:</strong> The input is a regulated 9 V adapter, so low dropout buys nothing. The L7805CV is the lowest-cost, most forgiving choice, and its built-in protection suits a board that drives a motor. The heat is the main issue: with the motor on the 5 V rail the regulator dissipates about 2.6 W in the worst case, so the TO-220 needs a small heatsink of about 20 °C/W or better (the Power Budget page shows the calculation).</p>
 <hr>
 <h3 id="26-power-subsystem-external-9-v-power-source">2.6 [Power subsystem] External 9 V power source</h3>
 <p>USB power packs are not allowed for this project, so all options are wall adapters. I already own a 9 V 1 A adapter, so it costs nothing new.</p>
@@ -1583,7 +1583,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td><strong>Option 1. 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive (equivalent to the Adafruit unit; I already own one)</strong><br><br>$8.95 if bought new; $0 for me<br><a href="https://www.adafruit.com/product/63">Adafruit product page</a></td>
 <td>• Regulated output<br>• Polarity and barrel size are stated<br>• Already owned, so no budget spent<br>• 1 A covers my worst-case need with margin (see the Power Budget)</td>
-<td>• Only about 107 mA of spare current after the 25% margin, so the motor current limit must be set correctly<br>• No room for added loads</td>
+<td>• About 332 mA of spare current after the 25% margin in normal operation, but only about 24 mA in a motor fault unless the DRV8833 current limit is lowered (see the Power Budget)<br>• No room for added loads</td>
 </tr>
 <tr>
 <td><strong>Option 2. Pololu 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive</strong><br><br>$11.11 each<br><a href="https://www.pololu.com/product/1470">Pololu product page</a></td>
@@ -1598,7 +1598,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tbody>
 </table>
 <p><strong>Choice: Option 1, my existing 9 V 1 A adapter [Power subsystem]</strong></p>
-<p><strong>Rationale:</strong> The Power Budget shows the system needs about 0.89 A including the 25% margin, which the 1 A adapter covers. It is already owned, so it uses none of the board's budget, and its polarity is known to be center-positive. This only works if the DRV8833 current limit is set to about 0.67 A rather than the 1 A in my Block Diagram page, otherwise a stalled motor could exceed the adapter's rating.</p>
+<p><strong>Rationale:</strong> The Power Budget shows the system needs about 0.67 A including the 25% margin, which the 1 A adapter covers. It is already owned, so it uses none of the board's budget, and its polarity is known to be center-positive. In a motor fault the limit matters: the DRV8833 current limit should be set to about 0.67 A rather than the 1 A in my Block Diagram page, otherwise a fault could exceed the adapter's rating.</p>
 <hr>
 <h2 id="3-cost-against-the-team-budget">3. Cost against the team budget</h2>
 <table>
@@ -1612,32 +1612,32 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tbody>
 <tr>
 <td>Linear actuator</td>
-<td>N20 6 V gearmotor with M3 lead screw</td>
-<td>~$8.00</td>
+<td>DFRobot FIT0577 N20 gearmotor with M3 lead screw</td>
+<td>$9.00</td>
 </tr>
 <tr>
 <td>Motor driver</td>
 <td>DRV8833PWPR</td>
-<td>$2.34</td>
+<td>$3.02</td>
 </tr>
 <tr>
 <td>Position sensor</td>
 <td>Bourns PTA2043-2015CPB103</td>
-<td>~$1.60</td>
+<td>$1.84</td>
 </tr>
 <tr>
 <td>IMU</td>
 <td>LIS3DHTR</td>
-<td>~$2.00</td>
+<td>$1.94</td>
 </tr>
 <tr>
 <td>5 V regulator</td>
-<td>L7805CV (plus a heatsink, not yet priced)</td>
-<td>~$0.60</td>
+<td>L7805CV (plus a small heatsink, not yet priced)</td>
+<td>$0.65</td>
 </tr>
 <tr>
 <td>Fuse, barrel jack, power LED, header and passives</td>
-<td>Per Block Diagram page</td>
+<td>Estimates from my Block Diagram page</td>
 <td>~$3.80</td>
 </tr>
 <tr>
@@ -1646,13 +1646,13 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <td>$0</td>
 </tr>
 <tr>
-<td><strong>Total (new purchases)</strong></td>
+<td><strong>Total (new purchases, before shipping and the heatsink)</strong></td>
 <td></td>
-<td><strong>~<span class="arithmatex">\(18.34 (the Block Diagram page rounds to ~\)</span>18.50)</strong></td>
+<td><strong>~$20.25</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. This board is inside that range, and buying the N20 motor from a lower-cost supplier would bring it to about $16. The heatsink adds a small cost that is not yet included.</p>
+<p>The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At about <span class="arithmatex">\(20.25 this board is just above the top of that range, before shipping and the heatsink, so I should check the team total with my teammates. The fuse, jack, LED and passive costs are estimates and may be lower. Ordering the Option 2 motor (\)</span>6.95) would save about $2, but it needs a threaded rod and coupler.</p>
 <hr>
 <h2 id="4-checklist">4. Checklist</h2>
 <ul>

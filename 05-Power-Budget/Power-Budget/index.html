@@ -1136,10 +1136,10 @@
 </thead>
 <tbody>
 <tr>
-<td>N20 6 V gearmotor with M3 lead screw (Actuator B)</td>
+<td>DFRobot FIT0577 N20 6 V gearmotor with M3 lead screw (Actuator B)</td>
 <td>5 V via DRV8833</td>
-<td>600</td>
-<td>Stall current est.: the seller does not publish it. A similar 6 V N20 lead-screw motor (DFRobot FIT0577) lists 420 mA stall at 6 V; 600 mA is a conservative allowance for the faster 300 RPM motor. Measure on the bench</td>
+<td>420</td>
+<td>Datasheet stall current at 6 V (±10%). At 5 V the stall current will be lower, so this is conservative. Measure on the bench</td>
 </tr>
 <tr>
 <td>PIC18F57Q43 Curiosity Nano (MCU, on-board debugger, 3.3 V regulator)</td>
@@ -1181,7 +1181,7 @@
 <tr>
 <td><strong>5 V</strong></td>
 <td>N20 gearmotor (stall)</td>
-<td>600</td>
+<td>420</td>
 </tr>
 <tr>
 <td>5 V</td>
@@ -1206,12 +1206,12 @@
 <tr>
 <td></td>
 <td><strong>5 V rail total</strong></td>
-<td><strong>706.0</strong></td>
+<td><strong>526.0</strong></td>
 </tr>
 <tr>
 <td></td>
 <td><strong>× 1.25 safety margin</strong></td>
-<td><strong>882.5</strong></td>
+<td><strong>657.5</strong></td>
 </tr>
 <tr>
 <td><strong>9 V</strong></td>
@@ -1233,7 +1233,7 @@
 <tr>
 <td>5 V</td>
 <td>ST L7805CV (TO-220) with heatsink</td>
-<td>Specified for 7 to 18 V input, so the 9 V adapter has 4 V of headroom over its 2 V dropout. Rated up to 1.5 A against a 0.88 A load with margin. Has internal current limiting and thermal shutdown. Compared with the LM2940CT-5.0 in the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</td>
+<td>Specified for 7 to 18 V input, so the 9 V adapter has 4 V of headroom over its 2 V dropout. Rated up to 1.5 A against a 0.66 A load with margin. Has internal current limiting and thermal shutdown. Compared with the LM2940CT-5.0 in the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</td>
 </tr>
 <tr>
 <td>9 V</td>
@@ -1253,27 +1253,27 @@
 <tbody>
 <tr>
 <td>Load current including margin</td>
-<td>882.5 mA</td>
+<td>657.5 mA</td>
 </tr>
 <tr>
 <td>Regulator quiescent current (datasheet, about 8 mA) × 1.25</td>
 <td>10 mA</td>
 </tr>
 <tr>
-<td>Power dissipated: (9 V − 5 V) × 0.8825 A</td>
-<td>3.53 W</td>
+<td>Power dissipated: (9 V − 5 V) × 0.6575 A</td>
+<td>2.63 W</td>
 </tr>
 <tr>
 <td>Junction rise at 50 °C/W (TO-220, no heatsink)</td>
-<td>about 177 °C, so it would hit thermal shutdown</td>
+<td>about 131 °C, so it would hit thermal shutdown</td>
 </tr>
 <tr>
 <td>Junction-to-ambient resistance needed to stay under 125 °C at 40 °C ambient</td>
-<td>24 °C/W or lower</td>
+<td>32 °C/W or lower</td>
 </tr>
 </tbody>
 </table>
-<p>The regulator therefore <strong>needs a heatsink</strong>. Junction-to-case is about 5 °C/W, so a heatsink of roughly 15 °C/W or better is required. At the nominal 0.6 A motor load without margin the dissipation is still about 2.8 W, so the heatsink is needed in normal operation too. My Block Diagram page says a "small" heatsink; it should be sized to this calculation.</p>
+<p>The regulator therefore <strong>needs a heatsink</strong>. Junction-to-case is about 5 °C/W, so a small TO-220 clip-on heatsink of about 20 °C/W or better is enough. At the nominal motor load without margin the dissipation is still about 2.1 W, so the heatsink is needed in normal operation too. This matches the "small heatsink" on my Block Diagram page; it should be sized to this calculation.</p>
 <h2 id="section-d-external-power-source">Section D. External power source</h2>
 <table>
 <thead>
@@ -1288,12 +1288,12 @@
 <td>My existing 9 V 1 A regulated wall adapter</td>
 </tr>
 <tr>
-<td>Current into the L7805CV input: (706 + 8) × 1.25</td>
-<td>892.5 mA</td>
+<td>Current into the L7805CV input: (526 + 8) × 1.25</td>
+<td>667.5 mA</td>
 </tr>
 <tr>
 <td><strong>Total required from adapter</strong></td>
-<td><strong>892.5 mA</strong></td>
+<td><strong>667.5 mA</strong></td>
 </tr>
 <tr>
 <td>Adapter capacity</td>
@@ -1301,18 +1301,18 @@
 </tr>
 <tr>
 <td><strong>Total remaining current available</strong></td>
-<td><strong>107.5 mA (not negative)</strong></td>
+<td><strong>332.5 mA (not negative)</strong></td>
 </tr>
 </tbody>
 </table>
-<p>This check depends on the motor current staying near 600 mA. The DRV8833 current limit in my Block Diagram page is about 1 A (a 0.2 Ω sense resistor). A stalled motor could then draw up to 1 A, giving (1000 + 114) × 1.25 = 1,393 mA from the adapter, which is more than it can supply. The limit must be lowered: a sense resistor of about 0.3 Ω gives a limit near 0.67 A, which gives 976 mA from the adapter and keeps the remaining current positive (about 24 mA).</p>
+<p>This check covers normal operation, where the motor stalls at about 420 mA. The DRV8833 current limit in my Block Diagram page is about 1 A (a 0.2 Ω sense resistor). In a fault the motor could then draw up to 1 A, giving (1000 + 114) × 1.25 = 1,393 mA from the adapter, which is more than it can supply. The limit should be lowered: a sense resistor of about 0.3 Ω gives a limit near 0.67 A, which gives 976 mA from the adapter and keeps the remaining current positive (about 24 mA) even in a fault.</p>
 <h2 id="section-e-battery-life">Section E. Battery life</h2>
 <p>Not applicable. The design runs from a wall adapter and has no battery.</p>
 <h2 id="open-items-before-the-design-review">Open items before the design review</h2>
 <ol>
-<li>Measure the stall current of the 300 RPM N20 motor at 5 V and replace the 600 mA estimate.</li>
+<li>Measure the stall current of the N20 motor at 5 V and compare it with the 420 mA datasheet figure.</li>
 <li>Change the DRV8833 sense resistor from 0.2 Ω to about 0.3 Ω so the current limit is near 0.67 A, and update the Block Diagram page.</li>
-<li>Choose and price a TO-220 heatsink of about 15 °C/W or better, or consider powering the motor driver from the 9 V rail with the PWM duty capped near 66% (a 6 V motor on 9 V), which would remove most of the regulator's heat.</li>
+<li>Choose and price a small TO-220 heatsink of about 20 °C/W or better. Powering the motor driver from the 9 V rail with the PWM duty capped near 66% (a 6 V motor on 9 V) is an alternative that would remove most of the regulator's heat.</li>
 <li>Replace the Nano (100 mA), DRV8833 (5 mA) and LIS3DH (0.5 mA) estimates with measured current.</li>
 <li>Copy these numbers into the course power budget spreadsheet template.</li>
 </ol>
