@@ -1430,7 +1430,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </thead>
 <tbody>
 <tr>
-<td><strong>Option 1. DFRobot Micro Metal DC Geared Motor with Lead Screw (FIT0577), 6 V, 98 RPM, M3 × 20 mm</strong><br><br><span class="arithmatex">\(9.00 each (\)</span>11.76 at RobotShop)<br><a href="https://www.dfrobot.com/product-1733.html">DFRobot product page</a> · <a href="https://www.robotshop.com/products/dfrobot-micro-metal-dc-geared-motor-w-lead-screw-6v-98rpm-m320">RobotShop listing</a></td>
+<td><strong>Option 1. DFRobot Micro Metal DC Geared Motor with Lead Screw (FIT0577), 6 V, 98 RPM, M3 × 20 mm</strong><br><br>$9.00 each ($11.76 at RobotShop)<br><a href="https://www.dfrobot.com/product-1733.html">DFRobot product page</a> · <a href="https://www.robotshop.com/products/dfrobot-micro-metal-dc-geared-motor-w-lead-screw-6v-98rpm-m320">RobotShop listing</a></td>
 <td>• Same design as my Block Diagram choice: an N20 6 V gearmotor with the M3 lead screw built onto the shaft<br>• Ready-made part that can be ordered in the US (DFRobot, or RobotShop's US store)<br>• Published electrical data: 24 mA no load and 420 mA stall at 6 V, so the power budget is based on real numbers<br>• $9.00 fits the board's share of the team budget<br>• Rated 6 V, so it runs from the 5 V rail through the DRV8833</td>
 <td>• Slow: 98 RPM no load and 60 RPM under load, which is about 0.5 to 0.8 mm/s with a standard 0.5 mm M3 pitch (the page does not state the pitch)<br>• The 20 mm screw limits the stroke to under 20 mm<br>• No built-in position feedback, so it needs the slide potentiometer<br>• Shipping cost and time are not included</td>
 </tr>
@@ -1452,7 +1452,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tbody>
 </table>
 <p><strong>Choice: Option 1, DFRobot FIT0577 N20 gearmotor with M3 lead screw [Actuator B subsystem]</strong></p>
-<p><strong>Rationale:</strong> The team budget is $70 to $80 for four boards, so my board has about $17.50 to $20.00 to spend in total, and the actuator must also be orderable in the US. Option 1 keeps the design from my Block Diagram page (an N20 6 V gearmotor driving an M3 lead screw) as one ready-made part, costs <span class="arithmatex">\(9.00, and comes with published stall and no-load currents. Option 2 gives the original 300 RPM speed for a little less money, but it leaves me to buy and align the screw and coupler, and it has no published current data. The Pololu motor alone (\)</span>23.95) is more than the board's whole share, and the commercial actuator costs more than the entire team budget. I accept the slow speed (a joint demonstration does not need fast motion) and the missing feedback (covered by the slide potentiometer in 2.3). If the team needs more speed later, Option 2 is the fallback.</p>
+<p><strong>Rationale:</strong> The team budget is $70 to $80 for four boards, so my board has about $17.50 to $20.00 to spend in total, and the actuator must also be orderable in the US. Option 1 keeps the design from my Block Diagram page (an N20 6 V gearmotor driving an M3 lead screw) as one ready-made part, costs $9.00, and comes with published stall and no-load currents. Option 2 gives the original 300 RPM speed for a little less money, but it leaves me to buy and align the screw and coupler, and it has no published current data. The Pololu motor alone ($23.95) is more than the board's whole share, and the commercial actuator costs more than the entire team budget. I accept the slow speed (a joint demonstration does not need fast motion) and the missing feedback (covered by the slide potentiometer in 2.3). If the team needs more speed later, Option 2 is the fallback.</p>
 <hr>
 <h3 id="22-actuator-b-subsystem-motor-driver-h-bridge">2.2 [Actuator B subsystem] Motor driver (H-bridge)</h3>
 <table>
@@ -1530,7 +1530,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <td>• 3 × 3 mm LGA is hard to solder by hand and needs a stencil and hot air or reflow<br>• Accelerometer only, so no gyroscope and no yaw<br>• Jerk must be computed in firmware by differentiating the samples</td>
 </tr>
 <tr>
-<td><strong>Option 2. Analog Devices ADXL345BCCZ 3-axis accelerometer, LGA-14 (3 × 5 mm)</strong><br><br><span class="arithmatex">\(8.66 each at Newark (\)</span>7.05 at Arrow, $10.36 at Mouser)<br><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL345BCCZ-RL7/ADXL345BCCZ-RL7CT-ND/2038984">Digi-Key product page</a> · <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">Analog Devices datasheet</a></td>
+<td><strong>Option 2. Analog Devices ADXL345BCCZ 3-axis accelerometer, LGA-14 (3 × 5 mm)</strong><br><br>$8.66 each at Newark ($7.05 at Arrow, $10.36 at Mouser)<br><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL345BCCZ-RL7/ADXL345BCCZ-RL7CT-ND/2038984">Digi-Key product page</a> · <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">Analog Devices datasheet</a></td>
 <td>• ±16 g range with SPI and I2C<br>• 2 to 3.6 V supply, works from 3.3 V<br>• Built-in shock/tap and activity detection, useful for impulse events<br>• Well documented</td>
 <td>• About four times the price of the LIS3DH, using a large part of the board's budget share<br>• Larger 3 × 5 mm LGA is still hard to solder<br>• Still no gyroscope</td>
 </tr>
@@ -1652,7 +1652,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 </tbody>
 </table>
-<p>The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At about <span class="arithmatex">\(20.25 this board is just above the top of that range, before shipping and the heatsink, so I should check the team total with my teammates. The fuse, jack, LED and passive costs are estimates and may be lower. Ordering the Option 2 motor (\)</span>6.95) would save about $2, but it needs a threaded rod and coupler.</p>
+<p>The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At about $20.25 this board is just above the top of that range, before shipping and the heatsink, so I should check the team total with my teammates. The fuse, jack, LED and passive costs are estimates and may be lower. Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.</p>
 <hr>
 <h2 id="4-checklist">4. Checklist</h2>
 <ul>
