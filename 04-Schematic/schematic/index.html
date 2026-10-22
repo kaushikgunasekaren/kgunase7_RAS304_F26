@@ -1142,20 +1142,13 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <h2 id="overview">Overview</h2>
 <p>This schematic is my individual subsystem board, drawn in KiCad 10. It follows my <a href="../../01-Block-Diagram/Block-Diagram/">Block Diagram</a>, <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> and <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a> pages. The board takes a position command from Preston's hub board over the ribbon cable. It drives Linear Actuator B (an N20 lead-screw gearmotor) through a DRV8833 H-bridge, closes the loop with a slide potentiometer, and reads an LIS3DH accelerometer for jerk / impulse sensing. Status and IMU data go back to the hub over UART.</p>
 <ul>
-<li>
-<p><strong>Power:</strong> a 9–12 V barrel jack feeds a removable 1 A fuse and a 1N5819 reverse-polarity diode. Two through-hole linear regulators share the C1/C2 input capacitors:</p>
-<ul>
-<li><strong>L7805CV, 5 V logic rail:</strong> powers the Curiosity Nano and the green power LED.</li>
-<li><strong>L7806CV, 6 V motor rail:</strong> powers only the DRV8833 and the N20 motor, which is rated 6 V.</li>
-</ul>
-<p>The Curiosity Nano's on-board regulator (VTG) supplies 3.3 V to the IMU, the op-amp and the potentiometer. Only the motor and its driver run above 5 V; everything else is 5 V or 3.3 V. The raw 9–12 V reaches only the two regulator inputs.
-* <strong>Controller:</strong> the PIC18F57Q43 Curiosity Nano, drawn as a custom symbol with my initials (KG). It is fed from 5 V through jumper JP1 and Schottky diode D3, so the Nano's USB 5 V cannot back-feed the board's 5 V rail. There are 0.1 µF bypass capacitors on VBUS and VTG.
-* <strong>Actuator with driver circuit:</strong> a DRV8833, powered from the 6 V rail through JP2, drives the motor from AIN1/AIN2 (RC2, RD0 PWM), with nSLEEP (RD1) and nFAULT (RB1). The 0.33 Ω sense resistor sets the chopping current limit at about 0.61 A, which stays within the 1 A adapter even in a fault. D6–D9 clamp the motor's back-EMF to VM and GND. JP2 isolates the 6 V motor rail for debugging.
-* <strong>Current-sense signal conditioning:</strong> a 159 Hz RC low-pass and an MCP601 non-inverting amplifier with a gain of 11 turn the 0–0.2 V sense voltage into 0–2.2 V for the ADC (RA0). A 1.6 kHz anti-alias filter follows the amplifier.
-* <strong>Sensor:</strong> an LIS3DHTR on SPI1 (RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS), with INT1 data-ready on RB0. The slide potentiometer (off-board, on J7) is filtered and read on RA1.
-* <strong>Team interface:</strong> a 2x4 IDC header with pin 1 = UART RX (RC7) from the hub, pin 2 = UART TX (RC6) to the hub, and pin 8 = GND. Pins 3–7 are broken out on J3.
-* <strong>Debug and expansion:</strong> two debug LEDs (RD2, RD3), a hardware-debounced push button (RD5), 13 bare PCB test pads, and two 13-pin spare GPIO headers that bring out every unused Nano I/O pin.</p>
-</li>
+<li><strong>Power:</strong> a 9–12 V barrel jack feeds a removable 1 A fuse and a 1N5819 reverse-polarity diode. Two through-hole linear regulators share the C1/C2 input capacitors. The <strong>L7805CV (5 V logic rail)</strong> powers the Curiosity Nano and the green power LED. The <strong>L7806CV (6 V motor rail)</strong> powers only the DRV8833 and the N20 motor, which is rated 6 V. The Nano's on-board regulator (VTG) supplies 3.3 V to the IMU, the op-amp and the potentiometer. Only the motor and its driver run above 5 V; the raw 9–12 V reaches only the two regulator inputs.</li>
+<li><strong>Controller:</strong> the PIC18F57Q43 Curiosity Nano, drawn as a custom symbol with my initials (KG). It is fed from 5 V through jumper JP1 and Schottky diode D3, so the Nano's USB 5 V cannot back-feed the board's 5 V rail. There are 0.1 µF bypass capacitors on VBUS and VTG.</li>
+<li><strong>Actuator with driver circuit:</strong> a DRV8833, powered from the 6 V rail through JP2, drives the motor from AIN1/AIN2 (RC2, RD0 PWM), with nSLEEP (RD1) and nFAULT (RB1). The 0.33 Ω sense resistor sets the chopping current limit at about 0.61 A, which stays within the 1 A adapter even in a fault. D6–D9 clamp the motor's back-EMF to VM and GND. JP2 isolates the 6 V motor rail for debugging.</li>
+<li><strong>Current-sense signal conditioning:</strong> a 159 Hz RC low-pass and an MCP601 non-inverting amplifier with a gain of 11 turn the 0–0.2 V sense voltage into 0–2.2 V for the ADC (RA0). A 1.6 kHz anti-alias filter follows the amplifier.</li>
+<li><strong>Sensor:</strong> an LIS3DHTR on SPI1 (RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS), with INT1 data-ready on RB0. The slide potentiometer (off-board, on J7) is filtered and read on RA1.</li>
+<li><strong>Team interface:</strong> a 2x4 IDC header with pin 1 = UART RX (RC7) from the hub, pin 2 = UART TX (RC6) to the hub, and pin 8 = GND. Pins 3–7 are broken out on J3.</li>
+<li><strong>Debug and expansion:</strong> two debug LEDs (RD2, RD3), a hardware-debounced push button (RD5), 13 bare PCB test pads, and two 13-pin spare GPIO headers that bring out every unused Nano I/O pin.</li>
 </ul>
 <p><a class="glightbox" href="../Subsystem-Schematic-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Driver Nano 3 subsystem schematic" src="../Subsystem-Schematic-KG.png" /></a>
 <strong>Figure 1:</strong> Driver Nano 3 subsystem schematic (click to enlarge, or open the PDF below for full resolution).</p>
