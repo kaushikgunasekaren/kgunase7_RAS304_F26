@@ -1,6 +1,6 @@
 site_name: RAS 304 Kaushik Gunasekaren Data Sheet
-site_url: https://ras-embedded-systems.github.io/RAS304DataSheetTemplate/
-repo_url: https://github.com/ras-embedded-systems/RAS304DataSheetTemplate
+site_url: https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/
+repo_url: https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26
 edit_uri: edit/main/docs/
 theme:
   name: material
@@ -54,11 +54,7 @@ extra_css:
 not_in_nav: |
   static
   
-copyright: "Copyright &copy; 2025 team-name-here"
+copyright: "Copyright &copy; 2026 Kaushik Gunasekaren, Team 102"
 
 extra:
   generator: false
-  social:
-    - icon: fontawesome/regular/file-code
-      link: /2025_fall
-      name: 2023 Site    

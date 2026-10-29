@@ -32,6 +32,19 @@ This schematic is my individual subsystem board, drawn in KiCad 10. It follows m
 * The schematic as a high-resolution PDF is available [*here*](Subsystem-Schematic-KG.pdf).
 * A ZIP of the complete KiCad project, including my custom symbol library `RAS304_KG.kicad_sym`, the ERC report and the BOM export, is available [*here*](Subsystem-Schematic-KG.zip).
 
+## How the Schematic Meets User Needs and Product Requirements
+
+The team's users are robotics hobbyists and students who want a leg they can wire into their own robot, repair and modify (see the team's [Product Requirements](https://ras304-fall26-102.github.io/04-Product-Requirements/)). This board has to move one joint on command and report how the leg is moving, safely and with parts a user can replace. The circuit does that as follows:
+
+* **Moving the joint on command (user need: a leg that "just works" from simple commands).** The hub sends a target position over UART (pin 1 of the ribbon, RC7). The PIC compares it with the slide-pot reading on RA1 and drives the DRV8833 with two PWM signals (RC2, RD0). Because the slide pot gives an absolute position, the joint knows where it is at power-up without a homing move.
+* **Motor at its rated voltage.** The L7806CV gives the 6 V motor its full rated voltage, while the L7805CV keeps the Curiosity Nano on a separate, quieter 5 V rail. Motor start-up and stall current cannot pull the microcontroller's supply down and reset it.
+* **Stall and fault protection (Req. 6.1).** The 0.33 Ω sense resistor makes the DRV8833 chop the current at about 0.61 A. The MCP601 amplifies the 0–0.2 V sense voltage to 0–2.2 V so the PIC can see a stall clearly on RA0 and stop the motor before it overheats. nFAULT (RB1) reports driver over-current or over-temperature, and D6–D9 clamp back-EMF from the motor.
+* **Supply protection (Req. 6.3).** A removable 1 A fuse protects against shorts, the 1N5819 protects against a reversed adapter, and both regulators have internal current limits and thermal shutdown.
+* **Safe state when the controller is not running (Req. 6.4).** nSLEEP has a 10k pull-down, so the motor driver is off while the PIC is in reset or being programmed. The LIS3DH chip select has a pull-up so the sensor stays idle. Firmware can drop nSLEEP if hub commands stop arriving.
+* **Motion sensing for the team (jerk / impulse).** The LIS3DH is on SPI1 with its data-ready interrupt on RB0, so the PIC reads each new sample as soon as it is ready and computes jerk and impulse to send back to the hub over UART (RC6).
+* **Standard interfaces (Req. 2.2).** UART to the hub and SPI to the sensor, over the class-standard 2x4 ribbon header.
+* **Repairable and modifiable (Req. 4.3, 4.4, 5.2).** The motor (J4) and slide pot (J7) plug into headers, the fuse sits in clips, nearly every part is through-hole, and every unused Nano pin is broken out on J5 and J6. JP1 and JP2 let a user isolate the Nano or the motor rail while debugging, and the test pads, debug LEDs and button make bring-up easier.
+
 ## Custom symbols
 
 All custom symbols are in `RAS304_KG.kicad_sym` and carry my initials (KG) in the symbol name and body:
@@ -108,9 +121,9 @@ The team budget is $70–80 for four boards (about $17.50–20.00 per board; see
 
 * **Test points:** bare PCB pads cost nothing, instead of about $0.35 each for purchased test points.
 * **Headers and jumpers:** all are cut from one 40-pin break-away strip.
-* **Heatsink:** the L7805CV now carries only the Nano and the LED (about 0.1 A), so it needs no heatsink. Only the L7806CV, which carries the motor current, may need the small TO-220 heatsink at 12 V input.
+* **Heatsink:** the L7805CV now carries only the Nano and the LED (about 0.1 A), so it needs no heatsink. Only the L7806CV, which carries the motor current, may need a small TO-220 heatsink, and only with a 12 V adapter (see the [Power Budget](../05-Power-Budget/Power-Budget.md)).
 
-New items compared with Component Selection: the L7806CV, the MCP601-I/P, the 41FR33E sense resistor (the most expensive passive) and six 1N5819 diodes, about $4–5 in total. Passives and headers should come from lab stock where possible, and the totals should be rechecked against current DigiKey prices on the BOM page.
+New items compared with Component Selection: the L7806CV, the MCP601-I/P, the 41FR33E sense resistor (the most expensive passive) and six 1N5819 diodes, about $4–5 in total. Passives and headers should come from lab stock where possible, and the full part list is on the [BOM](../03-BOM/BOM.md) page.
 
 ## Design checks
 
@@ -124,6 +137,5 @@ New items compared with Component Selection: the L7806CV, the MCP601-I/P, the 41
 ## Open items before the PCB assignment
 
 1. Check the Curiosity Nano header numbering against the hardware user guide before assigning the footprint (the Nano and the PJ-002A barrel jack have no library footprint yet).
-2. Update the [Power Budget](../05-Power-Budget/Power-Budget.md) for the new 6 V motor rail (L7806CV), and check whether it needs a heatsink at 12 V: about (12 − 6) V × 0.42 A ≈ 2.5 W at stall.
-3. Copy the part list below into the [BOM](../03-BOM/BOM.md) page with prices.
-4. Breadboard the DRV8833 current-sense amplifier and confirm the gain and the stall threshold with the real motor.
+2. Breadboard the DRV8833 current-sense amplifier and confirm the gain and the stall threshold with the real motor.
+3. Decide on the optional L7806CV heatsink after measuring its temperature; it is required only if a 12 V adapter is used (see the [Power Budget](../05-Power-Budget/Power-Budget.md)).
