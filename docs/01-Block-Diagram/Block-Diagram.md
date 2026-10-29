@@ -45,7 +45,7 @@ Since the first version, two changes came from the power budget and feedback: th
 
 | Requirement (team) | How this board meets it |
 |---|---|
-| **2.2** Standard protocols (UART, I2C) | UART to the hub over the ribbon; SPI to the accelerometer |
+| **2.2** Standard communication protocols | UART to the hub over the ribbon; SPI to the accelerometer |
 | **2.3** Modular software: motion, sensing, communication separated | Separate peripherals for motion (PWM + position ADC), sensing (SPI + interrupt) and communication (UART) |
 | **4.4 / 5.2** Off-the-shelf parts and connectors | Catalog parts only; motor and slide pot plug into headers so they can be replaced |
 | **6.1** Current limiting or stall detection on actuators | DRV8833 0.61 A current limit, amplified current sense on RA0, and nFAULT on RB1 |

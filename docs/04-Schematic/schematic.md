@@ -42,7 +42,7 @@ The team's users are robotics hobbyists and students who want a leg they can wir
 * **Supply protection (Req. 6.3).** A removable 1 A fuse protects against shorts, the 1N5819 protects against a reversed adapter, and both regulators have internal current limits and thermal shutdown.
 * **Safe state when the controller is not running (Req. 6.4).** nSLEEP has a 10k pull-down, so the motor driver is off while the PIC is in reset or being programmed. The LIS3DH chip select has a pull-up so the sensor stays idle. Firmware can drop nSLEEP if hub commands stop arriving.
 * **Motion sensing for the team (jerk / impulse).** The LIS3DH is on SPI1 with its data-ready interrupt on RB0, so the PIC reads each new sample as soon as it is ready and computes jerk and impulse to send back to the hub over UART (RC6).
-* **Standard interfaces (Req. 2.2).** UART to the hub and SPI to the sensor, over the class-standard 2x4 ribbon header.
+* **Standard interfaces (Req. 2.2).** UART to the hub over the class-standard 2x4 ribbon header, and SPI to the on-board accelerometer.
 * **Repairable and modifiable (Req. 4.3, 4.4, 5.2).** The motor (J4) and slide pot (J7) plug into headers, the fuse sits in clips, nearly every part is through-hole, and every unused Nano pin is broken out on J5 and J6. JP1 and JP2 let a user isolate the Nano or the motor rail while debugging, and the test pads, debug LEDs and button make bring-up easier.
 
 ## Custom symbols

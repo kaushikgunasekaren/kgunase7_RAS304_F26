@@ -15,7 +15,7 @@ Driver Nano 3 handles Linear Actuator B control and IMU sensing. It follows this
 
 1. Receive the actuator B target position from the Main Processor (Preston's hub board).
 2. Drive Linear Actuator B (PWM and direction).
-3. Read the IMU orientation (I2C / SPI).
+3. Read the IMU orientation (SPI).
 4. Check whether the orientation is within the expected range. If yes, continue the motion. If no, adjust the motion or flag a status.
 5. Send actuator B status and IMU data back to the Main Processor.
 6. Loop, waiting for the next command.
@@ -60,7 +60,7 @@ The full drawing is on my [Block Diagram](../01-Block-Diagram/Block-Diagram.md) 
 | 7 | Analog | Not used | – |
 | 8 | Ground | Common ground | – |
 
-The team message format is still to be defined in the software and message-structure assignment, so the content of the UART messages is not final. Only two signal pins are needed, which is why the I2C / serial bus in the flow diagram is implemented as a UART pair.
+The team message format is still to be defined in the software and message-structure assignment, so the content of the UART messages is not final. Communication with the hub is **UART** (UART1: RC7 RX, RC6 TX), not I2C. Only two signal pins plus ground are needed on the ribbon.
 
 ### Microcontroller pins (from the Block Diagram page)
 
@@ -246,7 +246,7 @@ I chose each part by first ruling out options that broke a hard constraint (the 
 
 | Team requirement | Parts that meet it |
 |---|---|
-| **2.2** Standard protocols (UART, I2C) | Curiosity Nano UART to the hub; LIS3DH on SPI (also supports I2C) |
+| **2.2** Standard communication protocols | UART to the hub; SPI to the LIS3DH |
 | **4.4 / 5.2** Off-the-shelf, replaceable parts | Catalog motor (FIT0577) and slide pot on headers; through-hole regulators, op-amp and connectors |
 | **6.1** Actuator current limiting or stall detection | DRV8833 current limit (0.61 A) and nFAULT; MCP601 amplifies the sense voltage for an ADC stall check |
 | **6.3** Over-voltage and over-current protection | 1 A fuse, 1N5819 reverse-polarity diode, L7806CV/L7805CV current limit and thermal shutdown |
