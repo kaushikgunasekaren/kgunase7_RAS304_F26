@@ -12,7 +12,7 @@
       
       
       
-        <link rel="canonical" href="https://ras-embedded-systems.github.io/RAS304DataSheetTemplate/05-Power-Budget/Power-Budget/">
+        <link rel="canonical" href="https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/05-Power-Budget/Power-Budget/">
       
       
         <link rel="prev" href="../../04-Schematic/schematic/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../static/logo304.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
             
 
     
@@ -36,10 +36,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -183,7 +183,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/ras-embedded-systems/RAS304DataSheetTemplate" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -392,7 +392,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/ras-embedded-systems/RAS304DataSheetTemplate" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -802,10 +802,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#section-b-rail-assignment-with-25-safety-margin" class="md-nav__link">
+  <a href="#section-b-rail-totals-with-25-safety-margin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Section B. Rail assignment with 25% safety margin
+        Section B. Rail totals with 25% safety margin
       
     </span>
   </a>
@@ -813,10 +813,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#section-c-regulator-or-source-choice-per-rail" class="md-nav__link">
+  <a href="#section-c-regulator-per-rail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Section C. Regulator or source choice per rail
+        Section C. Regulator per rail
       
     </span>
   </a>
@@ -846,10 +846,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#open-items-before-the-design-review" class="md-nav__link">
+  <a href="#what-the-power-budget-showed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Open items before the design review
+        What the power budget showed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open items
       
     </span>
   </a>
@@ -986,10 +997,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#section-b-rail-assignment-with-25-safety-margin" class="md-nav__link">
+  <a href="#section-b-rail-totals-with-25-safety-margin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Section B. Rail assignment with 25% safety margin
+        Section B. Rail totals with 25% safety margin
       
     </span>
   </a>
@@ -997,10 +1008,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#section-c-regulator-or-source-choice-per-rail" class="md-nav__link">
+  <a href="#section-c-regulator-per-rail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Section C. Regulator or source choice per rail
+        Section C. Regulator per rail
       
     </span>
   </a>
@@ -1030,10 +1041,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#open-items-before-the-design-review" class="md-nav__link">
+  <a href="#what-the-power-budget-showed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Open items before the design review
+        What the power budget showed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open items
       
     </span>
   </a>
@@ -1105,7 +1127,7 @@
 
 
   
-    <a href="https://github.com/ras-embedded-systems/RAS304DataSheetTemplate/edit/main/docs/05-Power-Budget/Power-Budget.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26/edit/main/docs/05-Power-Budget/Power-Budget.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1116,61 +1138,77 @@
 <h1 id="power-budget">Power Budget</h1>
 <p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU</strong></p>
 <blockquote>
-<p>Draft values for my individual board only. Part 2 is optional for the initial submission but required for the external design review. Values marked "est." should be replaced with measured values once the board is built. These numbers still need to be copied into the course's power budget spreadsheet template.</p>
+<p>This budget matches my current <a href="../../04-Schematic/schematic/">schematic</a>: a 6 V motor rail (L7806CV) and a separate 5 V logic rail (L7805CV). It was built in the course power budget template. Values marked "est." should be replaced with measured values once the board is built.</p>
 </blockquote>
+<p><strong>Spreadsheet:</strong> <a href="../Power-Budget-KG.xlsx">Power-Budget-KG.xlsx</a> (course template, with formulas) · <a href="../Power-Budget-KG.zip">ZIP of the spreadsheet</a></p>
 <h2 id="power-architecture">Power architecture</h2>
 <ul>
-<li>One external source: my own 9 V wall adapter (1 A) on the barrel jack, through a 1 A fuse.</li>
-<li>Two rails: <strong>9 V</strong> (raw adapter voltage, feeding only the regulator) and <strong>5 V</strong> (L7805CV linear regulator).</li>
-<li>The 5 V rail powers the DRV8833 motor supply (VM), the N20 gearmotor, and the Curiosity Nano (VBUS pin).</li>
-<li>The Curiosity Nano makes its own 3.3 V (VTG), which powers the LIS3DH and the slide-potentiometer reference. That load is counted on the 5 V rail because the Nano's regulator draws it from the 5 V input.</li>
+<li><strong>Power is supplied individually.</strong> Each teammate's board has its own adapter, and the ribbon to the hub carries only UART communication and a ground reference, so no other board draws from this budget and this board draws from no other.</li>
+<li>One external source: my own 9 V 1 A wall adapter on the barrel jack, through a removable 1 A fuse and a 1N5819 reverse-polarity diode. About 8.6 V reaches the regulators.</li>
+<li><strong>+6 V motor rail (L7806CV):</strong> powers only the DRV8833 motor supply (VM) and the N20 gearmotor, which is rated 6 V.</li>
+<li><strong>+5 V logic rail (L7805CV):</strong> powers the Curiosity Nano (VBUS, through JP1 and D3) and the green power LED.</li>
+<li><strong>+3.3 V rail (Curiosity Nano on-board regulator, VTG):</strong> powers the LIS3DH, the slide potentiometer and the MCP601 current-sense amplifier. It draws from the 5 V rail, so its total is counted there too.</li>
 </ul>
+<p>Splitting the motor onto its own regulator keeps motor current spikes and stall current off the rail that powers the microcontroller.</p>
 <h2 id="section-a-components-that-consume-power-absolute-maximum-current">Section A. Components that consume power (absolute maximum current)</h2>
-<p>Regulators, the power source, switches, the fuse, the LED and passives are not listed.</p>
+<p>Regulators, the power source, switches, the fuse, LEDs and passives are not listed, following the template.</p>
 <table>
 <thead>
 <tr>
 <th>Component</th>
-<th>Supply voltage</th>
+<th>Part number</th>
+<th>Supply</th>
 <th>Max current (mA)</th>
 <th>Basis</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DFRobot FIT0577 N20 6 V gearmotor with M3 lead screw (Actuator B)</td>
-<td>5 V via DRV8833</td>
+<td>N20 gearmotor with M3 lead screw (Actuator B)</td>
+<td>DFRobot FIT0577</td>
+<td>+6 V</td>
 <td>420</td>
-<td>Datasheet stall current at 6 V (±10%). At 5 V the stall current will be lower, so this is conservative. Measure on the bench</td>
+<td>Datasheet stall current at 6 V</td>
 </tr>
 <tr>
-<td>PIC18F57Q43 Curiosity Nano (MCU, on-board debugger, 3.3 V regulator)</td>
-<td>5 V</td>
-<td>100</td>
-<td>Conservative allowance (est.); not the board's own 500 mA regulator limit</td>
-</tr>
-<tr>
-<td>DRV8833PWPR (own supply current, motor current not included)</td>
-<td>5 V (VM)</td>
+<td>Dual H-bridge driver (own VM supply current only)</td>
+<td>TI DRV8833PWPR</td>
+<td>+6 V</td>
 <td>5</td>
-<td>Allowance (est.); the datasheet gives only a 1.6 µA sleep current in the portion I read</td>
+<td>Allowance (est.), above the datasheet operating current</td>
 </tr>
 <tr>
-<td>LIS3DHTR accelerometer</td>
-<td>3.3 V (from Nano)</td>
+<td>PIC18F57Q43 Curiosity Nano (MCU and on-board debugger)</td>
+<td>Microchip DM164150</td>
+<td>+5 V</td>
+<td>100</td>
+<td>Conservative allowance (est.)</td>
+</tr>
+<tr>
+<td>3-axis accelerometer</td>
+<td>ST LIS3DHTR</td>
+<td>+3.3 V</td>
 <td>0.5</td>
 <td>Allowance (est.) for operating mode</td>
 </tr>
 <tr>
-<td>Bourns PTA2043 slide pot, 10 kΩ ±20%</td>
-<td>3.3 V (from Nano)</td>
+<td>Slide potentiometer, 10 kΩ ±20%</td>
+<td>Bourns PTA2043-2015CPB103</td>
+<td>+3.3 V</td>
 <td>0.5</td>
-<td>3.3 V ÷ 8 kΩ (worst-case low resistance) is about 0.41 mA, rounded up</td>
+<td>3.3 V ÷ 8 kΩ (worst-case low resistance) ≈ 0.41 mA, rounded up</td>
+</tr>
+<tr>
+<td>Op-amp (current-sense amplifier)</td>
+<td>Microchip MCP601-I/P</td>
+<td>+3.3 V</td>
+<td>0.325</td>
+<td>Datasheet maximum quiescent current</td>
 </tr>
 </tbody>
 </table>
-<p>Note: the DRV8833 does not itself draw the motor current; the motor does, so the driver is not counted twice. The power LED is not listed because the assignment excludes LEDs.</p>
-<h2 id="section-b-rail-assignment-with-25-safety-margin">Section B. Rail assignment with 25% safety margin</h2>
+<p>The DRV8833 does not itself draw the motor current; the motor does, so it is not counted twice.</p>
+<h2 id="section-b-rail-totals-with-25-safety-margin">Section B. Rail totals with 25% safety margin</h2>
 <table>
 <thead>
 <tr>
@@ -1181,142 +1219,178 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>5 V</strong></td>
+<td><strong>+6 V</strong></td>
 <td>N20 gearmotor (stall)</td>
 <td>420</td>
 </tr>
 <tr>
-<td>5 V</td>
+<td>+6 V</td>
+<td>DRV8833 VM supply</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>Subtotal</td>
+<td>425</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Required (× 1.25)</strong></td>
+<td><strong>531.3</strong></td>
+</tr>
+<tr>
+<td><strong>+3.3 V</strong></td>
+<td>LIS3DHTR</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>+3.3 V</td>
+<td>Slide potentiometer + MCP601</td>
+<td>0.825</td>
+</tr>
+<tr>
+<td></td>
+<td>Subtotal</td>
+<td>1.325</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Required (× 1.25)</strong></td>
+<td><strong>1.7</strong></td>
+</tr>
+<tr>
+<td><strong>+5 V</strong></td>
 <td>Curiosity Nano</td>
 <td>100</td>
 </tr>
 <tr>
-<td>5 V</td>
-<td>DRV8833 supply</td>
-<td>5</td>
-</tr>
-<tr>
-<td>5 V</td>
-<td>LIS3DHTR (via Nano 3.3 V)</td>
-<td>0.5</td>
-</tr>
-<tr>
-<td>5 V</td>
-<td>Slide pot (via Nano 3.3 V)</td>
-<td>0.5</td>
+<td>+5 V</td>
+<td>+3.3 V rail (Nano regulator input)</td>
+<td>1.7</td>
 </tr>
 <tr>
 <td></td>
-<td><strong>5 V rail total</strong></td>
-<td><strong>526.0</strong></td>
+<td>Subtotal</td>
+<td>101.7</td>
 </tr>
 <tr>
 <td></td>
-<td><strong>× 1.25 safety margin</strong></td>
-<td><strong>657.5</strong></td>
-</tr>
-<tr>
-<td><strong>9 V</strong></td>
-<td>No direct loads</td>
-<td>0</td>
+<td><strong>Required (× 1.25)</strong></td>
+<td><strong>127.1</strong></td>
 </tr>
 </tbody>
 </table>
-<h2 id="section-c-regulator-or-source-choice-per-rail">Section C. Regulator or source choice per rail</h2>
+<h2 id="section-c-regulator-per-rail">Section C. Regulator per rail</h2>
 <table>
 <thead>
 <tr>
 <th>Rail</th>
-<th>Choice</th>
+<th>Regulator</th>
+<th>Rated (mA)</th>
+<th>Required (mA)</th>
+<th>Remaining (mA)</th>
 <th>Rationale</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>5 V</td>
-<td>ST L7805CV (TO-220) with heatsink</td>
-<td>Specified for 7 to 18 V input, so the 9 V adapter has 4 V of headroom over its 2 V dropout. Rated up to 1.5 A against a 0.66 A load with margin. Has internal current limiting and thermal shutdown. Compared with the LM2940CT-5.0 in the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page.</td>
+<td>+6 V</td>
+<td>ST L7806CV (TO-220)</td>
+<td>1500</td>
+<td>531.3</td>
+<td><strong>968.8</strong></td>
+<td>Lets the 6 V motor run at its rated voltage. Needs at least 8 V in; about 8.6 V is available after the diode</td>
 </tr>
 <tr>
-<td>9 V</td>
-<td>Straight from the wall adapter</td>
-<td>Only feeds the regulator, so no second regulator is needed</td>
+<td>+5 V</td>
+<td>ST L7805CV (TO-220)</td>
+<td>1500</td>
+<td>127.1</td>
+<td><strong>1372.9</strong></td>
+<td>Required 5 V linear regulator; now carries only logic, so it runs cool</td>
+</tr>
+<tr>
+<td>+3.3 V</td>
+<td>Curiosity Nano on-board regulator (VTG)</td>
+<td>500</td>
+<td>1.7</td>
+<td><strong>498.3</strong></td>
+<td>Already on the Nano; the sensor load is tiny</td>
 </tr>
 </tbody>
 </table>
-<p>Regulator thermal check:</p>
+<p>Regulator thermal check (TO-220, about 50 °C/W with no heatsink, 40 °C ambient, 125 °C junction limit):</p>
 <table>
 <thead>
 <tr>
-<th>Quantity</th>
-<th>Value</th>
+<th>Regulator</th>
+<th>Dissipation at 9 V adapter (8.6 V in)</th>
+<th>Junction temperature</th>
+<th>Heatsink?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Load current including margin</td>
-<td>657.5 mA</td>
+<td>L7806CV</td>
+<td>(8.6 − 6) V × 0.531 A ≈ 1.38 W</td>
+<td>≈ 109 °C</td>
+<td>Not strictly needed, but close to the limit; a small clip-on heatsink is cheap insurance</td>
 </tr>
 <tr>
-<td>Regulator quiescent current (datasheet, about 8 mA) × 1.25</td>
-<td>10 mA</td>
-</tr>
-<tr>
-<td>Power dissipated: (9 V − 5 V) × 0.6575 A</td>
-<td>2.63 W</td>
-</tr>
-<tr>
-<td>Junction rise at 50 °C/W (TO-220, no heatsink)</td>
-<td>about 131 °C, so it would hit thermal shutdown</td>
-</tr>
-<tr>
-<td>Junction-to-ambient resistance needed to stay under 125 °C at 40 °C ambient</td>
-<td>32 °C/W or lower</td>
+<td>L7805CV</td>
+<td>(8.6 − 5) V × 0.127 A ≈ 0.46 W</td>
+<td>≈ 63 °C</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
-<p>The regulator therefore <strong>needs a heatsink</strong>. Junction-to-case is about 5 °C/W, so a small TO-220 clip-on heatsink of about 20 °C/W or better is enough. At the nominal motor load without margin the dissipation is still about 2.1 W, so the heatsink is needed in normal operation too. This matches the "small heatsink" on my Block Diagram page; it should be sized to this calculation.</p>
+<p>If a 12 V adapter is used, the L7806CV dissipates about (11.6 − 6) V × 0.531 A ≈ 3.0 W and <strong>needs</strong> a heatsink of about 23 °C/W or better. These worst cases assume the motor is stalled; in normal motion the motor draws much less (24 mA no load).</p>
 <h2 id="section-d-external-power-source">Section D. External power source</h2>
 <table>
 <thead>
 <tr>
 <th>Item</th>
-<th>Value</th>
+<th>Current (mA)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Source choice</td>
-<td>My existing 9 V 1 A regulated wall adapter</td>
+<td>L7806CV input: 531.3 + 8 (quiescent)</td>
+<td>539.3</td>
 </tr>
 <tr>
-<td>Current into the L7805CV input: (526 + 8) × 1.25</td>
-<td>667.5 mA</td>
+<td>L7805CV input: 127.1 + 8 (quiescent)</td>
+<td>135.1</td>
 </tr>
 <tr>
-<td><strong>Total required from adapter</strong></td>
-<td><strong>667.5 mA</strong></td>
+<td><strong>Total required from the adapter</strong></td>
+<td><strong>674.3</strong></td>
 </tr>
 <tr>
-<td>Adapter capacity</td>
-<td>1000 mA</td>
+<td>Adapter capacity (9 V, 1 A)</td>
+<td>1000</td>
 </tr>
 <tr>
 <td><strong>Total remaining current available</strong></td>
-<td><strong>332.5 mA (not negative)</strong></td>
+<td><strong>325.7</strong></td>
 </tr>
 </tbody>
 </table>
-<p>This check covers normal operation, where the motor stalls at about 420 mA. The DRV8833 current limit in my Block Diagram page is about 1 A (a 0.2 Ω sense resistor). In a fault the motor could then draw up to 1 A, giving (1000 + 114) × 1.25 = 1,393 mA from the adapter, which is more than it can supply. The limit should be lowered: a sense resistor of about 0.3 Ω gives a limit near 0.67 A, which gives 976 mA from the adapter and keeps the remaining current positive (about 24 mA) even in a fault.</p>
+<p><strong>Fault case:</strong> the 0.33 Ω DRV8833 sense resistor limits the motor to about 0.61 A. With the motor at that limit, the 6 V rail needs (610 + 5) × 1.25 ≈ 769 mA, and the adapter supplies 769 + 8 + 135.1 ≈ 912 mA, so about 88 mA still remains. The 1 A fuse is not reached even in a fault.</p>
 <h2 id="section-e-battery-life">Section E. Battery life</h2>
-<p>Not applicable. The design runs from a wall adapter and has no battery.</p>
-<h2 id="open-items-before-the-design-review">Open items before the design review</h2>
+<p>Not applicable. The board runs from a wall adapter and has no battery.</p>
+<h2 id="what-the-power-budget-showed">What the power budget showed</h2>
+<ul>
+<li><strong>It drove the move to a separate motor rail.</strong> The first version put the motor on the 5 V rail. The budget showed the L7805CV would dissipate about 2.6 W and needed a heatsink, and the 6 V motor would run under-voltage. Moving the motor to an L7806CV fixed both: the 5 V regulator now dissipates under 0.5 W, and the motor gets its rated 6 V.</li>
+<li><strong>It set the current-limit resistor.</strong> The original 0.2 Ω sense resistor allowed about 1 A in a motor fault, which would exceed the 1 A adapter. The budget showed a limit near 0.6 A is needed, which is why the schematic uses 0.33 Ω (0.61 A).</li>
+<li><strong>It confirmed the 9 V 1 A adapter is enough.</strong> About 326 mA remains in normal operation and about 88 mA in a fault, so no new adapter has to be bought.</li>
+<li><strong>It confirmed the 9 V minimum.</strong> The L7806CV needs about 8 V in, so the adapter must be at least 9 V after the fuse and diode.</li>
+</ul>
+<h2 id="open-items">Open items</h2>
 <ol>
-<li>Measure the stall current of the N20 motor at 5 V and compare it with the 420 mA datasheet figure.</li>
-<li>Change the DRV8833 sense resistor from 0.2 Ω to about 0.3 Ω so the current limit is near 0.67 A, and update the Block Diagram page.</li>
-<li>Choose and price a small TO-220 heatsink of about 20 °C/W or better. Powering the motor driver from the 9 V rail with the PWM duty capped near 66% (a 6 V motor on 9 V) is an alternative that would remove most of the regulator's heat.</li>
-<li>Replace the Nano (100 mA), DRV8833 (5 mA) and LIS3DH (0.5 mA) estimates with measured current.</li>
-<li>Copy these numbers into the course power budget spreadsheet template.</li>
+<li>Measure the N20 stall current at 6 V and compare it with the 420 mA datasheet value.</li>
+<li>Replace the Curiosity Nano, DRV8833 and LIS3DH estimates with measured current.</li>
+<li>Decide on the optional L7806CV heatsink once the board's operating temperature is measured.</li>
 </ol>
 
 
@@ -1396,22 +1470,9 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 team-name-here
+      Copyright &copy; 2026 Kaushik Gunasekaren, Team 102
     </div>
   
-  
-</div>
-      
-        
-<div class="md-social">
-  
-    
-    
-    
-    
-    <a href="/2025_fall" target="_blank" rel="noopener" title="2023 Site" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 48h112v88c0 39.8 32.2 72 72 72h88v240c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16m160 19.9 92.1 92.1H248c-13.3 0-24-10.7-24-24zM64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V186.5c0-17-6.7-33.3-18.7-45.3L242.7 18.7C230.7 6.7 214.5 0 197.5 0zm106.2 295.6c8.6-10.1 7.5-25.2-2.6-33.8s-25.2-7.5-33.8 2.6l-48 56c-7.7 9-7.7 22.2 0 31.2l48 56c8.6 10.1 23.8 11.2 33.8 2.6s11.2-23.8 2.6-33.8L135.6 336zm80-31.2c-8.6-10.1-23.8-11.2-33.8-2.6s-11.2 23.8-2.6 33.8l34.6 40.4-34.6 40.4c-8.6 10.1-7.5 25.2 2.6 33.8s25.2 7.5 33.8-2.6l48-56c7.7-9 7.7-22.2 0-31.2z"/></svg>
-    </a>
   
 </div>
       
@@ -1428,10 +1489,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.follow", "navigation.top", "navigation.path", "navigation.indexes", "navigation.prune", "content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.follow", "navigation.top", "navigation.path", "navigation.indexes", "navigation.prune", "content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
