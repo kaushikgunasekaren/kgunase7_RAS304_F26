@@ -12,6 +12,7 @@ title: Power Budget
 
 ## Power architecture
 
+- **Power is supplied individually.** Each teammate's board has its own adapter, and the ribbon to the hub carries only UART communication and a ground reference, so no other board draws from this budget and this board draws from no other.
 - One external source: my own 9 V 1 A wall adapter on the barrel jack, through a removable 1 A fuse and a 1N5819 reverse-polarity diode. About 8.6 V reaches the regulators.
 - **+6 V motor rail (L7806CV):** powers only the DRV8833 motor supply (VM) and the N20 gearmotor, which is rated 6 V.
 - **+5 V logic rail (L7805CV):** powers the Curiosity Nano (VBUS, through JP1 and D3) and the green power LED.

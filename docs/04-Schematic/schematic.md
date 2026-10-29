@@ -21,7 +21,7 @@ This schematic is my individual subsystem board, drawn in KiCad 10. It follows m
 * **Actuator with driver circuit:** a DRV8833, powered from the 6 V rail through JP2, drives the motor from AIN1/AIN2 (RC2, RD0 PWM), with nSLEEP (RD1) and nFAULT (RB1). The 0.33 Ω sense resistor sets the chopping current limit at about 0.61 A, which stays within the 1 A adapter even in a fault. D6–D9 clamp the motor's back-EMF to VM and GND. JP2 isolates the 6 V motor rail for debugging.
 * **Current-sense signal conditioning:** a 159 Hz RC low-pass and an MCP601 non-inverting amplifier with a gain of 11 turn the 0–0.2 V sense voltage into 0–2.2 V for the ADC (RA0). A 1.6 kHz anti-alias filter follows the amplifier.
 * **Sensor:** an LIS3DHTR on SPI1 (RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS), with INT1 data-ready on RB0. The slide potentiometer (off-board, on J7) is filtered and read on RA1.
-* **Team interface:** a 2x4 IDC header with pin 1 = UART RX (RC7) from the hub, pin 2 = UART TX (RC6) to the hub, and pin 8 = GND. Pins 3–7 are broken out on J3.
+* **Team interface:** a 2x4 IDC header with pin 1 = UART RX (RC7) from the hub, pin 2 = UART TX (RC6) to the hub, and pin 8 = GND (signal reference only). Pins 3–7 are broken out on J3. No power passes through the ribbon: every teammate's board has its own supply, and the ribbon carries only the UART link.
 * **Debug and expansion:** two debug LEDs (RD2, RD3), a hardware-debounced push button (RD5), 13 bare PCB test pads, and two 13-pin spare GPIO headers that bring out every unused Nano I/O pin.
 
 ![Driver Nano 3 subsystem schematic](Subsystem-Schematic-KG.png)

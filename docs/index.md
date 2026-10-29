@@ -21,7 +21,7 @@ This datasheet documents my individual subsystem board for RAS 304 (Embedded Sys
 
 ### Project Summary
 
-Team 102 is building a **modular robotic spider leg** for robotics hobbyists and students: a leg made from 3D-printed parts and off-the-shelf electronics that users can buy assembled, repair themselves, and wire into their own walking robots. The leg uses a hub-and-spoke design. Preston's hub board runs the leg kinematics and sends commands over ribbon cables to each teammate's board, and each board drives one part of the leg and reports back.
+Team 102 is building a **modular robotic spider leg** for robotics hobbyists and students: a leg made from 3D-printed parts and off-the-shelf electronics that users can buy assembled, repair themselves, and wire into their own walking robots. The leg uses a hub-and-spoke design. Preston's hub board runs the leg kinematics and sends commands over ribbon cables to each teammate's board, and each board drives one part of the leg and reports back. Each board has its own power supply; the only connection between teammates' boards is the UART communication link.
 
 My board, **Driver Nano 3**, is the spoke on hub connector 3. It drives **Linear Actuator B** (an N20 gearmotor turning an M3 lead screw) to the position the hub asks for, using a slide potentiometer for position feedback and motor-current sensing for stall protection. It also reads an **LIS3DH accelerometer** to measure the leg's jerk and impulse, which it sends back to the hub. More detail on the whole project is in the [Team 102 report](https://ras304-fall26-102.github.io/).
 

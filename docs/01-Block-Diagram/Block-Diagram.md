@@ -105,7 +105,7 @@ The DRV8833 drives the motor through AOUT1 and AOUT2: Analog (0&ndash;6 VDC PWM,
 
 ## Team Connection
 
-My board connects to Preston's hub board (Leg Kinematics) through **hub connector 3**, using the class-standard 8-pin ribbon cable and a 2x4 male IDC header. The ribbon carries signals and a shared ground only; my board is powered by its own 9 V adapter.
+My board connects to Preston's hub board (Leg Kinematics) through **hub connector 3**, using the class-standard 8-pin ribbon cable and a 2x4 male IDC header. **Each teammate's board is powered individually; no power is shared between boards.** My board runs from its own 9 V adapter, and the only connection to the hub is communication: UART TX and RX on pins 1 and 2. Pin 8 is a common ground, which carries no supply current but is needed so both boards agree on what a UART logic high and low are. No power pins are used on the ribbon.
 
 | Pin | Type | Signal | Direction | MCU Pin |
 |:---:|---|---|---|---|
