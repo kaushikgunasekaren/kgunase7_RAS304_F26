@@ -1,17 +1,17 @@
 Vendor,Part Name/Description,Qty,Unit Cost,Total Cost,Manufacturer,Manufacturer #,Vendor Link,Datasheet Link,Schematic Reference Designators
-DigiKey,"3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm)",1,$4.02,$4.02,Analog Devices,ADXL343BCCZ,https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918,https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf,U5
-DigiKey,"Dual H-bridge motor driver, HTSSOP-16",1,$3.02,$3.02,Texas Instruments,DRV8833PWPR,https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167,DRV8833.pdf,U3
-DigiKey,"Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7)",1,$1.78,$1.78,Bourns,PTA2043-2015CPB103,https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176,PTA-slide-pot.pdf,–
-DigiKey,"Op-amp (current-sense amplifier), PDIP-8",1,$0.63,$0.63,Microchip,MCP601-I/P,https://www.digikey.com/en/products/result?keywords=MCP601-I/P,MCP601.pdf,U4
-DigiKey,"Ceramic capacitor 2.2 µF 25 V X7R, radial",1,$0.49,$0.49,TDK,FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,C11
-DigiKey,"Current-sense resistor 0.33 Ω 1 W 5%, axial",1,$0.39,$0.39,YAGEO,FMP100JR-52-0R33,https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33,https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33,R8
-DFRobot,"N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4)",1,$9.00,$9.00,DFRobot,FIT0577,https://www.dfrobot.com/product-1733.html,https://www.dfrobot.com/product-1733.html,–
+DigiKey,"3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm)",3,$4.020,$12.06,Analog Devices,ADXL343BCCZ,https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918,ADXL343.pdf,U5
+DigiKey,"Dual H-bridge motor driver, HTSSOP-16",3,$3.020,$9.06,Texas Instruments,DRV8833PWPR,https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167,DRV8833.pdf,U3
+DigiKey,"Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7)",3,$1.780,$5.34,Bourns,PTA2043-2015CPB103,https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176,PTA-slide-pot.pdf,–
+DigiKey,"Schottky diode 40 V 1 A, DO-41",15,$0.343,$5.15,onsemi,1N5819RLG,https://www.digikey.com/en/products/detail/onsemi/1N5819RLG/918061,1N5819.pdf,"D1, D3, D6–D9"
+DigiKey,"Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220",3,$1.300,$3.90,onsemi,LM317TG,https://www.digikey.com/en/products/result?keywords=LM317TG,LM317.pdf,U6
+DigiKey,"5 V 1.5 A linear regulator, TO-220",3,$1.140,$3.42,STMicroelectronics,L7805CV,https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964,L78xx.pdf,U2
+DigiKey,"DC barrel jack, 2.1 mm, PCB mount",3,$0.660,$1.98,Same Sky (CUI Devices),PJ-002A,https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/PJ-002A/96962,PJ-002A.pdf,J1
+DigiKey,"Op-amp (current-sense amplifier), PDIP-8",3,$0.630,$1.89,Microchip,MCP601-I/P,https://www.digikey.com/en/products/result?keywords=MCP601-I/P,MCP601.pdf,U4
+DigiKey,"Ceramic capacitor 2.2 µF 25 V X7R, radial",3,$0.490,$1.47,TDK,FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,C11
+DigiKey,"Current-sense resistor 0.33 Ω 1 W 5%, axial",3,$0.390,$1.17,YAGEO,FMP100JR-52-0R33,https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33,https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33,R8
+DFRobot,"N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4)",3,$9.000,$27.00,DFRobot,FIT0577,https://www.dfrobot.com/product-1733.html,https://www.dfrobot.com/product-1733.html,–
 TECH 162 lab stock and course kit,PIC18F57Q43 Curiosity Nano,1,course kit,$0,Microchip,DM164150,course kit,https://www.microchip.com/en-us/development-tool/DM164150,U1
 TECH 162 lab stock and course kit,"9 V 1 A wall adapter, 5.5 × 2.1 mm, center-positive",1,already owned,$0,–,–,–,https://www.adafruit.com/product/63,–
-TECH 162 lab stock and course kit,"5 V 1.5 A linear regulator, TO-220",3,TECH 162,$0,STMicroelectronics,L7805CV,TECH 162,L78xx.pdf,U2
-TECH 162 lab stock and course kit,"Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220",3,TECH 162,$0,onsemi,LM317TG,TECH 162,LM317.pdf,U6
-TECH 162 lab stock and course kit,"Schottky diode 40 V 1 A, DO-41",15,TECH 162,$0,onsemi,1N5819RLG,TECH 162,1N5819.pdf,"D1, D3, D6–D9"
-TECH 162 lab stock and course kit,"DC barrel jack, 2.1 mm, PCB mount",3,TECH 162,$0,Same Sky (CUI Devices),PJ-002A,TECH 162,PJ-002A.pdf,J1
 TECH 162 lab stock and course kit,"Fuse 1 A fast-acting, 5 × 20 mm",5,TECH 162,$0,Littelfuse,0217001.HXP,TECH 162,https://www.digikey.com/en/products/detail/littelfuse-inc/0217001-HXP/777108,F1
 TECH 162 lab stock and course kit,"Fuse clip, 5 mm, PCB mount",4,TECH 162,$0,Keystone,3517,TECH 162,Keystone-3517.pdf,F1
 TECH 162 lab stock and course kit,DIP-8 IC socket (for the op-amp),3,TECH 162,$0,any,–,TECH 162,–,U4

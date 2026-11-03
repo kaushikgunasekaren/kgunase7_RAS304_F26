@@ -8,12 +8,13 @@ tags:
 
 This is the bill of materials for my individual board (Driver Nano 3: Linear Actuator B + IMU). It lists every part on the [schematic](../04-Schematic/schematic.md), using the schematic's reference designators, plus the off-board motor and potentiometer. The tables are sorted by vendor, and each vendor below gets one purchase request.
 
-**Budget and quantities.** The team budget is $70–80 for four boards, so my board's share is about $17.50–20.00. To stay inside it:
+**Order quantities.** Following the assignment instructions, for every part I order one for the breadboard prototype, one for the subsystem PCB, and one or two spares:
 
-* I buy **one of each part, with no spares**. These are the parts that are not in TECH 162: the motor, motor driver, accelerometer, slide potentiometer, op-amp, sense resistor and 2.2 µF capacitor.
-* Everything common comes from **TECH 162**: both regulators, the diodes, barrel jack, fuse, LEDs, headers, button, IC socket, heatsink and the other passives. These parts do not count toward the budget, so I take enough for the breadboard, the PCB and a spare.
-* The purchased through-hole parts move from the breadboard to the PCB: the op-amp sits in a DIP-8 socket, and the motor and slide potentiometer plug into the J4 and J7 headers.
-* The two surface-mount ICs (DRV8833 in HTSSOP-16 and ADXL343 in LGA-14) have no through-hole version, and I am not using breakout boards, so they go straight onto the PCB and are tested there.
+* Through-hole parts (regulators, op-amp, barrel jack, diodes), the off-board motor and the slide potentiometer: 3 each (breadboard, PCB, spare). For the diodes it is 2 boards × 6 + 3 spares = 15.
+* The two surface-mount ICs (DRV8833 in HTSSOP-16 and ADXL343 in LGA-14) have no through-hole version, and I am not using breakout boards, so they cannot go on the breadboard. I order 3 of each: one for the PCB and two spares, because these are the hardest parts to solder.
+* Parts that TECH 162 stocks (fuses, IC sockets, headers, and common passives, LEDs and buttons) are not ordered. They are listed below with the quantity I will take.
+
+This is more than one board's worth of parts. One finished board uses about $24.49 of purchased parts (see [Component Selection, section 4](../02-Component-Selection/Component-Selection.md)).
 
 Prices and stock are from DigiKey and DFRobot, checked on 2026-11-03. Every ordered part was in stock and active that day, and nothing is back-ordered or special-order. Shipping and tax are not included.
 
@@ -25,36 +26,36 @@ Datasheets are stored in this repository in the `docs/03-BOM/datasheets/` folder
 
 | Part Name/Description | Qty | Unit Cost | Total Cost | Manufacturer | Manufacturer # | Vendor Link | Datasheet Link | Schematic Reference Designators |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm) | 1 | $4.02 | $4.02 | Analog Devices | ADXL343BCCZ | [DigiKey 505-ADXL343BCCZ-ND](https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918) | [ADXL343 datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf) | U5 |
-| Dual H-bridge motor driver, HTSSOP-16 | 1 | $3.02 | $3.02 | Texas Instruments | DRV8833PWPR | [DigiKey 296-29434-1-ND](https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167) | [DRV8833.pdf](datasheets/DRV8833.pdf) | U3 |
-| Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7) | 1 | $1.78 | $1.78 | Bourns | PTA2043-2015CPB103 | [DigiKey PTA2043-2015CPB103-ND](https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176) | [PTA-slide-pot.pdf](datasheets/PTA-slide-pot.pdf) | – |
-| Op-amp (current-sense amplifier), PDIP-8 | 1 | $0.63 | $0.63 | Microchip | MCP601-I/P | [DigiKey MCP601-I/P-ND](https://www.digikey.com/en/products/result?keywords=MCP601-I/P) | [MCP601.pdf](datasheets/MCP601.pdf) | U4 |
-| Ceramic capacitor 2.2 µF 25 V X7R, radial | 1 | $0.49 | $0.49 | TDK | FA16X7R1E225KNU06 | [DigiKey 445-180433-1-ND](https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06) | [DigiKey page](https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06) | C11 |
-| Current-sense resistor 0.33 Ω 1 W 5%, axial | 1 | $0.39 | $0.39 | YAGEO | FMP100JR-52-0R33 | [DigiKey 0.33WCT-ND](https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33) | [YAGEO page](https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33) | R8 |
-| **DigiKey subtotal** | | | **$10.33** | | | | | |
+| 3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm) | 3 | $4.020 | $12.06 | Analog Devices | ADXL343BCCZ | [DigiKey 505-ADXL343BCCZ-ND](https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918) | [ADXL343.pdf](datasheets/ADXL343.pdf) | U5 |
+| Dual H-bridge motor driver, HTSSOP-16 | 3 | $3.020 | $9.06 | Texas Instruments | DRV8833PWPR | [DigiKey 296-29434-1-ND](https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167) | [DRV8833.pdf](datasheets/DRV8833.pdf) | U3 |
+| Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7) | 3 | $1.780 | $5.34 | Bourns | PTA2043-2015CPB103 | [DigiKey PTA2043-2015CPB103-ND](https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176) | [PTA-slide-pot.pdf](datasheets/PTA-slide-pot.pdf) | – |
+| Schottky diode 40 V 1 A, DO-41 | 15 | $0.343 | $5.15 | onsemi | 1N5819RLG | [DigiKey 1N5819RLGOSCT-ND](https://www.digikey.com/en/products/detail/onsemi/1N5819RLG/918061) | [1N5819.pdf](datasheets/1N5819.pdf) | D1, D3, D6–D9 |
+| Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220 | 3 | $1.300 | $3.90 | onsemi | LM317TG | [DigiKey LM317TGOS-ND](https://www.digikey.com/en/products/result?keywords=LM317TG) | [LM317.pdf](datasheets/LM317.pdf) | U6 |
+| 5 V 1.5 A linear regulator, TO-220 | 3 | $1.140 | $3.42 | STMicroelectronics | L7805CV | [DigiKey 497-1443-5-ND](https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964) | [L78xx.pdf](datasheets/L78xx.pdf) | U2 |
+| DC barrel jack, 2.1 mm, PCB mount | 3 | $0.660 | $1.98 | Same Sky (CUI Devices) | PJ-002A | [DigiKey CP-002A-ND](https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/PJ-002A/96962) | [PJ-002A.pdf](datasheets/PJ-002A.pdf) | J1 |
+| Op-amp (current-sense amplifier), PDIP-8 | 3 | $0.630 | $1.89 | Microchip | MCP601-I/P | [DigiKey MCP601-I/P-ND](https://www.digikey.com/en/products/result?keywords=MCP601-I/P) | [MCP601.pdf](datasheets/MCP601.pdf) | U4 |
+| Ceramic capacitor 2.2 µF 25 V X7R, radial | 3 | $0.490 | $1.47 | TDK | FA16X7R1E225KNU06 | [DigiKey 445-180433-1-ND](https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06) | [DigiKey page](https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06) | C11 |
+| Current-sense resistor 0.33 Ω 1 W 5%, axial | 3 | $0.390 | $1.17 | YAGEO | FMP100JR-52-0R33 | [DigiKey 0.33WCT-ND](https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33) | [YAGEO page](https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33) | R8 |
+| **DigiKey subtotal** | | | **$45.44** | | | | | |
 
 ### DFRobot (purchase request 2)
 
 | Part Name/Description | Qty | Unit Cost | Total Cost | Manufacturer | Manufacturer # | Vendor Link | Datasheet Link | Schematic Reference Designators |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4) | 1 | $9.00 | $9.00 | DFRobot | FIT0577 | [DFRobot FIT0577](https://www.dfrobot.com/product-1733.html) | [DFRobot page](https://www.dfrobot.com/product-1733.html) | – |
-| **DFRobot subtotal** | | | **$9.00** | | | | | |
+| N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4) | 3 | $9.000 | $27.00 | DFRobot | FIT0577 | [DFRobot FIT0577](https://www.dfrobot.com/product-1733.html) | [DFRobot page](https://www.dfrobot.com/product-1733.html) | – |
+| **DFRobot subtotal** | | | **$27.00** | | | | | |
 
 No vendor on the course list had this motor in stock: RobotShop lists it as special order, and DigiKey only as a non-stock part with a 9-week lead time. The course sourcing guide allows another supplier when the preferred vendors are out of stock, so it comes directly from DFRobot's US store, which showed it in stock. DFRobot ships from China, so shipping and possible import duty are extra.
 
 ### TECH 162 lab stock and course kit (not ordered)
 
-If TECH 162 runs out of any of these, they are all common, in-stock DigiKey parts.
+The assignment lists fuses, IC sockets and headers as TECH 162 stock. If TECH 162 runs out of any part here, it is a common, in-stock DigiKey part.
 
 
 | Part Name/Description | Qty | Unit Cost | Total Cost | Manufacturer | Manufacturer # | Vendor Link | Datasheet Link | Schematic Reference Designators |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|
 | PIC18F57Q43 Curiosity Nano | 1 | course kit | $0 | Microchip | DM164150 | course kit | [Microchip page](https://www.microchip.com/en-us/development-tool/DM164150) | U1 |
 | 9 V 1 A wall adapter, 5.5 × 2.1 mm, center-positive | 1 | already owned | $0 | – | – | – | [Adafruit page](https://www.adafruit.com/product/63) | – |
-| 5 V 1.5 A linear regulator, TO-220 | 3 | TECH 162 | $0 | STMicroelectronics | L7805CV | TECH 162 | [L78xx.pdf](datasheets/L78xx.pdf) | U2 |
-| Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220 | 3 | TECH 162 | $0 | onsemi | LM317TG | TECH 162 | [LM317.pdf](datasheets/LM317.pdf) | U6 |
-| Schottky diode 40 V 1 A, DO-41 | 15 | TECH 162 | $0 | onsemi | 1N5819RLG | TECH 162 | [1N5819.pdf](datasheets/1N5819.pdf) | D1, D3, D6–D9 |
-| DC barrel jack, 2.1 mm, PCB mount | 3 | TECH 162 | $0 | Same Sky (CUI Devices) | PJ-002A | TECH 162 | [PJ-002A.pdf](datasheets/PJ-002A.pdf) | J1 |
 | Fuse 1 A fast-acting, 5 × 20 mm | 5 | TECH 162 | $0 | Littelfuse | 0217001.HXP | TECH 162 | [DigiKey page](https://www.digikey.com/en/products/detail/littelfuse-inc/0217001-HXP/777108) | F1 |
 | Fuse clip, 5 mm, PCB mount | 4 | TECH 162 | $0 | Keystone | 3517 | TECH 162 | [Keystone-3517.pdf](datasheets/Keystone-3517.pdf) | F1 |
 | DIP-8 IC socket (for the op-amp) | 3 | TECH 162 | $0 | any | – | TECH 162 | – | U4 |
@@ -94,10 +95,10 @@ The [schematic](../04-Schematic/schematic.md) has been updated for all of these,
 
 | Vendor | Items | Subtotal |
 |:--|:--|:--|
-| DigiKey | 6 line items | $10.33 |
-| DFRobot | 1 line item | $9.00 |
-| **Total new purchases** | | **$19.33** |
+| DigiKey | 10 line items | $45.44 |
+| DFRobot | 1 line item | $27.00 |
+| **Total new purchases** | | **$72.44** |
 
-$19.33 is inside my $17.50–20.00 share of the team budget. Shipping is extra, and DFRobot may add import duty.
+The order covers a breadboard prototype, a PCB and spares, as the assignment asks. One finished board uses about $24.49 of these parts. Shipping is extra, and DFRobot may add import duty.
 
 The KiCad BOM export (`BOM.csv`) is inside the [schematic ZIP](../04-Schematic/Subsystem-Schematic-KG.zip). This page's table is also saved as [BOM-KG.csv](BOM-KG.csv).

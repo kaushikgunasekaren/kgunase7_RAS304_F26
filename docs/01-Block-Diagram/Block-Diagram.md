@@ -62,18 +62,18 @@ Since the first version, two changes came from the power budget and feedback: th
 | Position sensor | Bourns | PTA2043-2015CPB103 (10 k&Omega; slide pot, 20 mm travel) | 3.3 V | $1.78 |
 | Accelerometer (bare chip) | Analog Devices | ADXL343BCCZ | 3.3 V | $4.02 |
 | Current-sense amplifier | Microchip | MCP601-I/P | 3.3 V | $0.63 |
-| Linear regulator (9 V &rarr; 5.9 V, motor) | onsemi | LM317TG (adjustable, set by 2 resistors) | 9 V in | TECH 162 |
-| Linear regulator (9 V &rarr; 5 V, logic) | STMicroelectronics | L7805CV | 9 V in | TECH 162 |
-| Reverse-polarity diode | onsemi | 1N5819RLG | 9 V | TECH 162 |
+| Linear regulator (9 V &rarr; 5.9 V, motor) | onsemi | LM317TG (adjustable, set by 2 resistors) | 9 V in | $1.30 |
+| Linear regulator (9 V &rarr; 5 V, logic) | STMicroelectronics | L7805CV | 9 V in | $1.14 |
+| Reverse-polarity diode | onsemi | 1N5819RLG (6 on the board) | 9 V | $2.06 |
 | Fuse (1 A, fast-acting, removable) | Littelfuse | 0217001.HXP + 2&times; Keystone 3517 clips | 9 V | TECH 162 |
-| Barrel jack | CUI Devices | PJ-002A | 9 V | TECH 162 |
+| Barrel jack | CUI Devices | PJ-002A | 9 V | $0.66 |
 | Power status LED (green) + 1 k&Omega; resistor | Kingbright | WP7113GD | 5 V | TECH 162 |
 | 0.33 &Omega; 1 W sense resistor and 2.2 &micro;F capacitor | YAGEO / TDK | FMP100JR-52-0R33, FA16X7R1E225KNU06 | &mdash; | $0.88 |
 | 2x4 IDC header and other capacitors and resistors | &mdash; | &mdash; | &mdash; | TECH 162 |
 | 9 V wall adapter | &mdash; | &mdash; | &mdash; | Already owned |
-| **Total (new purchases, before shipping)** | | | | **$19.33** |
+| **Total for one board (before shipping)** | | | | **$24.49** |
 
-The team budget is $70&ndash;80 for four boards, so an even share is $17.50&ndash;$20.00. At $19.33 this board is inside that range: I order one of each part with no spares, and the regulators, diode, fuse, jack, LED, header and common passives come from TECH 162, which does not count toward the budget. A plain 300 RPM N20 motor ($6.95) with a separate threaded rod and coupler would save about $2 but needs extra mechanical work. See the [Component Selection](../02-Component-Selection/Component-Selection.md) page.
+The team budget is $70&ndash;80 for four boards, so an even share is $17.50&ndash;$20.00. At about $24.49 this board is above that range, mainly because of the motor and the protection parts, so the team total should be checked. The fuse, LED, header and common passives come from TECH 162, which does not count toward the budget. A plain 300 RPM N20 motor ($6.95) with a separate threaded rod and coupler would save about $2 but needs extra mechanical work. See the [Component Selection](../02-Component-Selection/Component-Selection.md) page.
 
 ## Power Domains
 

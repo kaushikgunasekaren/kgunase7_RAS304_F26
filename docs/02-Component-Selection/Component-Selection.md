@@ -232,16 +232,17 @@ The microcontroller's peripherals are set up in MPLAB Code Configurator (MCC). E
 | Motor driver | DRV8833PWPR | $3.02 |
 | Position sensor | Bourns PTA2043-2015CPB103 | $1.78 |
 | IMU | ADXL343BCCZ | $4.02 |
-| 6 V regulator (motor) | LM317TG and its 2 resistors | TECH 162 |
-| 5 V regulator (logic) | L7805CV (no heatsink needed now) | TECH 162 |
+| 6 V regulator (motor) | LM317TG (its 2 resistors from TECH 162) | $1.30 |
+| 5 V regulator (logic) | L7805CV (no heatsink needed now) | $1.14 |
 | Current-sense amplifier | MCP601-I/P | $0.63 |
-| Reverse-polarity diode | 1N5819RLG | TECH 162 |
+| Reverse-polarity and protection diodes | 6 × 1N5819RLG | $2.06 |
 | 0.33 Ω 1 W sense resistor and 2.2 µF VINT capacitor | FMP100JR-52-0R33, FA16X7R1E225KNU06 | $0.88 |
-| Fuse, barrel jack, LEDs, headers and other passives | Common parts | TECH 162 |
+| Barrel jack | PJ-002A | $0.66 |
+| Fuse, LEDs, headers, IC socket and other passives | Common parts | TECH 162 |
 | 9 V adapter | Already owned | $0 |
-| **Total (new purchases, before shipping)** | | **$19.33** |
+| **Total for one board (before shipping)** | | **$24.49** |
 
-The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At $19.33 this board is inside that range. To get there I order one of each part with no spares, and I take the regulators, diodes, barrel jack, fuse, LEDs, headers and common passives from TECH 162, which do not count toward the budget. Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.
+The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At about $24.49 for one board, this board is above that range, mainly because of the motor ($9.00) and the 6 V regulator, op-amp and diodes added for protection, so I should check the team total with my teammates. The actual order also includes a breadboard set and spares, as the BOM assignment requires (see the [BOM](../03-BOM/BOM.md)). Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.
 
 ---
 
