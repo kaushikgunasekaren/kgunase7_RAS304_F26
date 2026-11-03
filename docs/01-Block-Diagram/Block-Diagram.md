@@ -21,10 +21,10 @@ Parts were also chosen to stay within the team's $70&ndash;80 total budget.
 
 The block diagram shows:
 
-* **Power levels:** my own 9 V adapter &rarr; barrel jack &rarr; 1 A fuse &rarr; 1N5819 reverse-polarity diode &rarr; two linear regulators. The **L7806CV (6 V)** feeds only the motor driver and the 6 V actuator motor. The **L7805CV (5 V)** feeds the Curiosity Nano and the power LED. The Curiosity Nano's on-board regulator supplies 3.3 V to the accelerometer, the position potentiometer and the current-sense op-amp.
+* **Power levels:** my own 9 V adapter &rarr; barrel jack &rarr; 1 A fuse &rarr; 1N5819 reverse-polarity diode &rarr; two linear regulators. The **LM317TG (set to 5.9 V)** feeds only the motor driver and the 6 V actuator motor. The **L7805CV (5 V)** feeds the Curiosity Nano and the power LED. The Curiosity Nano's on-board regulator supplies 3.3 V to the accelerometer, the position potentiometer and the current-sense op-amp.
 * **Actuator:** a DFRobot FIT0577 N20 gear motor with an M3 lead screw, driven by a TI DRV8833 H-bridge. A 0.33 &Omega; current-sense resistor sets a 0.61 A current limit, and an MCP601 amplifier (gain 11) scales its voltage for the ADC so the PIC can detect a stall.
 * **Position feedback:** a Bourns slide potentiometer whose slider moves with the actuator's lead-screw nut.
-* **Sensor:** an ST LIS3DH 3-axis accelerometer chip on SPI, with a data-ready interrupt.
+* **Sensor:** an Analog Devices ADXL343 3-axis accelerometer chip on SPI, with a data-ready interrupt.
 * **Debug:** two debug LEDs and a debounced push button on spare GPIO.
 * **Team connection:** an 8-pin ribbon cable to Preston's hub board. It carries position commands in and jerk/impulse data out over UART.
 
@@ -59,29 +59,30 @@ Since the first version, two changes came from the power budget and feedback: th
 | Microcontroller | Microchip | PIC18F57Q43 Curiosity Nano (DM164150) | 5 V (VBUS) | Course kit |
 | Linear actuator | DFRobot | FIT0577 N20 gear motor, 6 V, 98 RPM, with M3 &times; 20 mm lead-screw shaft | 6 V | $9.00 |
 | Motor driver (H-bridge) | Texas Instruments | DRV8833PWPR | 6 V (VM) | $3.02 |
-| Position sensor | Bourns | PTA2043-2015CPB103 (10 k&Omega; slide pot, 20 mm travel) | 3.3 V | $1.84 |
-| Accelerometer (bare chip) | STMicroelectronics | LIS3DHTR | 3.3 V | $1.94 |
-| Current-sense amplifier | Microchip | MCP601-I/P | 3.3 V | ~$0.50 |
-| Linear regulator (9 V &rarr; 6 V, motor) | STMicroelectronics | L7806CV | 9 V in | ~$0.65 |
-| Linear regulator (9 V &rarr; 5 V, logic) | STMicroelectronics | L7805CV | 9 V in | $0.65 |
-| Reverse-polarity diode | onsemi | 1N5819RLG | 9 V | ~$0.10 |
-| Fuse (1 A, fast-acting, removable) | Littelfuse | 0217001.HXP + 2&times; Keystone 3517 clips | 9 V | ~$1 |
-| Barrel jack | CUI Devices | PJ-002A | 9 V | ~$1 |
-| Power status LED (green) + 1 k&Omega; resistor | Kingbright | WP7113GD | 5 V | ~$0.30 |
-| 2x4 IDC header, sense resistor, capacitors | &mdash; | &mdash; | &mdash; | ~$1.50 |
+| Position sensor | Bourns | PTA2043-2015CPB103 (10 k&Omega; slide pot, 20 mm travel) | 3.3 V | $1.78 |
+| Accelerometer (bare chip) | Analog Devices | ADXL343BCCZ | 3.3 V | $4.02 |
+| Current-sense amplifier | Microchip | MCP601-I/P | 3.3 V | $0.63 |
+| Linear regulator (9 V &rarr; 5.9 V, motor) | onsemi | LM317TG (adjustable, set by 2 resistors) | 9 V in | TECH 162 |
+| Linear regulator (9 V &rarr; 5 V, logic) | STMicroelectronics | L7805CV | 9 V in | TECH 162 |
+| Reverse-polarity diode | onsemi | 1N5819RLG | 9 V | TECH 162 |
+| Fuse (1 A, fast-acting, removable) | Littelfuse | 0217001.HXP + 2&times; Keystone 3517 clips | 9 V | TECH 162 |
+| Barrel jack | CUI Devices | PJ-002A | 9 V | TECH 162 |
+| Power status LED (green) + 1 k&Omega; resistor | Kingbright | WP7113GD | 5 V | TECH 162 |
+| 0.33 &Omega; 1 W sense resistor and 2.2 &micro;F capacitor | YAGEO / TDK | FMP100JR-52-0R33, FA16X7R1E225KNU06 | &mdash; | $0.88 |
+| 2x4 IDC header and other capacitors and resistors | &mdash; | &mdash; | &mdash; | TECH 162 |
 | 9 V wall adapter | &mdash; | &mdash; | &mdash; | Already owned |
-| **Total (new purchases, before shipping)** | | | | **~$21.50** |
+| **Total (new purchases, before shipping)** | | | | **$19.33** |
 
-The team budget is $70&ndash;80 for four boards, so an even share is $17.50&ndash;$20.00. Adding the 6 V regulator, op-amp and diode puts this board slightly above that range, so the team total should be checked. The fuse, jack, LED and passive costs are estimates. A plain 300 RPM N20 motor ($6.95) with a separate threaded rod and coupler would save about $2 but needs extra mechanical work. See the [Component Selection](../02-Component-Selection/Component-Selection.md) page.
+The team budget is $70&ndash;80 for four boards, so an even share is $17.50&ndash;$20.00. At $19.33 this board is inside that range: I order one of each part with no spares, and the regulators, diode, fuse, jack, LED, header and common passives come from TECH 162, which does not count toward the budget. A plain 300 RPM N20 motor ($6.95) with a separate threaded rod and coupler would save about $2 but needs extra mechanical work. See the [Component Selection](../02-Component-Selection/Component-Selection.md) page.
 
 ## Power Domains
 
 | Domain | Regulation | Max Current | Source | Loads |
 |---|---|---|---|---|
-| +9 V DC | Unregulated | 1.0 A | My 9 V wall adapter, through the barrel jack, a 1 A fuse and a 1N5819 diode | L7806CV and L7805CV inputs |
-| +6 V DC | Regulated (linear) | 1.5 A | ST L7806CV | DRV8833 (VM) and the N20 motor |
+| +9 V DC | Unregulated | 1.0 A | My 9 V wall adapter, through the barrel jack, a 1 A fuse and a 1N5819 diode | LM317TG and L7805CV inputs |
+| +6 V DC (5.9 V) | Regulated (linear) | 1.5 A | onsemi LM317TG | DRV8833 (VM) and the N20 motor |
 | +5 V DC | Regulated (linear) | 1.5 A | ST L7805CV | Curiosity Nano (VBUS, through JP1 and D3), power LED |
-| +3.3 V DC | Regulated | 0.5 A | Curiosity Nano on-board regulator (VTG pin) | LIS3DHTR, slide potentiometer, MCP601 |
+| +3.3 V DC | Regulated | 0.5 A | Curiosity Nano on-board regulator (VTG pin) | ADXL343BCCZ, slide potentiometer, MCP601 |
 
 With the motor on its own regulator, the L7805CV carries only about 0.13 A and needs no heatsink. See the [Power Budget](../05-Power-Budget/Power-Budget.md) page for the current and heat calculations.
 
@@ -94,8 +95,8 @@ With the motor on its own regulator, the L7805CV carries only about 0.13 A and n
 | DI (interrupt-on-change) | RB1 | DRV8833 nFAULT | Digital - Parallel (1 pin) |
 | ADC | RA0 (ANA0) | MCP601 output (amplified AISEN sense voltage) | Analog (0&ndash;2.2 VDC, 1 pin) |
 | ADC | RA1 (ANA1) | Slide potentiometer wiper | Analog (0&ndash;3.3 VDC, 1 pin) |
-| SPI (SPI1) | RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS | LIS3DHTR | Digital - Serial (SPI, 4 pins) |
-| DI (INT0) | RB0 | LIS3DHTR INT1 (data ready) | Digital - Parallel (1 pin) |
+| SPI (SPI1) | RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS | ADXL343BCCZ | Digital - Serial (SPI, 4 pins) |
+| DI (INT0) | RB0 | ADXL343BCCZ INT1 (data ready) | Digital - Parallel (1 pin) |
 | UART (UART1) | RC7 RX, RC6 TX | Ribbon connector pins 1 and 2 | Digital - Serial (UART, 2 pins) |
 | DO | RD2, RD3 | Debug LEDs | Digital - Parallel (2 pins) |
 | DI | RD5 | Debug push button (debounced) | Digital - Parallel (1 pin) |
@@ -119,6 +120,6 @@ My board connects to Preston's hub board (Leg Kinematics) through **hub connecto
 
 * **Closed-loop position control:** the hub sends a target position over UART. The PIC compares it with the slide-pot reading on RA1, then drives the two PWM outputs (RC2, RD0) to move the lead screw forward or back.
 * **Stall and fault protection (Req. 6.1):** current through the DRV8833 flows through a 0.33 &Omega; sense resistor on AISEN. An MCP601 amplifies that voltage by 11, and the PIC reads it on RA0 and stops the motor if the current stays high, which indicates a stall. The same resistor also sets the driver's built-in current limit at about 0.61 A (0.2 V &divide; 0.33 &Omega;), which keeps a motor fault within what my 1 A adapter can supply. The nFAULT pin (RB1) reports over-current or over-temperature, and the PIC then disables the driver through nSLEEP (RD1).
-* **Jerk and impulse sensing:** the LIS3DH data-ready interrupt (RB0) triggers an SPI read of acceleration at up to about 1.3 kHz. Jerk is found by differentiating acceleration, and impulse by integrating force (mass &times; acceleration) over the foot-contact time. The results are sent to the hub over UART.
-* **Accelerometer soldering:** the LIS3DHTR is a 3 &times; 3 mm LGA-16 package. Because daughter boards aren't allowed, it is soldered directly to the PCB with a stencil and hot air or reflow.
+* **Jerk and impulse sensing:** the ADXL343 data-ready interrupt (RB0) triggers an SPI read of acceleration at up to 3.2 kHz. Jerk is found by differentiating acceleration, and impulse by integrating force (mass &times; acceleration) over the foot-contact time. The results are sent to the hub over UART.
+* **Accelerometer soldering:** the ADXL343BCCZ is a 3 &times; 5 mm LGA-14 package. Because daughter boards aren't allowed, it is soldered directly to the PCB with a stencil and hot air or reflow.
 * **Speed vs. cost:** a standard M3 lead screw moves 0.5 mm per turn, so the 98 RPM (60 RPM under load) FIT0577 gives about 0.5&ndash;0.8 mm/s. That is slow, but adequate for a small demonstration leg, and much cheaper than a commercial linear actuator with built-in feedback (about $80 or more).

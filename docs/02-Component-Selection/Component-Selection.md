@@ -34,13 +34,13 @@ Other project constraints:
 
 ```
 9V adapter -> barrel jack -> 1A fuse -> 1N5819 diode -> ~8.6V
-     ~8.6V -> L7806CV -> 6V motor rail -> DRV8833 VM -> N20 gearmotor with M3 lead screw (Actuator B)
+     ~8.6V -> LM317TG (5.9V) -> 6V motor rail -> DRV8833 VM -> N20 gearmotor with M3 lead screw (Actuator B)
      ~8.6V -> L7805CV -> 5V logic rail -> (JP1, D3) Curiosity Nano VBUS, power LED
-     Nano VTG 3.3V -> LIS3DH IMU (SPI), slide-pot reference, MCP601 op-amp
+     Nano VTG 3.3V -> ADXL343 IMU (SPI), slide-pot reference, MCP601 op-amp
      Nano PWM x2 (AIN1, AIN2), nSLEEP -> DRV8833;  DRV8833 nFAULT -> Nano
      DRV8833 0.33 ohm sense resistor -> MCP601 (gain 11) -> Nano ADC (stall detection)
      Slide pot wiper (nut position) -> Nano ADC
-     LIS3DH INT1 (data ready) -> Nano interrupt input
+     ADXL343 INT1 (data ready) -> Nano interrupt input
      Debug LEDs (RD2, RD3), push button (RD5)
      UART <-> 2x4 IDC ribbon to hub connector 3
 ```
@@ -71,8 +71,8 @@ The team message format is still to be defined in the software and message-struc
 | Digital input (interrupt-on-change) | RB1 | DRV8833 nFAULT |
 | ADC | RA0 | MCP601 output: amplified AISEN sense voltage (0 to 2.2 V) |
 | ADC | RA1 | Slide potentiometer wiper (0 to 3.3 V) |
-| SPI (SPI1) | RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS | LIS3DHTR |
-| Digital input (INT0) | RB0 | LIS3DHTR INT1 (data ready) |
+| SPI (SPI1) | RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS | ADXL343BCCZ |
+| Digital input (INT0) | RB0 | ADXL343BCCZ INT1 (data ready) |
 | UART (UART1) | RC7 RX, RC6 TX | Ribbon connector pins 1 and 2 |
 | Digital output | RD2, RD3 | Debug LEDs |
 | Digital input | RD5 | Debug push button (hardware debounced) |
@@ -134,9 +134,11 @@ The team message format is still to be defined in the software and message-struc
 | **Option 2. Analog Devices ADXL345BCCZ 3-axis accelerometer, LGA-14 (3 × 5 mm)**<br><img src="https://assets.lcsc.com/images/lcsc/900x900/20221228_Analog-Devices-ADXL345BCCZ-RL7_C9667_front.jpg" width="140" alt="ADXL345"><br>$8.66 each at Newark ($7.05 at Arrow, $10.36 at Mouser)<br>[Digi-Key product page](https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL345BCCZ-RL7/ADXL345BCCZ-RL7CT-ND/2038984) · [Analog Devices datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf) | • ±16 g range with SPI and I2C<br>• 2 to 3.6 V supply, works from 3.3 V<br>• Built-in shock/tap and activity detection, useful for impulse events<br>• Well documented | • About four times the price of the LIS3DH, using a large part of the board's budget share<br>• Larger 3 × 5 mm LGA is still hard to solder<br>• Still no gyroscope |
 | **Option 3. TDK InvenSense MPU-6050 6-axis IMU, QFN-24 (4 × 4 mm)**<br><img src="https://assets.lcsc.com/images/lcsc/900x900/20221229_TDK-InvenSense-MPU-6050_C24112_blank.jpg" width="140" alt="MPU-6050"><br>US price not confirmed (I found $5.78 at one reseller and $20.99 at LCSC)<br>[Digi-Key product page](https://www.digikey.com/en/products/detail/tdk-invensense/MPU-6050/4038009) · [InvenSense datasheet](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf) | • Adds a 3-axis gyroscope for true orientation<br>• I2C interface, 2.375 to 3.46 V supply | • Even at the lowest price I found it is about three times the cost of the LIS3DH, and the price varies widely between sellers<br>• I2C only<br>• 4 × 4 mm QFN with an exposed pad is the hardest to solder<br>• More capability than the jerk and impulse sensing needs |
 
-**Choice: Option 1, LIS3DHTR [IMU subsystem]**
+**Choice: ADXL343BCCZ, the lower-cost version of Option 2 [IMU subsystem]** (changed from Option 1 on 2026-11-03)
 
 **Rationale:** The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the lowest-cost option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost at least about three to four times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.
+
+**Update (2026-11-03): changed to the ADXL343BCCZ.** When I built the order, the LIS3DHTR was out of stock: DigiKey has none until March 2027, the ST store is out, and the other distributors I checked had none. The ADXL343BCCZ is in stock at DigiKey (7,200, $4.02 each). It is the lower-cost, pin-compatible version of the Option 2 ADXL345 in the same 3 × 5 mm package, and it does the same job: SPI (mode 3, so the MCC setup does not change), 3.3 V supply, ±2 to ±16 g, a data-ready interrupt on INT1, and up to 3.2 kHz output, which is faster than the LIS3DH. It costs about $2 more than the LIS3DH, and the 3 × 5 mm LGA-14 is a little easier to solder than the 3 × 3 mm LGA-16. U5 is rewired for its pinout on the [schematic](../04-Schematic/schematic.md).
 
 ---
 
@@ -159,7 +161,7 @@ USB power packs are not allowed for this project, so all options are wall adapte
 
 | Solution | Pros | Cons |
 |---|---|---|
-| **Option 1. 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive (equivalent to the Adafruit unit; I already own one)**<br><img src="https://www.adafruit.com/images/480x360/63-07.jpg" width="140" alt="Adafruit 9V 1A"><br>$8.95 if bought new; $0 for me<br>[Adafruit product page](https://www.adafruit.com/product/63) | • Regulated output<br>• Polarity and barrel size are stated<br>• Already owned, so no budget spent<br>• 1 A covers my worst-case need with margin (see the Power Budget) | • About 326 mA of spare current after the 25% margin in normal operation, and about 88 mA with the motor at its 0.61 A current limit (see the Power Budget)<br>• No room for large added loads |
+| **Option 1. 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive (equivalent to the Adafruit unit; I already own one)**<br><img src="https://www.adafruit.com/images/480x360/63-07.jpg" width="140" alt="Adafruit 9V 1A"><br>$8.95 if bought new; $0 for me<br>[Adafruit product page](https://www.adafruit.com/product/63) | • Regulated output<br>• Polarity and barrel size are stated<br>• Already owned, so no budget spent<br>• 1 A covers my worst-case need with margin (see the Power Budget) | • About 328 mA of spare current after the 25% margin in normal operation, and about 90 mA with the motor at its 0.61 A current limit (see the Power Budget)<br>• No room for large added loads |
 | **Option 2. Pololu 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive**<br><img src="https://a.pololu-files.com/picture/0J7885.1200x627.jpg?8f2dfc183198b0004956b0dbd969b6a8" width="140" alt="Pololu 9V 1A"><br>$11.11 each<br>[Pololu product page](https://www.pololu.com/product/1470) | • Regulated, polarity stated<br>• Light, small body | • Same 1 A capacity<br>• More expensive and would use new budget |
 | **Option 3. SparkFun 9 V 2 A regulated adapter, 5.5 × 2.1 mm**<br><img src="https://www.sparkfun.com/media/catalog/product/cache/6b78ac9ed927a3c2db42a3c84dab4ce5/3/1/31173-Power-Supply-Feature_2.jpg" width="140" alt="SparkFun 9V 2A"><br>$10.95 each<br>[SparkFun product page](https://www.sparkfun.com/wall-adapter-power-supply-9v-2a-barrel-jack.html) | • 2 A leaves large margin<br>• Regulated | • Plug polarity is not stated on the product page<br>• Costs $10.95 of the board's $17.50 to $20.00 share<br>• More than my design needs |
 
@@ -175,13 +177,15 @@ My first design ran the 6 V motor from the 5 V rail. The power budget showed two
 
 | Solution | Pros | Cons |
 |---|---|---|
-| **Option 1. Second linear regulator, ST L7806CV (6 V, TO-220)**<br>[ST L78 datasheet](https://www.st.com/resource/en/datasheet/l78.pdf) | • Motor runs at its rated 6 V<br>• Motor current and stall spikes stay off the microcontroller's 5 V rail<br>• Same family, footprint and protection (current limit, thermal shutdown) as the L7805CV<br>• Inexpensive | • Needs at least 8 V in; about 8.6 V is available from the 9 V adapter after the diode<br>• About 1.4 W of heat at stall from 9 V, more from a 12 V adapter |
+| **Option 1. Second linear regulator for 6 V, TO-220 (ST L7806CV, now an onsemi LM317TG set to 5.9 V)**<br>[TI LM317 datasheet](https://www.ti.com/lit/ds/symlink/lm317.pdf) | • Motor runs at its rated 6 V<br>• Motor current and stall spikes stay off the microcontroller's 5 V rail<br>• Same family, footprint and protection (current limit, thermal shutdown) as the L7805CV<br>• Inexpensive | • Needs at least 8 V in; about 8.6 V is available from the 9 V adapter after the diode<br>• About 1.4 W of heat at stall from 9 V, more from a 12 V adapter |
 | **Option 2. Keep the motor on the L7805CV 5 V rail** (original design) | • No extra part | • L7805CV dissipates about 2.6 W and needs a heatsink<br>• Motor runs under-voltage<br>• Motor noise and stall dips reach the Nano's supply |
 | **Option 3. Run the DRV8833 from the raw 9 V rail and cap the PWM duty near 66%** | • No regulator heat at all | • Applies 9 V peaks to a 6 V motor<br>• A firmware bug or reset at full duty could overdrive the motor<br>• Supply varies with the adapter used |
 
-**Choice: Option 1, L7806CV [Power subsystem]**
+**Choice: Option 1, second regulator for 6 V, onsemi LM317TG [Power subsystem]**
 
 **Rationale:** It is the only option that gives the motor its rated voltage while protecting the microcontroller's rail, and it adds well under a dollar. It also moved most of the heat off the L7805CV, which now needs no heatsink. See the [Power Budget](../05-Power-Budget/Power-Budget.md).
+
+**Update (2026-11-03):** every fixed 6 V 78xx regulator I checked is obsolete: the ST L7806CV, L7806ABV and L7806ACV, and the onsemi MC7806BTG, MC7806CTG and MC78M06CTG (DigiKey sells the onsemi parts only through a third-party marketplace). The board now uses the onsemi LM317TG adjustable regulator, which is active and in stock at DigiKey. R17 (220 Ω) and R18 (820 Ω) set its output to 1.25 V × (1 + 820/220) ≈ 5.9 V, which is 5.7–6.2 V across the reference tolerance and within the motor's 6 V rating. It is rated 1.5 A, has the same current limit and thermal shutdown, and the divider's 5.7 mA also covers its minimum load current. Its pinout is different (1 = ADJ, 2 = OUT, 3 = IN), so U6 is redrawn on the schematic.
 
 ---
 
@@ -210,9 +214,9 @@ The microcontroller's peripherals are set up in MPLAB Code Configurator (MCC). E
 | Clock (CLKCTRL) | HFINTOSC, 64 MHz | – |
 | PWM1 (16-bit PWM) | About 20 kHz (above hearing range, within DRV8833 limit), two outputs | RC2 → AIN1, RD0 → AIN2 |
 | ADCC | 12-bit, VDD (3.3 V) reference, right-justified | RA0 (ANA0, motor current), RA1 (ANA1, position) |
-| SPI1 (host mode) | Mode 3 (CPOL = 1, CPHA = 1), 1 MHz | RC3 SCK, RC4 SDI, RC5 SDO; RD4 GPIO as chip select |
+| SPI1 (host mode) | Mode 3 (CPOL = 1, CPHA = 1), 1 MHz (the ADXL343 allows up to 5 MHz) | RC3 SCK, RC4 SDI, RC5 SDO; RD4 GPIO as chip select |
 | UART1 | 115200 baud, 8N1, receive interrupt on | RC7 RX, RC6 TX |
-| INT0 (external interrupt) | Rising edge | RB0 (LIS3DH INT1 data ready) |
+| INT0 (external interrupt) | Rising edge | RB0 (ADXL343 INT1 data ready) |
 | Interrupt-on-change | Falling edge | RB1 (DRV8833 nFAULT) |
 | GPIO outputs | Push-pull, start low | RD1 (nSLEEP), RD2, RD3 (debug LEDs), RD4 (IMU CS, starts high) |
 | GPIO input | Digital input | RD5 (debug button) |
@@ -226,17 +230,18 @@ The microcontroller's peripherals are set up in MPLAB Code Configurator (MCC). E
 |---|---|---|
 | Linear actuator | DFRobot FIT0577 N20 gearmotor with M3 lead screw | $9.00 |
 | Motor driver | DRV8833PWPR | $3.02 |
-| Position sensor | Bourns PTA2043-2015CPB103 | $1.84 |
-| IMU | LIS3DHTR | $1.94 |
-| 6 V regulator (motor) | L7806CV | ~$0.65 |
-| 5 V regulator (logic) | L7805CV (no heatsink needed now) | $0.65 |
-| Current-sense amplifier | MCP601-I/P | ~$0.50 |
-| Reverse-polarity diode | 1N5819RLG | ~$0.10 |
-| Fuse, barrel jack, power LED, header and passives | Estimates from my Block Diagram page | ~$3.80 |
+| Position sensor | Bourns PTA2043-2015CPB103 | $1.78 |
+| IMU | ADXL343BCCZ | $4.02 |
+| 6 V regulator (motor) | LM317TG and its 2 resistors | TECH 162 |
+| 5 V regulator (logic) | L7805CV (no heatsink needed now) | TECH 162 |
+| Current-sense amplifier | MCP601-I/P | $0.63 |
+| Reverse-polarity diode | 1N5819RLG | TECH 162 |
+| 0.33 Ω 1 W sense resistor and 2.2 µF VINT capacitor | FMP100JR-52-0R33, FA16X7R1E225KNU06 | $0.88 |
+| Fuse, barrel jack, LEDs, headers and other passives | Common parts | TECH 162 |
 | 9 V adapter | Already owned | $0 |
-| **Total (new purchases, before shipping)** | | **~$21.50** |
+| **Total (new purchases, before shipping)** | | **$19.33** |
 
-The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At about $21.50 this board is slightly above that range, mainly because of the 6 V regulator and op-amp added for protection, so I should check the team total with my teammates. The fuse, jack, LED and passive costs are estimates and may be lower. Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.
+The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At $19.33 this board is inside that range. To get there I order one of each part with no spares, and I take the regulators, diodes, barrel jack, fuse, LEDs, headers and common passives from TECH 162, which do not count toward the budget. Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.
 
 ---
 
@@ -246,12 +251,12 @@ I chose each part by first ruling out options that broke a hard constraint (the 
 
 | Team requirement | Parts that meet it |
 |---|---|
-| **2.2** Standard communication protocols | UART to the hub; SPI to the LIS3DH |
+| **2.2** Standard communication protocols | UART to the hub; SPI to the ADXL343 |
 | **4.4 / 5.2** Off-the-shelf, replaceable parts | Catalog motor (FIT0577) and slide pot on headers; through-hole regulators, op-amp and connectors |
 | **6.1** Actuator current limiting or stall detection | DRV8833 current limit (0.61 A) and nFAULT; MCP601 amplifies the sense voltage for an ADC stall check |
-| **6.3** Over-voltage and over-current protection | 1 A fuse, 1N5819 reverse-polarity diode, L7806CV/L7805CV current limit and thermal shutdown |
+| **6.3** Over-voltage and over-current protection | 1 A fuse, 1N5819 reverse-polarity diode, LM317TG/L7805CV current limit and thermal shutdown |
 | Team budget ($70–80 for four boards) | Lowest-cost option chosen wherever it met the requirements (actuator, driver, IMU, regulators); adapter already owned |
-| Jerk / impulse sensing (team-assigned task) | LIS3DH with data-ready interrupt, fast enough to differentiate acceleration into jerk |
+| Jerk / impulse sensing (team-assigned task) | ADXL343 with data-ready interrupt, fast enough to differentiate acceleration into jerk |
 
 ## 6. Checklist
 
