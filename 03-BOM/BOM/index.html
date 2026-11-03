@@ -1123,13 +1123,13 @@
 
 <h2 id="overview">Overview</h2>
 <p>This is the bill of materials for my individual board (Driver Nano 3: Linear Actuator B + IMU). It lists every part on the <a href="../../04-Schematic/schematic/">schematic</a>, using the schematic's reference designators, plus the off-board motor and potentiometer. The tables are sorted by vendor, and each vendor below gets one purchase request.</p>
-<p><strong>Budget and quantities.</strong> The team budget is $70–80 for four boards, so my board's share is about $17.50–20.00. To stay inside it:</p>
+<p><strong>Order quantities.</strong> Following the assignment instructions, for every part I order one for the breadboard prototype, one for the subsystem PCB, and one or two spares:</p>
 <ul>
-<li>I buy <strong>one of each part, with no spares</strong>. These are the parts that are not in TECH 162: the motor, motor driver, accelerometer, slide potentiometer, op-amp, sense resistor and 2.2 µF capacitor.</li>
-<li>Everything common comes from <strong>TECH 162</strong>: both regulators, the diodes, barrel jack, fuse, LEDs, headers, button, IC socket, heatsink and the other passives. These parts do not count toward the budget, so I take enough for the breadboard, the PCB and a spare.</li>
-<li>The purchased through-hole parts move from the breadboard to the PCB: the op-amp sits in a DIP-8 socket, and the motor and slide potentiometer plug into the J4 and J7 headers.</li>
-<li>The two surface-mount ICs (DRV8833 in HTSSOP-16 and ADXL343 in LGA-14) have no through-hole version, and I am not using breakout boards, so they go straight onto the PCB and are tested there.</li>
+<li>Through-hole parts (regulators, op-amp, barrel jack, diodes), the off-board motor and the slide potentiometer: 3 each (breadboard, PCB, spare). For the diodes it is 2 boards × 6 + 3 spares = 15.</li>
+<li>The two surface-mount ICs (DRV8833 in HTSSOP-16 and ADXL343 in LGA-14) have no through-hole version, and I am not using breakout boards, so they cannot go on the breadboard. I order 3 of each: one for the PCB and two spares, because these are the hardest parts to solder.</li>
+<li>Parts that TECH 162 stocks (fuses, IC sockets, headers, and common passives, LEDs and buttons) are not ordered. They are listed below with the quantity I will take.</li>
 </ul>
+<p>This is more than one board's worth of parts. One finished board uses about $24.49 of purchased parts (see <a href="../../02-Component-Selection/Component-Selection/">Component Selection, section 4</a>).</p>
 <p>Prices and stock are from DigiKey and DFRobot, checked on 2026-11-03. Every ordered part was in stock and active that day, and nothing is back-ordered or special-order. Shipping and tax are not included.</p>
 <p>Datasheets are stored in this repository in the <code>docs/03-BOM/datasheets/</code> folder and linked in each row. Where a manufacturer site would not allow the PDF to be saved, the datasheet link goes to the manufacturer or vendor page instead.</p>
 <h2 id="bill-of-materials">Bill of Materials</h2>
@@ -1151,20 +1151,20 @@
 <tbody>
 <tr>
 <td style="text-align: left;">3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$4.02</td>
-<td style="text-align: left;">$4.02</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$4.020</td>
+<td style="text-align: left;">$12.06</td>
 <td style="text-align: left;">Analog Devices</td>
 <td style="text-align: left;">ADXL343BCCZ</td>
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918">DigiKey 505-ADXL343BCCZ-ND</a></td>
-<td style="text-align: left;"><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf">ADXL343 datasheet</a></td>
+<td style="text-align: left;"><a href="../datasheets/ADXL343.pdf">ADXL343.pdf</a></td>
 <td style="text-align: left;">U5</td>
 </tr>
 <tr>
 <td style="text-align: left;">Dual H-bridge motor driver, HTSSOP-16</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$3.02</td>
-<td style="text-align: left;">$3.02</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$3.020</td>
+<td style="text-align: left;">$9.06</td>
 <td style="text-align: left;">Texas Instruments</td>
 <td style="text-align: left;">DRV8833PWPR</td>
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167">DigiKey 296-29434-1-ND</a></td>
@@ -1173,9 +1173,9 @@
 </tr>
 <tr>
 <td style="text-align: left;">Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$1.78</td>
-<td style="text-align: left;">$1.78</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$1.780</td>
+<td style="text-align: left;">$5.34</td>
 <td style="text-align: left;">Bourns</td>
 <td style="text-align: left;">PTA2043-2015CPB103</td>
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176">DigiKey PTA2043-2015CPB103-ND</a></td>
@@ -1183,10 +1183,54 @@
 <td style="text-align: left;">–</td>
 </tr>
 <tr>
+<td style="text-align: left;">Schottky diode 40 V 1 A, DO-41</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">$0.343</td>
+<td style="text-align: left;">$5.15</td>
+<td style="text-align: left;">onsemi</td>
+<td style="text-align: left;">1N5819RLG</td>
+<td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/onsemi/1N5819RLG/918061">DigiKey 1N5819RLGOSCT-ND</a></td>
+<td style="text-align: left;"><a href="../datasheets/1N5819.pdf">1N5819.pdf</a></td>
+<td style="text-align: left;">D1, D3, D6–D9</td>
+</tr>
+<tr>
+<td style="text-align: left;">Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$1.300</td>
+<td style="text-align: left;">$3.90</td>
+<td style="text-align: left;">onsemi</td>
+<td style="text-align: left;">LM317TG</td>
+<td style="text-align: left;"><a href="https://www.digikey.com/en/products/result?keywords=LM317TG">DigiKey LM317TGOS-ND</a></td>
+<td style="text-align: left;"><a href="../datasheets/LM317.pdf">LM317.pdf</a></td>
+<td style="text-align: left;">U6</td>
+</tr>
+<tr>
+<td style="text-align: left;">5 V 1.5 A linear regulator, TO-220</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$1.140</td>
+<td style="text-align: left;">$3.42</td>
+<td style="text-align: left;">STMicroelectronics</td>
+<td style="text-align: left;">L7805CV</td>
+<td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964">DigiKey 497-1443-5-ND</a></td>
+<td style="text-align: left;"><a href="../datasheets/L78xx.pdf">L78xx.pdf</a></td>
+<td style="text-align: left;">U2</td>
+</tr>
+<tr>
+<td style="text-align: left;">DC barrel jack, 2.1 mm, PCB mount</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$0.660</td>
+<td style="text-align: left;">$1.98</td>
+<td style="text-align: left;">Same Sky (CUI Devices)</td>
+<td style="text-align: left;">PJ-002A</td>
+<td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/PJ-002A/96962">DigiKey CP-002A-ND</a></td>
+<td style="text-align: left;"><a href="../datasheets/PJ-002A.pdf">PJ-002A.pdf</a></td>
+<td style="text-align: left;">J1</td>
+</tr>
+<tr>
 <td style="text-align: left;">Op-amp (current-sense amplifier), PDIP-8</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$0.63</td>
-<td style="text-align: left;">$0.63</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$0.630</td>
+<td style="text-align: left;">$1.89</td>
 <td style="text-align: left;">Microchip</td>
 <td style="text-align: left;">MCP601-I/P</td>
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/result?keywords=MCP601-I/P">DigiKey MCP601-I/P-ND</a></td>
@@ -1195,9 +1239,9 @@
 </tr>
 <tr>
 <td style="text-align: left;">Ceramic capacitor 2.2 µF 25 V X7R, radial</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$0.49</td>
-<td style="text-align: left;">$0.49</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$0.490</td>
+<td style="text-align: left;">$1.47</td>
 <td style="text-align: left;">TDK</td>
 <td style="text-align: left;">FA16X7R1E225KNU06</td>
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06">DigiKey 445-180433-1-ND</a></td>
@@ -1206,9 +1250,9 @@
 </tr>
 <tr>
 <td style="text-align: left;">Current-sense resistor 0.33 Ω 1 W 5%, axial</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$0.39</td>
-<td style="text-align: left;">$0.39</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$0.390</td>
+<td style="text-align: left;">$1.17</td>
 <td style="text-align: left;">YAGEO</td>
 <td style="text-align: left;">FMP100JR-52-0R33</td>
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33">DigiKey 0.33WCT-ND</a></td>
@@ -1219,7 +1263,7 @@
 <td style="text-align: left;"><strong>DigiKey subtotal</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>$10.33</strong></td>
+<td style="text-align: left;"><strong>$45.44</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -1246,9 +1290,9 @@
 <tbody>
 <tr>
 <td style="text-align: left;">N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$9.00</td>
-<td style="text-align: left;">$9.00</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">$9.000</td>
+<td style="text-align: left;">$27.00</td>
 <td style="text-align: left;">DFRobot</td>
 <td style="text-align: left;">FIT0577</td>
 <td style="text-align: left;"><a href="https://www.dfrobot.com/product-1733.html">DFRobot FIT0577</a></td>
@@ -1259,7 +1303,7 @@
 <td style="text-align: left;"><strong>DFRobot subtotal</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>$9.00</strong></td>
+<td style="text-align: left;"><strong>$27.00</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -1270,7 +1314,7 @@
 </table>
 <p>No vendor on the course list had this motor in stock: RobotShop lists it as special order, and DigiKey only as a non-stock part with a 9-week lead time. The course sourcing guide allows another supplier when the preferred vendors are out of stock, so it comes directly from DFRobot's US store, which showed it in stock. DFRobot ships from China, so shipping and possible import duty are extra.</p>
 <h3 id="tech-162-lab-stock-and-course-kit-not-ordered">TECH 162 lab stock and course kit (not ordered)</h3>
-<p>If TECH 162 runs out of any of these, they are all common, in-stock DigiKey parts.</p>
+<p>The assignment lists fuses, IC sockets and headers as TECH 162 stock. If TECH 162 runs out of any part here, it is a common, in-stock DigiKey part.</p>
 <table>
 <thead>
 <tr>
@@ -1307,50 +1351,6 @@
 <td style="text-align: left;">–</td>
 <td style="text-align: left;"><a href="https://www.adafruit.com/product/63">Adafruit page</a></td>
 <td style="text-align: left;">–</td>
-</tr>
-<tr>
-<td style="text-align: left;">5 V 1.5 A linear regulator, TO-220</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;">$0</td>
-<td style="text-align: left;">STMicroelectronics</td>
-<td style="text-align: left;">L7805CV</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;"><a href="../datasheets/L78xx.pdf">L78xx.pdf</a></td>
-<td style="text-align: left;">U2</td>
-</tr>
-<tr>
-<td style="text-align: left;">Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;">$0</td>
-<td style="text-align: left;">onsemi</td>
-<td style="text-align: left;">LM317TG</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;"><a href="../datasheets/LM317.pdf">LM317.pdf</a></td>
-<td style="text-align: left;">U6</td>
-</tr>
-<tr>
-<td style="text-align: left;">Schottky diode 40 V 1 A, DO-41</td>
-<td style="text-align: left;">15</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;">$0</td>
-<td style="text-align: left;">onsemi</td>
-<td style="text-align: left;">1N5819RLG</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;"><a href="../datasheets/1N5819.pdf">1N5819.pdf</a></td>
-<td style="text-align: left;">D1, D3, D6–D9</td>
-</tr>
-<tr>
-<td style="text-align: left;">DC barrel jack, 2.1 mm, PCB mount</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;">$0</td>
-<td style="text-align: left;">Same Sky (CUI Devices)</td>
-<td style="text-align: left;">PJ-002A</td>
-<td style="text-align: left;">TECH 162</td>
-<td style="text-align: left;"><a href="../datasheets/PJ-002A.pdf">PJ-002A.pdf</a></td>
-<td style="text-align: left;">J1</td>
 </tr>
 <tr>
 <td style="text-align: left;">Fuse 1 A fast-acting, 5 × 20 mm</td>
@@ -1618,22 +1618,22 @@
 <tbody>
 <tr>
 <td style="text-align: left;">DigiKey</td>
-<td style="text-align: left;">6 line items</td>
-<td style="text-align: left;">$10.33</td>
+<td style="text-align: left;">10 line items</td>
+<td style="text-align: left;">$45.44</td>
 </tr>
 <tr>
 <td style="text-align: left;">DFRobot</td>
 <td style="text-align: left;">1 line item</td>
-<td style="text-align: left;">$9.00</td>
+<td style="text-align: left;">$27.00</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Total new purchases</strong></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>$19.33</strong></td>
+<td style="text-align: left;"><strong>$72.44</strong></td>
 </tr>
 </tbody>
 </table>
-<p>$19.33 is inside my $17.50–20.00 share of the team budget. Shipping is extra, and DFRobot may add import duty.</p>
+<p>The order covers a breadboard prototype, a PCB and spares, as the assignment asks. One finished board uses about $24.49 of these parts. Shipping is extra, and DFRobot may add import duty.</p>
 <p>The KiCad BOM export (<code>BOM.csv</code>) is inside the <a href="../../04-Schematic/Subsystem-Schematic-KG.zip">schematic ZIP</a>. This page's table is also saved as <a href="../BOM-KG.csv">BOM-KG.csv</a>.</p>
 
 
