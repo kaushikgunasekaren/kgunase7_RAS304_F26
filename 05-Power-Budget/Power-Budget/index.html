@@ -1138,16 +1138,16 @@
 <h1 id="power-budget">Power Budget</h1>
 <p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU</strong></p>
 <blockquote>
-<p>This budget matches my current <a href="../../04-Schematic/schematic/">schematic</a>: a 6 V motor rail (L7806CV) and a separate 5 V logic rail (L7805CV). It was built in the course power budget template. Values marked "est." should be replaced with measured values once the board is built.</p>
+<p>This budget matches my current <a href="../../04-Schematic/schematic/">schematic</a>: a 6 V motor rail (LM317TG set to 5.9 V) and a separate 5 V logic rail (L7805CV). It was built in the course power budget template. Values marked "est." should be replaced with measured values once the board is built.</p>
 </blockquote>
 <p><strong>Spreadsheet:</strong> <a href="../Power-Budget-KG.xlsx">Power-Budget-KG.xlsx</a> (course template, with formulas) · <a href="../Power-Budget-KG.zip">ZIP of the spreadsheet</a></p>
 <h2 id="power-architecture">Power architecture</h2>
 <ul>
 <li><strong>Power is supplied individually.</strong> Each teammate's board has its own adapter, and the ribbon to the hub carries only UART communication and a ground reference, so no other board draws from this budget and this board draws from no other.</li>
 <li>One external source: my own 9 V 1 A wall adapter on the barrel jack, through a removable 1 A fuse and a 1N5819 reverse-polarity diode. About 8.6 V reaches the regulators.</li>
-<li><strong>+6 V motor rail (L7806CV):</strong> powers only the DRV8833 motor supply (VM) and the N20 gearmotor, which is rated 6 V.</li>
+<li><strong>+6 V motor rail (LM317TG, set to 5.9 V by R17/R18):</strong> powers only the DRV8833 motor supply (VM) and the N20 gearmotor, which is rated 6 V.</li>
 <li><strong>+5 V logic rail (L7805CV):</strong> powers the Curiosity Nano (VBUS, through JP1 and D3) and the green power LED.</li>
-<li><strong>+3.3 V rail (Curiosity Nano on-board regulator, VTG):</strong> powers the LIS3DH, the slide potentiometer and the MCP601 current-sense amplifier. It draws from the 5 V rail, so its total is counted there too.</li>
+<li><strong>+3.3 V rail (Curiosity Nano on-board regulator, VTG):</strong> powers the ADXL343, the slide potentiometer and the MCP601 current-sense amplifier. It draws from the 5 V rail, so its total is counted there too.</li>
 </ul>
 <p>Splitting the motor onto its own regulator keeps motor current spikes and stall current off the rail that powers the microcontroller.</p>
 <h2 id="section-a-components-that-consume-power-absolute-maximum-current">Section A. Components that consume power (absolute maximum current)</h2>
@@ -1186,10 +1186,10 @@
 </tr>
 <tr>
 <td>3-axis accelerometer</td>
-<td>ST LIS3DHTR</td>
+<td>Analog Devices ADXL343BCCZ</td>
 <td>+3.3 V</td>
 <td>0.5</td>
-<td>Allowance (est.) for operating mode</td>
+<td>Allowance (est.); datasheet typical is about 0.14 mA in measurement mode</td>
 </tr>
 <tr>
 <td>Slide potentiometer, 10 kΩ ±20%</td>
@@ -1240,7 +1240,7 @@
 </tr>
 <tr>
 <td><strong>+3.3 V</strong></td>
-<td>LIS3DHTR</td>
+<td>ADXL343BCCZ</td>
 <td>0.5</td>
 </tr>
 <tr>
@@ -1295,10 +1295,10 @@
 <tbody>
 <tr>
 <td>+6 V</td>
-<td>ST L7806CV (TO-220)</td>
+<td>onsemi LM317TG (TO-220), set to 5.9 V</td>
 <td>1500</td>
 <td>531.3</td>
-<td><strong>968.8</strong></td>
+<td><strong>968.7</strong></td>
 <td>Lets the 6 V motor run at its rated voltage. Needs at least 8 V in; about 8.6 V is available after the diode</td>
 </tr>
 <tr>
@@ -1319,7 +1319,7 @@
 </tr>
 </tbody>
 </table>
-<p>Regulator thermal check (TO-220, about 50 °C/W with no heatsink, 40 °C ambient, 125 °C junction limit):</p>
+<p>Regulator thermal check (40 °C ambient, 125 °C junction limit, no heatsink: about 50 °C/W for a TO-220 in free air):</p>
 <table>
 <thead>
 <tr>
@@ -1331,10 +1331,10 @@
 </thead>
 <tbody>
 <tr>
-<td>L7806CV</td>
-<td>(8.6 − 6) V × 0.531 A ≈ 1.38 W</td>
-<td>≈ 109 °C</td>
-<td>Not strictly needed, but close to the limit; a small clip-on heatsink is cheap insurance</td>
+<td>LM317TG</td>
+<td>(8.6 − 5.9) V × 0.531 A ≈ 1.43 W</td>
+<td>≈ 112 °C</td>
+<td>Not strictly needed, but close to the limit, so it gets a small clip-on TO-220 heatsink from TECH 162 as cheap insurance</td>
 </tr>
 <tr>
 <td>L7805CV</td>
@@ -1344,7 +1344,7 @@
 </tr>
 </tbody>
 </table>
-<p>If a 12 V adapter is used, the L7806CV dissipates about (11.6 − 6) V × 0.531 A ≈ 3.0 W and <strong>needs</strong> a heatsink of about 23 °C/W or better. These worst cases assume the motor is stalled; in normal motion the motor draws much less (24 mA no load).</p>
+<p>If a 12 V adapter is used, the LM317TG dissipates about (11.6 − 5.9) V × 0.531 A ≈ 3.0 W and <strong>needs</strong> a heatsink of about 23 °C/W or better. These worst cases assume the motor is stalled; in normal motion the motor draws much less (24 mA no load).</p>
 <h2 id="section-d-external-power-source">Section D. External power source</h2>
 <table>
 <thead>
@@ -1355,8 +1355,8 @@
 </thead>
 <tbody>
 <tr>
-<td>L7806CV input: 531.3 + 8 (quiescent)</td>
-<td>539.3</td>
+<td>LM317TG input: 531.3 + 5.7 (R17/R18 divider; the LM317 has no ground current)</td>
+<td>537.0</td>
 </tr>
 <tr>
 <td>L7805CV input: 127.1 + 8 (quiescent)</td>
@@ -1364,7 +1364,7 @@
 </tr>
 <tr>
 <td><strong>Total required from the adapter</strong></td>
-<td><strong>674.3</strong></td>
+<td><strong>672.1</strong></td>
 </tr>
 <tr>
 <td>Adapter capacity (9 V, 1 A)</td>
@@ -1372,25 +1372,25 @@
 </tr>
 <tr>
 <td><strong>Total remaining current available</strong></td>
-<td><strong>325.7</strong></td>
+<td><strong>327.9</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Fault case:</strong> the 0.33 Ω DRV8833 sense resistor limits the motor to about 0.61 A. With the motor at that limit, the 6 V rail needs (610 + 5) × 1.25 ≈ 769 mA, and the adapter supplies 769 + 8 + 135.1 ≈ 912 mA, so about 88 mA still remains. The 1 A fuse is not reached even in a fault.</p>
+<p><strong>Fault case:</strong> the 0.33 Ω DRV8833 sense resistor limits the motor to about 0.61 A. With the motor at that limit, the 6 V rail needs (610 + 5) × 1.25 ≈ 769 mA, and the adapter supplies 769 + 5.7 + 135.1 ≈ 910 mA, so about 90 mA still remains. The 1 A fuse is not reached even in a fault.</p>
 <h2 id="section-e-battery-life">Section E. Battery life</h2>
 <p>Not applicable. The board runs from a wall adapter and has no battery.</p>
 <h2 id="what-the-power-budget-showed">What the power budget showed</h2>
 <ul>
-<li><strong>It drove the move to a separate motor rail.</strong> The first version put the motor on the 5 V rail. The budget showed the L7805CV would dissipate about 2.6 W and needed a heatsink, and the 6 V motor would run under-voltage. Moving the motor to an L7806CV fixed both: the 5 V regulator now dissipates under 0.5 W, and the motor gets its rated 6 V.</li>
+<li><strong>It drove the move to a separate motor rail.</strong> The first version put the motor on the 5 V rail. The budget showed the L7805CV would dissipate about 2.6 W and needed a heatsink, and the 6 V motor would run under-voltage. Moving the motor to a 6 V regulator (now the MC7806BTG) fixed both: the 5 V regulator now dissipates under 0.5 W, and the motor gets its rated 6 V.</li>
 <li><strong>It set the current-limit resistor.</strong> The original 0.2 Ω sense resistor allowed about 1 A in a motor fault, which would exceed the 1 A adapter. The budget showed a limit near 0.6 A is needed, which is why the schematic uses 0.33 Ω (0.61 A).</li>
-<li><strong>It confirmed the 9 V 1 A adapter is enough.</strong> About 326 mA remains in normal operation and about 88 mA in a fault, so no new adapter has to be bought.</li>
-<li><strong>It confirmed the 9 V minimum.</strong> The L7806CV needs about 8 V in, so the adapter must be at least 9 V after the fuse and diode.</li>
+<li><strong>It confirmed the 9 V 1 A adapter is enough.</strong> About 328 mA remains in normal operation and about 90 mA in a fault, so no new adapter has to be bought.</li>
+<li><strong>It confirmed the 9 V minimum.</strong> The LM317TG needs about 2–3 V of headroom, so about 8 V in, so the adapter must be at least 9 V after the fuse and diode.</li>
 </ul>
 <h2 id="open-items">Open items</h2>
 <ol>
 <li>Measure the N20 stall current at 6 V and compare it with the 420 mA datasheet value.</li>
-<li>Replace the Curiosity Nano, DRV8833 and LIS3DH estimates with measured current.</li>
-<li>Decide on the optional L7806CV heatsink once the board's operating temperature is measured.</li>
+<li>Replace the Curiosity Nano, DRV8833 and ADXL343 estimates with measured current.</li>
+<li>Check the LM317TG heatsink temperature once the board's operating temperature is measured.</li>
 </ol>
 
 

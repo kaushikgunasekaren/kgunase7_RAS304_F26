@@ -1383,13 +1383,13 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </ul>
 <h3 id="block-diagram-text-form">Block diagram (text form)</h3>
 <div class="highlight"><pre><span></span><code>9V adapter -&gt; barrel jack -&gt; 1A fuse -&gt; 1N5819 diode -&gt; ~8.6V
-     ~8.6V -&gt; L7806CV -&gt; 6V motor rail -&gt; DRV8833 VM -&gt; N20 gearmotor with M3 lead screw (Actuator B)
+     ~8.6V -&gt; LM317TG (5.9V) -&gt; 6V motor rail -&gt; DRV8833 VM -&gt; N20 gearmotor with M3 lead screw (Actuator B)
      ~8.6V -&gt; L7805CV -&gt; 5V logic rail -&gt; (JP1, D3) Curiosity Nano VBUS, power LED
-     Nano VTG 3.3V -&gt; LIS3DH IMU (SPI), slide-pot reference, MCP601 op-amp
+     Nano VTG 3.3V -&gt; ADXL343 IMU (SPI), slide-pot reference, MCP601 op-amp
      Nano PWM x2 (AIN1, AIN2), nSLEEP -&gt; DRV8833;  DRV8833 nFAULT -&gt; Nano
      DRV8833 0.33 ohm sense resistor -&gt; MCP601 (gain 11) -&gt; Nano ADC (stall detection)
      Slide pot wiper (nut position) -&gt; Nano ADC
-     LIS3DH INT1 (data ready) -&gt; Nano interrupt input
+     ADXL343 INT1 (data ready) -&gt; Nano interrupt input
      Debug LEDs (RD2, RD3), push button (RD5)
      UART &lt;-&gt; 2x4 IDC ribbon to hub connector 3
 </code></pre></div>
@@ -1494,12 +1494,12 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td>SPI (SPI1)</td>
 <td>RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS</td>
-<td>LIS3DHTR</td>
+<td>ADXL343BCCZ</td>
 </tr>
 <tr>
 <td>Digital input (INT0)</td>
 <td>RB0</td>
-<td>LIS3DHTR INT1 (data ready)</td>
+<td>ADXL343BCCZ INT1 (data ready)</td>
 </tr>
 <tr>
 <td>UART (UART1)</td>
@@ -1643,8 +1643,9 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 </tbody>
 </table>
-<p><strong>Choice: Option 1, LIS3DHTR [IMU subsystem]</strong></p>
+<p><strong>Choice: ADXL343BCCZ, the lower-cost version of Option 2 [IMU subsystem]</strong> (changed from Option 1 on 2026-11-03)</p>
 <p><strong>Rationale:</strong> The team assigned my board jerk and impulse sensing, which only needs acceleration, and the orientation check in the software flow can be done from the gravity vector. The LIS3DH is the lowest-cost option, runs from the Nano's 3.3 V rail, supports SPI with a data-ready interrupt, and fits the budget. The other two cost at least about three to four times as much for features (gyroscope, built-in tap detection) the task does not require. The soldering risk (3 × 3 mm LGA) is accepted and handled with a stencil and hot air or reflow; this is the same risk any of the three options carries.</p>
+<p><strong>Update (2026-11-03): changed to the ADXL343BCCZ.</strong> When I built the order, the LIS3DHTR was out of stock: DigiKey has none until March 2027, the ST store is out, and the other distributors I checked had none. The ADXL343BCCZ is in stock at DigiKey (7,200, $4.02 each). It is the lower-cost, pin-compatible version of the Option 2 ADXL345 in the same 3 × 5 mm package, and it does the same job: SPI (mode 3, so the MCC setup does not change), 3.3 V supply, ±2 to ±16 g, a data-ready interrupt on INT1, and up to 3.2 kHz output, which is faster than the LIS3DH. It costs about $2 more than the LIS3DH, and the 3 × 5 mm LGA-14 is a little easier to solder than the 3 × 3 mm LGA-16. U5 is rewired for its pinout on the <a href="../../04-Schematic/schematic/">schematic</a>.</p>
 <hr />
 <h3 id="25-power-subsystem-5-v-linear-voltage-regulator">2.5 [Power subsystem] 5 V linear voltage regulator</h3>
 <table>
@@ -1685,7 +1686,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td><strong>Option 1. 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive (equivalent to the Adafruit unit; I already own one)</strong><br><a class="glightbox" href="https://www.adafruit.com/images/480x360/63-07.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://www.adafruit.com/images/480x360/63-07.jpg" width="140" alt="Adafruit 9V 1A"></a><br>$8.95 if bought new; $0 for me<br><a href="https://www.adafruit.com/product/63">Adafruit product page</a></td>
 <td>• Regulated output<br>• Polarity and barrel size are stated<br>• Already owned, so no budget spent<br>• 1 A covers my worst-case need with margin (see the Power Budget)</td>
-<td>• About 326 mA of spare current after the 25% margin in normal operation, and about 88 mA with the motor at its 0.61 A current limit (see the Power Budget)<br>• No room for large added loads</td>
+<td>• About 328 mA of spare current after the 25% margin in normal operation, and about 90 mA with the motor at its 0.61 A current limit (see the Power Budget)<br>• No room for large added loads</td>
 </tr>
 <tr>
 <td><strong>Option 2. Pololu 9 V 1 A regulated adapter, 5.5 × 2.1 mm, center-positive</strong><br><a class="glightbox" href="https://a.pololu-files.com/picture/0J7885.1200x627.jpg?8f2dfc183198b0004956b0dbd969b6a8" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://a.pololu-files.com/picture/0J7885.1200x627.jpg?8f2dfc183198b0004956b0dbd969b6a8" width="140" alt="Pololu 9V 1A"></a><br>$11.11 each<br><a href="https://www.pololu.com/product/1470">Pololu product page</a></td>
@@ -1714,7 +1715,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </thead>
 <tbody>
 <tr>
-<td><strong>Option 1. Second linear regulator, ST L7806CV (6 V, TO-220)</strong><br><a href="https://www.st.com/resource/en/datasheet/l78.pdf">ST L78 datasheet</a></td>
+<td><strong>Option 1. Second linear regulator for 6 V, TO-220 (ST L7806CV, now an onsemi LM317TG set to 5.9 V)</strong><br><a href="https://www.ti.com/lit/ds/symlink/lm317.pdf">TI LM317 datasheet</a></td>
 <td>• Motor runs at its rated 6 V<br>• Motor current and stall spikes stay off the microcontroller's 5 V rail<br>• Same family, footprint and protection (current limit, thermal shutdown) as the L7805CV<br>• Inexpensive</td>
 <td>• Needs at least 8 V in; about 8.6 V is available from the 9 V adapter after the diode<br>• About 1.4 W of heat at stall from 9 V, more from a 12 V adapter</td>
 </tr>
@@ -1730,8 +1731,9 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 </tbody>
 </table>
-<p><strong>Choice: Option 1, L7806CV [Power subsystem]</strong></p>
+<p><strong>Choice: Option 1, second regulator for 6 V, onsemi LM317TG [Power subsystem]</strong></p>
 <p><strong>Rationale:</strong> It is the only option that gives the motor its rated voltage while protecting the microcontroller's rail, and it adds well under a dollar. It also moved most of the heat off the L7805CV, which now needs no heatsink. See the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>.</p>
+<p><strong>Update (2026-11-03):</strong> every fixed 6 V 78xx regulator I checked is obsolete: the ST L7806CV, L7806ABV and L7806ACV, and the onsemi MC7806BTG, MC7806CTG and MC78M06CTG (DigiKey sells the onsemi parts only through a third-party marketplace). The board now uses the onsemi LM317TG adjustable regulator, which is active and in stock at DigiKey. R17 (220 Ω) and R18 (820 Ω) set its output to 1.25 V × (1 + 820/220) ≈ 5.9 V, which is 5.7–6.2 V across the reference tolerance and within the motor's 6 V rating. It is rated 1.5 A, has the same current limit and thermal shutdown, and the divider's 5.7 mA also covers its minimum load current. Its pinout is different (1 = ADJ, 2 = OUT, 3 = IN), so U6 is redrawn on the schematic.</p>
 <hr />
 <h3 id="28-actuator-b-subsystem-current-sense-signal-conditioning-added-in-the-schematic">2.8 [Actuator B subsystem] Current-sense signal conditioning (added in the schematic)</h3>
 <p>The 0.33 Ω sense resistor produces only 0 to 0.2 V at the current limit. Read directly, that uses about 6% of the 3.3 V ADC range, which is too coarse for a reliable stall threshold.</p>
@@ -1792,7 +1794,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 <tr>
 <td>SPI1 (host mode)</td>
-<td>Mode 3 (CPOL = 1, CPHA = 1), 1 MHz</td>
+<td>Mode 3 (CPOL = 1, CPHA = 1), 1 MHz (the ADXL343 allows up to 5 MHz)</td>
 <td>RC3 SCK, RC4 SDI, RC5 SDO; RD4 GPIO as chip select</td>
 </tr>
 <tr>
@@ -1803,7 +1805,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td>INT0 (external interrupt)</td>
 <td>Rising edge</td>
-<td>RB0 (LIS3DH INT1 data ready)</td>
+<td>RB0 (ADXL343 INT1 data ready)</td>
 </tr>
 <tr>
 <td>Interrupt-on-change</td>
@@ -1851,37 +1853,42 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td>Position sensor</td>
 <td>Bourns PTA2043-2015CPB103</td>
-<td>$1.84</td>
+<td>$1.78</td>
 </tr>
 <tr>
 <td>IMU</td>
-<td>LIS3DHTR</td>
-<td>$1.94</td>
+<td>ADXL343BCCZ</td>
+<td>$4.02</td>
 </tr>
 <tr>
 <td>6 V regulator (motor)</td>
-<td>L7806CV</td>
-<td>~$0.65</td>
+<td>LM317TG and its 2 resistors</td>
+<td>TECH 162</td>
 </tr>
 <tr>
 <td>5 V regulator (logic)</td>
 <td>L7805CV (no heatsink needed now)</td>
-<td>$0.65</td>
+<td>TECH 162</td>
 </tr>
 <tr>
 <td>Current-sense amplifier</td>
 <td>MCP601-I/P</td>
-<td>~$0.50</td>
+<td>$0.63</td>
 </tr>
 <tr>
 <td>Reverse-polarity diode</td>
 <td>1N5819RLG</td>
-<td>~$0.10</td>
+<td>TECH 162</td>
 </tr>
 <tr>
-<td>Fuse, barrel jack, power LED, header and passives</td>
-<td>Estimates from my Block Diagram page</td>
-<td>~$3.80</td>
+<td>0.33 Ω 1 W sense resistor and 2.2 µF VINT capacitor</td>
+<td>FMP100JR-52-0R33, FA16X7R1E225KNU06</td>
+<td>$0.88</td>
+</tr>
+<tr>
+<td>Fuse, barrel jack, LEDs, headers and other passives</td>
+<td>Common parts</td>
+<td>TECH 162</td>
 </tr>
 <tr>
 <td>9 V adapter</td>
@@ -1891,11 +1898,11 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td><strong>Total (new purchases, before shipping)</strong></td>
 <td></td>
-<td><strong>~$21.50</strong></td>
+<td><strong>$19.33</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At about $21.50 this board is slightly above that range, mainly because of the 6 V regulator and op-amp added for protection, so I should check the team total with my teammates. The fuse, jack, LED and passive costs are estimates and may be lower. Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.</p>
+<p>The team budget is $70 to $80 for four boards, an even share of $17.50 to $20.00. At $19.33 this board is inside that range. To get there I order one of each part with no spares, and I take the regulators, diodes, barrel jack, fuse, LEDs, headers and common passives from TECH 162, which do not count toward the budget. Ordering the Option 2 motor ($6.95) would save about $2, but it needs a threaded rod and coupler.</p>
 <hr />
 <h2 id="5-how-the-selected-components-meet-the-product-requirements">5. How the selected components meet the product requirements</h2>
 <p>I chose each part by first ruling out options that broke a hard constraint (the PIC18F57Q43, a 9 V linear-regulated supply, no daughter boards, US-orderable parts), then ranking the rest by cost against the board's share of the team budget, and finally by how well they serve the team requirements below.</p>
@@ -1909,7 +1916,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tbody>
 <tr>
 <td><strong>2.2</strong> Standard communication protocols</td>
-<td>UART to the hub; SPI to the LIS3DH</td>
+<td>UART to the hub; SPI to the ADXL343</td>
 </tr>
 <tr>
 <td><strong>4.4 / 5.2</strong> Off-the-shelf, replaceable parts</td>
@@ -1921,7 +1928,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 <tr>
 <td><strong>6.3</strong> Over-voltage and over-current protection</td>
-<td>1 A fuse, 1N5819 reverse-polarity diode, L7806CV/L7805CV current limit and thermal shutdown</td>
+<td>1 A fuse, 1N5819 reverse-polarity diode, LM317TG/L7805CV current limit and thermal shutdown</td>
 </tr>
 <tr>
 <td>Team budget ($70–80 for four boards)</td>
@@ -1929,7 +1936,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 <tr>
 <td>Jerk / impulse sensing (team-assigned task)</td>
-<td>LIS3DH with data-ready interrupt, fast enough to differentiate acceleration into jerk</td>
+<td>ADXL343 with data-ready interrupt, fast enough to differentiate acceleration into jerk</td>
 </tr>
 </tbody>
 </table>

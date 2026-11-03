@@ -1162,13 +1162,13 @@
 Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)</p>
 <p><strong>Page link:</strong> <a href="https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/04-Schematic/schematic/">https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/04-Schematic/schematic/</a></p>
 <h2 id="overview">Overview</h2>
-<p>This schematic is my individual subsystem board, drawn in KiCad 10. It follows my <a href="../../01-Block-Diagram/Block-Diagram/">Block Diagram</a>, <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> and <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a> pages. The board takes a position command from Preston's hub board over the ribbon cable. It drives Linear Actuator B (an N20 lead-screw gearmotor) through a DRV8833 H-bridge, closes the loop with a slide potentiometer, and reads an LIS3DH accelerometer for jerk / impulse sensing. Status and IMU data go back to the hub over UART.</p>
+<p>This schematic is my individual subsystem board, drawn in KiCad 10. It follows my <a href="../../01-Block-Diagram/Block-Diagram/">Block Diagram</a>, <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> and <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a> pages. The board takes a position command from Preston's hub board over the ribbon cable. It drives Linear Actuator B (an N20 lead-screw gearmotor) through a DRV8833 H-bridge, closes the loop with a slide potentiometer, and reads an ADXL343 accelerometer for jerk / impulse sensing. Status and IMU data go back to the hub over UART.</p>
 <ul>
-<li><strong>Power:</strong> a 9–12 V barrel jack feeds a removable 1 A fuse and a 1N5819 reverse-polarity diode. Two through-hole linear regulators share the C1/C2 input capacitors. The <strong>L7805CV (5 V logic rail)</strong> powers the Curiosity Nano and the green power LED. The <strong>L7806CV (6 V motor rail)</strong> powers only the DRV8833 and the N20 motor, which is rated 6 V. The Nano's on-board regulator (VTG) supplies 3.3 V to the IMU, the op-amp and the potentiometer. Only the motor and its driver run above 5 V; the raw 9–12 V reaches only the two regulator inputs.</li>
+<li><strong>Power:</strong> a 9–12 V barrel jack feeds a removable 1 A fuse and a 1N5819 reverse-polarity diode. Two through-hole linear regulators share the C1/C2 input capacitors. The <strong>L7805CV (5 V logic rail)</strong> powers the Curiosity Nano and the green power LED. The <strong>LM317TG (6 V motor rail, set to 5.9 V by R17 and R18)</strong> powers only the DRV8833 and the N20 motor, which is rated 6 V. The Nano's on-board regulator (VTG) supplies 3.3 V to the IMU, the op-amp and the potentiometer. Only the motor and its driver run above 5 V; the raw 9–12 V reaches only the two regulator inputs.</li>
 <li><strong>Controller:</strong> the PIC18F57Q43 Curiosity Nano, drawn as a custom symbol with my initials (KG). It is fed from 5 V through jumper JP1 and Schottky diode D3, so the Nano's USB 5 V cannot back-feed the board's 5 V rail. There are 0.1 µF bypass capacitors on VBUS and VTG.</li>
 <li><strong>Actuator with driver circuit:</strong> a DRV8833, powered from the 6 V rail through JP2, drives the motor from AIN1/AIN2 (RC2, RD0 PWM), with nSLEEP (RD1) and nFAULT (RB1). The 0.33 Ω sense resistor sets the chopping current limit at about 0.61 A, which stays within the 1 A adapter even in a fault. D6–D9 clamp the motor's back-EMF to VM and GND. JP2 isolates the 6 V motor rail for debugging.</li>
 <li><strong>Current-sense signal conditioning:</strong> a 159 Hz RC low-pass and an MCP601 non-inverting amplifier with a gain of 11 turn the 0–0.2 V sense voltage into 0–2.2 V for the ADC (RA0). A 1.6 kHz anti-alias filter follows the amplifier.</li>
-<li><strong>Sensor:</strong> an LIS3DHTR on SPI1 (RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS), with INT1 data-ready on RB0. The slide potentiometer (off-board, on J7) is filtered and read on RA1.</li>
+<li><strong>Sensor:</strong> an ADXL343BCCZ on SPI1 (RC3 SCK, RC4 SDI, RC5 SDO, RD4 CS), with INT1 data-ready on RB0. The slide potentiometer (off-board, on J7) is filtered and read on RA1.</li>
 <li><strong>Team interface:</strong> a 2x4 IDC header with pin 1 = UART RX (RC7) from the hub, pin 2 = UART TX (RC6) to the hub, and pin 8 = GND (signal reference only). Pins 3–7 are broken out on J3. No power passes through the ribbon: every teammate's board has its own supply, and the ribbon carries only the UART link.</li>
 <li><strong>Debug and expansion:</strong> two debug LEDs (RD2, RD3), a hardware-debounced push button (RD5), 13 bare PCB test pads, and two 13-pin spare GPIO headers that bring out every unused Nano I/O pin.</li>
 </ul>
@@ -1183,11 +1183,11 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <p>The team's users are robotics hobbyists and students who want a leg they can wire into their own robot, repair and modify (see the team's <a href="https://ras304-fall26-102.github.io/04-Product-Requirements/">Product Requirements</a>). This board has to move one joint on command and report how the leg is moving, safely and with parts a user can replace. The circuit does that as follows:</p>
 <ul>
 <li><strong>Moving the joint on command (user need: a leg that "just works" from simple commands).</strong> The hub sends a target position over UART (pin 1 of the ribbon, RC7). The PIC compares it with the slide-pot reading on RA1 and drives the DRV8833 with two PWM signals (RC2, RD0). Because the slide pot gives an absolute position, the joint knows where it is at power-up without a homing move.</li>
-<li><strong>Motor at its rated voltage.</strong> The L7806CV gives the 6 V motor its full rated voltage, while the L7805CV keeps the Curiosity Nano on a separate, quieter 5 V rail. Motor start-up and stall current cannot pull the microcontroller's supply down and reset it.</li>
+<li><strong>Motor at its rated voltage.</strong> The LM317TG gives the 6 V motor its full rated voltage, while the L7805CV keeps the Curiosity Nano on a separate, quieter 5 V rail. Motor start-up and stall current cannot pull the microcontroller's supply down and reset it.</li>
 <li><strong>Stall and fault protection (Req. 6.1).</strong> The 0.33 Ω sense resistor makes the DRV8833 chop the current at about 0.61 A. The MCP601 amplifies the 0–0.2 V sense voltage to 0–2.2 V so the PIC can see a stall clearly on RA0 and stop the motor before it overheats. nFAULT (RB1) reports driver over-current or over-temperature, and D6–D9 clamp back-EMF from the motor.</li>
 <li><strong>Supply protection (Req. 6.3).</strong> A removable 1 A fuse protects against shorts, the 1N5819 protects against a reversed adapter, and both regulators have internal current limits and thermal shutdown.</li>
-<li><strong>Safe state when the controller is not running (Req. 6.4).</strong> nSLEEP has a 10k pull-down, so the motor driver is off while the PIC is in reset or being programmed. The LIS3DH chip select has a pull-up so the sensor stays idle. Firmware can drop nSLEEP if hub commands stop arriving.</li>
-<li><strong>Motion sensing for the team (jerk / impulse).</strong> The LIS3DH is on SPI1 with its data-ready interrupt on RB0, so the PIC reads each new sample as soon as it is ready and computes jerk and impulse to send back to the hub over UART (RC6).</li>
+<li><strong>Safe state when the controller is not running (Req. 6.4).</strong> nSLEEP has a 10k pull-down, so the motor driver is off while the PIC is in reset or being programmed. The ADXL343 chip select has a pull-up so the sensor stays idle. Firmware can drop nSLEEP if hub commands stop arriving.</li>
+<li><strong>Motion sensing for the team (jerk / impulse).</strong> The ADXL343 is on SPI1 with its data-ready interrupt on RB0, so the PIC reads each new sample as soon as it is ready and computes jerk and impulse to send back to the hub over UART (RC6).</li>
 <li><strong>Standard interfaces (Req. 2.2).</strong> UART to the hub over the class-standard 2x4 ribbon header, and SPI to the on-board accelerometer.</li>
 <li><strong>Repairable and modifiable (Req. 4.3, 4.4, 5.2).</strong> The motor (J4) and slide pot (J7) plug into headers, the fuse sits in clips, nearly every part is through-hole, and every unused Nano pin is broken out on J5 and J6. JP1 and JP2 let a user isolate the Nano or the motor rail while debugging, and the test pads, debug LEDs and button make bring-up easier.</li>
 </ul>
@@ -1213,9 +1213,9 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <td>1 = IN, 2 = GND, 3 = OUT (TO-220)</td>
 </tr>
 <tr>
-<td><code>L7806CV_KG</code></td>
-<td>ST L7806CV</td>
-<td>1 = IN, 2 = GND, 3 = OUT (TO-220)</td>
+<td><code>LM317_KG</code></td>
+<td>onsemi LM317TG</td>
+<td>1 = ADJ, 2 = OUT, 3 = IN (TO-220)</td>
 </tr>
 <tr>
 <td><code>DRV8833PWPR_KG</code></td>
@@ -1223,9 +1223,9 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <td>HTSSOP-16 with PowerPAD (pin 17) to GND</td>
 </tr>
 <tr>
-<td><code>LIS3DHTR_KG</code></td>
-<td>ST LIS3DHTR</td>
-<td>LGA-16</td>
+<td><code>ADXL343BCCZ_KG</code></td>
+<td>Analog Devices ADXL343BCCZ</td>
+<td>LGA-14 (3 × 5 mm); RES pin 3 left open, RES pin 11 to GND through R16</td>
 </tr>
 <tr>
 <td><code>MCP601_KG</code></td>
@@ -1357,8 +1357,8 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <tr>
 <td>C11</td>
 <td>2.2uF 25V</td>
-<td>KEMET</td>
-<td>C320C225K3R5TA</td>
+<td>TDK</td>
+<td>FA16X7R1E225KNU06</td>
 <td>1</td>
 </tr>
 <tr>
@@ -1475,9 +1475,9 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 <tr>
 <td>R8</td>
-<td>0.33R 1W 1%</td>
-<td>Ohmite</td>
-<td>41FR33E</td>
+<td>0.33R 1W 5%</td>
+<td>YAGEO</td>
+<td>FMP100JR-52-0R33</td>
 <td>1</td>
 </tr>
 <tr>
@@ -1492,6 +1492,20 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <td>4.7k 1/4W</td>
 <td>Stackpole</td>
 <td>CF14JT4K70</td>
+<td>1</td>
+</tr>
+<tr>
+<td>R17</td>
+<td>220R 1/4W</td>
+<td>Stackpole</td>
+<td>CF14JT220R</td>
+<td>1</td>
+</tr>
+<tr>
+<td>R18</td>
+<td>820R 1/4W</td>
+<td>Stackpole</td>
+<td>CF14JT820R</td>
 <td>1</td>
 </tr>
 <tr>
@@ -1531,16 +1545,16 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 <tr>
 <td>U5</td>
-<td>LIS3DHTR</td>
-<td>STMicroelectronics</td>
-<td>LIS3DHTR</td>
+<td>ADXL343BCCZ</td>
+<td>Analog Devices</td>
+<td>ADXL343BCCZ</td>
 <td>1</td>
 </tr>
 <tr>
 <td>U6</td>
-<td>L7806CV</td>
-<td>STMicroelectronics</td>
-<td>L7806CV</td>
+<td>LM317TG</td>
+<td>onsemi</td>
+<td>LM317TG</td>
 <td>1</td>
 </tr>
 <tr>
@@ -1557,23 +1571,23 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <ul>
 <li><strong>Test points:</strong> bare PCB pads cost nothing, instead of about $0.35 each for purchased test points.</li>
 <li><strong>Headers and jumpers:</strong> all are cut from one 40-pin break-away strip.</li>
-<li><strong>Heatsink:</strong> the L7805CV now carries only the Nano and the LED (about 0.1 A), so it needs no heatsink. Only the L7806CV, which carries the motor current, may need a small TO-220 heatsink, and only with a 12 V adapter (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>).</li>
+<li><strong>Heatsink:</strong> the L7805CV now carries only the Nano and the LED (about 0.1 A), so it needs no heatsink. Only the LM317TG, which carries the motor current, gets a small TO-220 heatsink: at the stall-current design point it runs close to its 125 °C limit without one, and a 12 V adapter makes a heatsink necessary (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>).</li>
 </ul>
-<p>New items compared with Component Selection: the L7806CV, the MCP601-I/P, the 41FR33E sense resistor (the most expensive passive) and six 1N5819 diodes, about $4–5 in total. Passives and headers should come from lab stock where possible, and the full part list is on the <a href="../../03-BOM/BOM/">BOM</a> page.</p>
+<p>New items compared with Component Selection: the 6 V regulator, the MCP601-I/P, the 0.33 Ω 1 W sense resistor and six 1N5819 diodes, about $4–5 in total. Passives and headers should come from lab stock where possible, and the full part list is on the <a href="../../03-BOM/BOM/">BOM</a> page.</p>
 <h2 id="design-checks">Design checks</h2>
 <ul>
 <li><strong>ERC:</strong> KiCad ERC passes with 0 errors and 1 warning. The warning is the DRV8833's unused bridge-B sense pin (BISEN, bidirectional) tied to GND, where the GND PWR_FLAG sits; this is expected.</li>
 <li><strong>Capacitor voltage margin (at least 25%):</strong> 50 V ceramics on every rail; 47 µF / 25 V on 9–12 V; 10 µF / 25 V electrolytics and the 2.2 µF / 25 V VINT ceramic on 5 V and lower.</li>
 <li><strong>Test pads:</strong> TP1–TP13 are bare PCB pads, so they are not in the BOM.</li>
-<li><strong>Through-hole parts:</strong> every component is through-hole except the DRV8833PWPR (HTSSOP-16) and the LIS3DHTR (LGA-16). Neither comes in a through-hole package; both were accepted on my Component Selection page.</li>
+<li><strong>Through-hole parts:</strong> every component is through-hole except the DRV8833PWPR (HTSSOP-16) and the ADXL343BCCZ (LGA-14). Neither comes in a through-hole package; both were accepted on my Component Selection page.</li>
 <li><strong>Resistor power margin (at least 50%):</strong> sense resistor 0.61² × 0.33 = 0.12 W, rated 1 W. All other resistors dissipate less than 10 mW and are rated 1/4 W.</li>
-<li><strong>Unused inputs:</strong> DRV8833 BIN1/BIN2 and the LIS3DH ADC1–3 inputs are pulled down through 10k. LIS3DH CS has a 10k pull-up and DRV8833 nSLEEP a 10k pull-down, so both stay in a safe state while the MCU is in reset.</li>
+<li><strong>Unused inputs:</strong> DRV8833 BIN1/BIN2 are pulled down through 10k, and the ADXL343 reserved pin 11 goes to GND through R16 (10k). ADXL343 CS has a 10k pull-up and DRV8833 nSLEEP a 10k pull-down, so both stay in a safe state while the MCU is in reset.</li>
 </ul>
 <h2 id="open-items-before-the-pcb-assignment">Open items before the PCB assignment</h2>
 <ol>
 <li>Check the Curiosity Nano header numbering against the hardware user guide before assigning the footprint (the Nano and the PJ-002A barrel jack have no library footprint yet).</li>
 <li>Breadboard the DRV8833 current-sense amplifier and confirm the gain and the stall threshold with the real motor.</li>
-<li>Decide on the optional L7806CV heatsink after measuring its temperature; it is required only if a 12 V adapter is used (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>).</li>
+<li>Fit the LM317TG heatsink, and check its temperature once the board runs; with a 12 V adapter it is required (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>).</li>
 </ol>
 
 
