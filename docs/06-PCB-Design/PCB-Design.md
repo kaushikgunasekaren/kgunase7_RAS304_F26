@@ -17,7 +17,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)
 This is the PCB layout of my [schematic](../04-Schematic/schematic.md), drawn in KiCad 10 and checked against the course rules (Peralta PCB mill specs and the RAS KiCad design-rule setup). It will be made by JLCPCB through the class order.
 
 * **Board:** 98.0 × 98.0 mm, 2 copper layers (0.5 oz), solder mask and silkscreen, four plated M3 mounting holes (tied to GND) in the corners.
-* **Identification:** "KG TEAM 102" in bold 2.5 mm text on the top silkscreen (under the Curiosity Nano), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).
+* **Identification:** "KG TEAM 102" in bold 3.5 mm text on the top silkscreen (in the open channel under the Curiosity Nano, the largest clear area on the board), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).
 * **Ground:** a GND pour on both layers, tied together with stitching vias.
 
 ![Top of the PCB (3D view)](PCB-3D-top-KG.png)
@@ -94,10 +94,9 @@ The first upload of the Gerber files to [JLCDFM](https://dfm.jlcdfm.com/) report
 | Silkscreen line width 0.12 mm (Warning) | KiCad library default | All silkscreen lines and text strokes 0.15 mm |
 | PTH without pad (Warning ×8) | Unplated M3 holes in the plated drill file | Plated M3 mounting holes with a pad, tied to GND |
 
-After the fixes, KiCad DRC is still clean (0 errors, 0 warnings, 0 unconnected, 0 parity issues).
+After the fixes, KiCad DRC is still clean (0 errors, 0 warnings, 0 unconnected, 0 parity issues), and JLCDFM reports **0 Danger (manufacturing) errors**: 2 layers, 98 × 98 mm, closed board outline, and the name/team text is legible. The remaining JLCDFM warnings are advisory: silkscreen at JLCPCB's 0.15 mm minimum width and clearance, sharp corners in the copper TOP/BOTTOM text, and the DRV8833's reduced PowerPAD mask opening from the TI land pattern.
 
 ## Open items before ordering
 
 1. Print the board 1:1 and place the real parts on the printout, especially the Curiosity Nano (row spacing), the PJ-002A jack, the IDC header and the fuse clips.
-2. Re-run the JLCDFM check on the final Gerber ZIP.
-3. Check that the LM317TG heatsink fits behind U6 (see the [Power Budget](../05-Power-Budget/Power-Budget.md)).
+2. Check that the LM317TG heatsink fits behind U6 (see the [Power Budget](../05-Power-Budget/Power-Budget.md)).
