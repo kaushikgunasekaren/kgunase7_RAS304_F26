@@ -1198,7 +1198,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <p>This is the PCB layout of my <a href="../../04-Schematic/schematic/">schematic</a>, drawn in KiCad 10 and checked against the course rules (Peralta PCB mill specs and the RAS KiCad design-rule setup). It will be made by JLCPCB through the class order.</p>
 <ul>
 <li><strong>Board:</strong> 98.0 × 98.0 mm, 2 copper layers (0.5 oz), solder mask and silkscreen, four plated M3 mounting holes (tied to GND) in the corners.</li>
-<li><strong>Identification:</strong> "KG TEAM 102" in bold 2.5 mm text on the top silkscreen (under the Curiosity Nano), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).</li>
+<li><strong>Identification:</strong> "KG TEAM 102" in bold 3.5 mm text on the top silkscreen (in the open channel under the Curiosity Nano, the largest clear area on the board), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).</li>
 <li><strong>Ground:</strong> a GND pour on both layers, tied together with stitching vias.</li>
 </ul>
 <p><a class="glightbox" href="../PCB-3D-top-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Top of the PCB (3D view)" src="../PCB-3D-top-KG.png" /></a>
@@ -1372,11 +1372,10 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 </tbody>
 </table>
-<p>After the fixes, KiCad DRC is still clean (0 errors, 0 warnings, 0 unconnected, 0 parity issues).</p>
+<p>After the fixes, KiCad DRC is still clean (0 errors, 0 warnings, 0 unconnected, 0 parity issues), and JLCDFM reports <strong>0 Danger (manufacturing) errors</strong>: 2 layers, 98 × 98 mm, closed board outline, and the name/team text is legible. The remaining JLCDFM warnings are advisory: silkscreen at JLCPCB's 0.15 mm minimum width and clearance, sharp corners in the copper TOP/BOTTOM text, and the DRV8833's reduced PowerPAD mask opening from the TI land pattern.</p>
 <h2 id="open-items-before-ordering">Open items before ordering</h2>
 <ol>
 <li>Print the board 1:1 and place the real parts on the printout, especially the Curiosity Nano (row spacing), the PJ-002A jack, the IDC header and the fuse clips.</li>
-<li>Re-run the JLCDFM check on the final Gerber ZIP.</li>
 <li>Check that the LM317TG heatsink fits behind U6 (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>).</li>
 </ol>
 
