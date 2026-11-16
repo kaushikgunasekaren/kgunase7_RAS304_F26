@@ -1198,7 +1198,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <p>This is the PCB layout of my <a href="../../04-Schematic/schematic/">schematic</a>, drawn in KiCad 10 and checked against the course rules (Peralta PCB mill specs and the RAS KiCad design-rule setup). It will be made by JLCPCB through the class order.</p>
 <ul>
 <li><strong>Board:</strong> 98.0 × 98.0 mm, 2 copper layers (0.5 oz), solder mask and silkscreen, four plated M3 mounting holes (tied to GND) in the corners.</li>
-<li><strong>Identification:</strong> "KG TEAM 102" in bold 3.5 mm text on the top silkscreen (in the open channel under the Curiosity Nano, the largest clear area on the board), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).</li>
+<li><strong>Identification:</strong> "KG TEAM 102" in bold 4 mm text on the top silkscreen (in the open channel between the Curiosity Nano header rows, the largest clear area on the board), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).</li>
 <li><strong>Ground:</strong> a GND pour on both layers, tied together with stitching vias.</li>
 </ul>
 <p><a class="glightbox" href="../PCB-3D-top-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Top of the PCB (3D view)" src="../PCB-3D-top-KG.png" /></a>
@@ -1331,7 +1331,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <li><strong>Curiosity Nano footprint:</strong> two rows of 28 pins, 0.1 in pitch, rows 0.6 in (15.24 mm) apart, numbered 1–28 down the left row and 29–56 up the right row (matching the <code>PIC18F57Q43_Curiosity_Nano_KG</code> symbol). The board outline (20.32 × 83.82 mm) and USB end are drawn on the silkscreen. The row spacing and outline match the 56-pin Curiosity Nano board-outline drawing in Microchip's <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/BoardDesignFiles/AVR128DB48-Curiosity-Nano-Schematics.pdf">AVR128DB48 Curiosity Nano schematics</a>, which uses the same edge connector.</li>
 <li><strong>Decoupling:</strong> C1/C2 at the regulator inputs, C3/C4 at the outputs, C10/C9 at the DRV8833 VM pin, C14/C16 beside the ADXL343, C18 at the MCP601.</li>
 <li><strong>Test points:</strong> 13 test pads (TP1–TP13) on the power rails, UART, motor outputs and analog signals, plus GND pads.</li>
-<li><strong>No vias under ICs or other parts</strong>, except in the open area under the plugged-in Curiosity Nano, which sits about 8.5 mm above the board on its sockets.</li>
+<li><strong>Vias:</strong> no vias under any part (including the Curiosity Nano). The board was re-routed to keep the via count low: 49 signal vias, plus GND stitching vias that tie the two ground pours together.</li>
 <li><strong>Mechanical:</strong> M3 holes in all four corners; the barrel jack and motor header are at the board edges.</li>
 </ul>
 <h2 id="jlcdfm-check">JLCDFM check</h2>
