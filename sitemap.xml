@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/01-Block-Diagram/Block-Diagram/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/02-Component-Selection/Component-Selection/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/03-BOM/BOM/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/04-Schematic/schematic/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/05-Power-Budget/Power-Budget/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
+    </url>
+    <url>
+         <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/</loc>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/Appendix/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/Appendix/another-subfile/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/Appendix/basic-markdown-examples/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/Appendix/charts/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
     <url>
          <loc>https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/Appendix/esp-32-table/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-16</lastmod>
     </url>
 </urlset>

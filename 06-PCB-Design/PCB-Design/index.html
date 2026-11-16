@@ -1,0 +1,1488 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta name="robots" content="nofollow" />
+
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/">
+      
+      
+        <link rel="prev" href="../../05-Power-Budget/Power-Budget/">
+      
+      
+        <link rel="next" href="../../Appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../static/logo304.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+            
+
+    
+
+    
+      
+        <title>PCB Design - RAS 304 Kaushik Gunasekaren Data Sheet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pcb-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RAS 304 Kaushik Gunasekaren Data Sheet" class="md-header__button md-logo" aria-label="RAS 304 Kaushik Gunasekaren Data Sheet" data-md-component="logo">
+      
+  <img src="../../static/logo304.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RAS 304 Kaushik Gunasekaren Data Sheet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PCB Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-Block-Diagram/Block-Diagram/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  01 Block Diagram
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02-Component-Selection/Component-Selection/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  02 Component Selection
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03-BOM/BOM/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  03 BOM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04-Schematic/schematic/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  04 Schematic
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05-Power-Budget/Power-Budget/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  05 Power Budget
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  06 PCB Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Appendix/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RAS 304 Kaushik Gunasekaren Data Sheet" class="md-nav__button md-logo" aria-label="RAS 304 Kaushik Gunasekaren Data Sheet" data-md-component="logo">
+      
+  <img src="../../static/logo304.svg" alt="logo">
+
+    </a>
+    RAS 304 Kaushik Gunasekaren Data Sheet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../01-Block-Diagram/Block-Diagram/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Block Diagram
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../02-Component-Selection/Component-Selection/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Component Selection
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../03-BOM/BOM/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 BOM
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../04-Schematic/schematic/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Schematic
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../05-Power-Budget/Power-Budget/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Power Budget
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 PCB Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 PCB Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCB Design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCB Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-rules-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design rules used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jlcdfm-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JLCDFM check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-items-before-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open items before ordering
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../Appendix/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-rules-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design rules used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jlcdfm-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JLCDFM check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-items-before-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open items before ordering
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    06 PCB Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kaushikgunasekaren/kgunase7_RAS304_F26/edit/main/docs/06-PCB-Design/PCB-Design.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="pcb-design">PCB Design</h1>
+<p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU</strong>
+Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)</p>
+<p><strong>Page link:</strong> <a href="https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/">https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/</a></p>
+<h2 id="overview">Overview</h2>
+<p>This is the PCB layout of my <a href="../../04-Schematic/schematic/">schematic</a>, drawn in KiCad 10 and checked against the course rules (Peralta PCB mill specs and the RAS KiCad design-rule setup). It will be made by JLCPCB through the class order.</p>
+<ul>
+<li><strong>Board:</strong> 98.0 × 98.0 mm, 2 copper layers (0.5 oz), solder mask and silkscreen, four plated M3 mounting holes (tied to GND) in the corners.</li>
+<li><strong>Identification:</strong> "KG TEAM 102" in bold 2.5 mm text on the top silkscreen (under the Curiosity Nano), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).</li>
+<li><strong>Ground:</strong> a GND pour on both layers, tied together with stitching vias.</li>
+</ul>
+<p><a class="glightbox" href="../PCB-3D-top-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Top of the PCB (3D view)" src="../PCB-3D-top-KG.png" /></a>
+<strong>Figure 1:</strong> Top of the board (KiCad 3D view).</p>
+<p><a class="glightbox" href="../PCB-3D-bottom-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Bottom of the PCB (3D view)" src="../PCB-3D-bottom-KG.png" /></a>
+<strong>Figure 2:</strong> Bottom of the board (KiCad 3D view).</p>
+<p><a class="glightbox" href="../PCB-Layout-Front-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Front layout: top copper, mask and silkscreen" src="../PCB-Layout-Front-KG.png" /></a>
+<strong>Figure 3:</strong> Front layout (F.Cu, F.Mask, F.Silkscreen, board outline).</p>
+<p><a class="glightbox" href="../PCB-Layout-Back-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Back layout: bottom copper, mask and silkscreen" src="../PCB-Layout-Back-KG.png" /></a>
+<strong>Figure 4:</strong> Back layout (B.Cu, B.Mask, B.Silkscreen, board outline), shown mirrored as seen from the bottom.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>PDF of the front and back layout: <a href="../PCB-Layout-Front-Back-KG.pdf"><em>here</em></a>.</li>
+<li>ZIP of the complete KiCad project (schematic, PCB, design rules, custom symbol library <code>RAS304_KG.kicad_sym</code> and footprint library <code>RAS304_KG.pretty</code>): <a href="../Subsystem-PCB-KG-ECAD.zip"><em>here</em></a>.</li>
+<li>ZIP of the Gerber and drill files sent to JLCPCB: <a href="../Gunasekaren_Kaushik_Team102.zip"><em>here</em></a>.</li>
+<li>KiCad DRC result: <a href="../Gunasekaren_Kaushik_DRC.png"><em>here</em></a>.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<p>The Curiosity Nano sits in the middle of the board on two 1×28 female headers, with its USB connector at the top edge. Each group of parts sits on the side of the Nano where its pins are:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Parts</th>
+<th>Why there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top left</td>
+<td>Barrel jack J1 (opening at the board edge), fuse F1, D1, L7805CV (U2), LM317TG (U6), their capacitors, power LED</td>
+<td>The jack is reachable from the edge, and the input, regulators and their input/output capacitors stay close together</td>
+</tr>
+<tr>
+<td>Left middle</td>
+<td>ADXL343 (U5) with C14/C16, ribbon header J2 and J3, UART test pads, debug LEDs</td>
+<td>The SPI, UART and LED pins are on the Nano's left row</td>
+</tr>
+<tr>
+<td>Bottom left</td>
+<td>DRV8833 (U3) with C8–C11, flyback diodes D6–D9, motor header J4, sense resistor R8</td>
+<td>Short, wide motor and VM paths; the motor header is at the board edge</td>
+</tr>
+<tr>
+<td>Top right</td>
+<td>JP1, D3, C5 (VBUS feed), C17/C6 on 3.3 V</td>
+<td>Next to the Nano's VBUS and VTG pins</td>
+</tr>
+<tr>
+<td>Right</td>
+<td>Pot header J7 with R14/C15, button SW1 with R4/R5/C7, MCP601 current-sense amplifier (U4) with R10–R13</td>
+<td>Next to the ADC (RA0, RA1) and button (RD5) pins on the Nano's right row</td>
+</tr>
+<tr>
+<td>Along the Nano</td>
+<td>Spare-GPIO headers J6 (right) and J5 (bottom, across both rows)</td>
+<td>Short runs from each spare pin</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rules-used">Design rules used</h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum clearance</td>
+<td>10 mil (0.254 mm)</td>
+<td>RAS KiCad DRC setup</td>
+</tr>
+<tr>
+<td>Minimum track width</td>
+<td>15 mil (0.381 mm), used for signals</td>
+<td>Peralta signal minimum</td>
+</tr>
+<tr>
+<td>Power and ground tracks</td>
+<td>40 mil (1.016 mm)</td>
+<td>Peralta / PCB checklist</td>
+</tr>
+<tr>
+<td>Minimum annular ring</td>
+<td>15 mil (0.381 mm)</td>
+<td>RAS KiCad DRC setup</td>
+</tr>
+<tr>
+<td>Minimum via / hole</td>
+<td>19.7 mil (0.5 mm)</td>
+<td>Peralta</td>
+</tr>
+<tr>
+<td>Vias used</td>
+<td>1.27 mm pad, 0.5 mm drill (16 mil ring)</td>
+<td>Meets the annular-ring rule</td>
+</tr>
+<tr>
+<td>Copper to hole</td>
+<td>10 mil</td>
+<td>RAS KiCad DRC setup</td>
+</tr>
+<tr>
+<td>Hole to hole</td>
+<td>31.5 mil (0.8 mm)</td>
+<td>RAS KiCad DRC setup</td>
+</tr>
+<tr>
+<td>Solder mask clearance</td>
+<td>5 mil; 0.05 mm on C2/C9/C17 and 0 on the U3/U5 pads (see JLCDFM check)</td>
+<td>RAS KiCad DRC setup</td>
+</tr>
+<tr>
+<td>Drill sizes</td>
+<td>0.5, 0.8, 0.9, 1.0, 1.2, 1.8 mm (+ 3.2 mm plated mounting holes)</td>
+<td>Peralta drill list</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fine-pitch exception.</strong> The DRV8833 (HTSSOP-16, 0.65 mm pitch) and the ADXL343 (LGA-14, 0.8 mm pitch) have 0.20–0.25 mm gaps between their own pads, below the 10 mil rule. Neither part comes in a through-hole package (see <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a>). A custom rule (<code>fine_pitch_pads_KG</code> in <code>Subsystem_PCB_KG.kicad_dru</code>) allows 0.15 mm between those two parts' pads and the tracks next to them only, which JLCPCB can make (0.1 mm minimum). The GND pour keeps its normal 0.3 mm clearance there, and everywhere else the 10 mil rule applies.</p>
+<p><strong>Trace widths.</strong> Power nets (+9 V, +6 V, +5 V, +3.3 V, VBUS, VM, motor outputs, current sense) are in a "Power" net class at 40 mil. At 0.5 oz copper a 15 mil trace carries about 500 mA (Peralta note). The motor current is limited to about 0.61 A by the DRV8833 current chopping, so the motor paths are 40 mil except for short 15 mil stubs into the DRV8833's 0.4 mm-wide pins, and the 3.3 V spurs to the low-current IMU pins.</p>
+<h2 id="design-checks">Design checks</h2>
+<ul>
+<li><strong>DRC:</strong> KiCad DRC passes with <strong>0 errors, 0 warnings, 0 unconnected items and 0 schematic-parity issues</strong> (<a href="../Gunasekaren_Kaushik_DRC.png">result</a>).</li>
+<li><strong>Board size:</strong> 98.0 × 98.0 mm (inside the 100 × 100 mm limit), measured on the board outline (Edge.Cuts).</li>
+<li><strong>Footprints:</strong> every component has a footprint. Custom footprints are in <code>RAS304_KG.pretty</code> and carry my initials: <code>PIC18F57Q43_Curiosity_Nano_Socket_KG</code>, <code>BarrelJack_CUI_PJ-002A_KG</code>, <code>_KG</code> copies of the header, IDC, TO-220, DO-41, push-button and fuse-clip footprints with pads sized for the 15 mil annular ring, and <code>_KG</code> copies of the axial resistor, 5 mm LED, radial electrolytic and test-pad footprints with the silkscreen pulled back from the pads (JLCDFM check).</li>
+<li><strong>Curiosity Nano footprint:</strong> two rows of 28 pins, 0.1 in pitch, rows 0.6 in (15.24 mm) apart, numbered 1–28 down the left row and 29–56 up the right row (matching the <code>PIC18F57Q43_Curiosity_Nano_KG</code> symbol). The board outline (20.32 × 83.82 mm) and USB end are drawn on the silkscreen. The row spacing and outline match the 56-pin Curiosity Nano board-outline drawing in Microchip's <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/BoardDesignFiles/AVR128DB48-Curiosity-Nano-Schematics.pdf">AVR128DB48 Curiosity Nano schematics</a>, which uses the same edge connector.</li>
+<li><strong>Decoupling:</strong> C1/C2 at the regulator inputs, C3/C4 at the outputs, C10/C9 at the DRV8833 VM pin, C14/C16 beside the ADXL343, C18 at the MCP601.</li>
+<li><strong>Test points:</strong> 13 test pads (TP1–TP13) on the power rails, UART, motor outputs and analog signals, plus GND pads.</li>
+<li><strong>No vias under ICs or other parts</strong>, except in the open area under the plugged-in Curiosity Nano, which sits about 8.5 mm above the board on its sockets.</li>
+<li><strong>Mechanical:</strong> M3 holes in all four corners; the barrel jack and motor header are at the board edges.</li>
+</ul>
+<h2 id="jlcdfm-check">JLCDFM check</h2>
+<p>The first upload of the Gerber files to <a href="https://dfm.jlcdfm.com/">JLCDFM</a> reported these problems, which were fixed before the final Gerber ZIP above was made:</p>
+<table>
+<thead>
+<tr>
+<th>JLCDFM result</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solder-mask bridge 0.1 mm (Danger ×10)</td>
+<td>0.05 mm mask expansion on the ADXL343's 0.2 mm pad gaps left 0.1 mm mask webs</td>
+<td>Mask expansion set to 0 on U5 and U3, so the webs equal the pad gaps (0.2 mm and 0.25 mm); 0.05 mm on the closely spaced pads of C2/C9/C17</td>
+</tr>
+<tr>
+<td>Copper spacing 0.1 mm (Danger ×1, Warning ×20)</td>
+<td>The fine-pitch 0.15 mm rule also applied to the GND pour, which flowed into U3/U5 as thin slivers</td>
+<td>Rule limited to pads and tracks; the pour keeps 0.3 mm</td>
+</tr>
+<tr>
+<td>Silkscreen to pad / to hole 0 mm (Danger)</td>
+<td>Footprint outlines and reference text touching pad mask openings, vias and holes</td>
+<td>Silkscreen pulled back at least 0.15 mm from every mask opening and drill hole; labels moved to clear spots</td>
+</tr>
+<tr>
+<td>Silkscreen line width 0.12 mm (Warning)</td>
+<td>KiCad library default</td>
+<td>All silkscreen lines and text strokes 0.15 mm</td>
+</tr>
+<tr>
+<td>PTH without pad (Warning ×8)</td>
+<td>Unplated M3 holes in the plated drill file</td>
+<td>Plated M3 mounting holes with a pad, tied to GND</td>
+</tr>
+</tbody>
+</table>
+<p>After the fixes, KiCad DRC is still clean (0 errors, 0 warnings, 0 unconnected, 0 parity issues).</p>
+<h2 id="open-items-before-ordering">Open items before ordering</h2>
+<ol>
+<li>Print the board 1:1 and place the real parts on the printout, especially the Curiosity Nano (row spacing), the PJ-002A jack, the IDC header and the fuse clips.</li>
+<li>Re-run the JLCDFM check on the final Gerber ZIP.</li>
+<li>Check that the LM317TG heatsink fits behind U6 (see the <a href="../../05-Power-Budget/Power-Budget/">Power Budget</a>).</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../05-Power-Budget/Power-Budget/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Power Budget">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Power Budget
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../Appendix/" class="md-footer__link md-footer__link--next" aria-label="Next: Appendix - Main Page">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Appendix - Main Page
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kaushik Gunasekaren, Team 102
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.follow", "navigation.top", "navigation.path", "navigation.indexes", "navigation.prune", "content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
