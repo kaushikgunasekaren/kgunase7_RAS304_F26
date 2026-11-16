@@ -37,7 +37,7 @@ This schematic is my individual subsystem board, drawn in KiCad 10. It follows m
 The circuit is unchanged. These schematic edits were made while laying out the board:
 
 * **Footprints assigned to every part.** The Curiosity Nano (U1) and the PJ-002A barrel jack (J1) now use custom footprints from my footprint library `RAS304_KG.pretty`, named with my initials (KG).
-* **Footprint copies for the course design rules.** The pin headers, IDC header, TO-220 regulators, 1N5819 diodes, push button and fuse clips use `_KG` copies of the KiCad footprints with larger pads or standard drill sizes, so every pad meets the 15 mil annular-ring rule and the Peralta drill list.
+* **Footprint copies for the course design rules.** The pin headers, IDC header, TO-220 regulators, 1N5819 diodes, push button and fuse clips use `_KG` copies of the KiCad footprints with larger pads or standard drill sizes, so every pad meets the 15 mil annular-ring rule and the Peralta drill list. The axial resistors, 5 mm LEDs, radial electrolytics and test pads use `_KG` copies with the silkscreen pulled back from the pads (from the JLCDFM check).
 * **DRV8833 footprint.** The DRV8833 now uses the HTSSOP-16 PowerPAD footprint without the 0.3 mm thermal vias, which are smaller than the 0.5 mm minimum hole. The PowerPAD connects to the top ground pour.
 * **Test pads on the board.** TP1–TP13 were marked "exclude from board". They are now placed on the PCB and still excluded from the BOM (they are bare pads with no part).
 * **ERC:** still 0 errors and 1 warning (the BISEN / PWR_FLAG warning explained below).
@@ -148,6 +148,6 @@ New items compared with Component Selection: the 6 V regulator, the MCP601-I/P, 
 
 ## Open items
 
-1. Done for the PCB: the Curiosity Nano and PJ-002A footprints were made (see [PCB Design](../06-PCB-Design/PCB-Design.md)). The Nano's 0.6 in row spacing still has to be checked against the real board on a 1:1 printout.
+1. Done for the PCB: the Curiosity Nano and PJ-002A footprints were made (see [PCB Design](../06-PCB-Design/PCB-Design.md)). The Nano's 0.6 in row spacing matches Microchip's 56-pin Curiosity Nano board-outline drawing; a final fit check on a 1:1 printout is still planned.
 2. Breadboard the DRV8833 current-sense amplifier and confirm the gain and the stall threshold with the real motor.
 3. Fit the LM317TG heatsink, and check its temperature once the board runs; with a 12 V adapter it is required (see the [Power Budget](../05-Power-Budget/Power-Budget.md)).
