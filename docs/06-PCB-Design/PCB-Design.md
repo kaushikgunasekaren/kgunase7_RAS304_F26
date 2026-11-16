@@ -17,7 +17,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)
 This is the PCB layout of my [schematic](../04-Schematic/schematic.md), drawn in KiCad 10 and checked against the course rules (Peralta PCB mill specs and the RAS KiCad design-rule setup). It will be made by JLCPCB through the class order.
 
 * **Board:** 98.0 × 98.0 mm, 2 copper layers (0.5 oz), solder mask and silkscreen, four plated M3 mounting holes (tied to GND) in the corners.
-* **Identification:** "KG TEAM 102" in bold 3.5 mm text on the top silkscreen (in the open channel under the Curiosity Nano, the largest clear area on the board), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).
+* **Identification:** "KG TEAM 102" in bold 4 mm text on the top silkscreen (in the open channel between the Curiosity Nano header rows, the largest clear area on the board), and copper labels "TOP KG T102" (F.Cu) and "BOTTOM KG T102" (B.Cu).
 * **Ground:** a GND pour on both layers, tied together with stitching vias.
 
 ![Top of the PCB (3D view)](PCB-3D-top-KG.png)
@@ -79,7 +79,7 @@ The Curiosity Nano sits in the middle of the board on two 1×28 female headers, 
 * **Curiosity Nano footprint:** two rows of 28 pins, 0.1 in pitch, rows 0.6 in (15.24 mm) apart, numbered 1–28 down the left row and 29–56 up the right row (matching the `PIC18F57Q43_Curiosity_Nano_KG` symbol). The board outline (20.32 × 83.82 mm) and USB end are drawn on the silkscreen. The row spacing and outline match the 56-pin Curiosity Nano board-outline drawing in Microchip's [AVR128DB48 Curiosity Nano schematics](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/BoardDesignFiles/AVR128DB48-Curiosity-Nano-Schematics.pdf), which uses the same edge connector.
 * **Decoupling:** C1/C2 at the regulator inputs, C3/C4 at the outputs, C10/C9 at the DRV8833 VM pin, C14/C16 beside the ADXL343, C18 at the MCP601.
 * **Test points:** 13 test pads (TP1–TP13) on the power rails, UART, motor outputs and analog signals, plus GND pads.
-* **No vias under ICs or other parts**, except in the open area under the plugged-in Curiosity Nano, which sits about 8.5 mm above the board on its sockets.
+* **Vias:** no vias under any part (including the Curiosity Nano). The board was re-routed to keep the via count low: 49 signal vias, plus GND stitching vias that tie the two ground pours together.
 * **Mechanical:** M3 holes in all four corners; the barrel jack and motor header are at the board edges.
 
 ## JLCDFM check
