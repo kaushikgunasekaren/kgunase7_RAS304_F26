@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../static/logo304.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
             
 
     
@@ -711,10 +711,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#digikey-purchase-request-1" class="md-nav__link">
+  <a href="#digikey-purchase-request-1-2-day-shipping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DigiKey (purchase request 1)
+        DigiKey (purchase request 1, 2-day shipping)
       
     </span>
   </a>
@@ -722,10 +722,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dfrobot-purchase-request-2" class="md-nav__link">
+  <a href="#amazon-purchase-request-2-prime-12-day-delivery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DFRobot (purchase request 2)
+        Amazon (purchase request 2, Prime 1–2 day delivery)
       
     </span>
   </a>
@@ -749,10 +749,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#changes-from-the-original-design" class="md-nav__link">
+  <a href="#revision-2-changes-2026-11-23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Changes from the original design
+        Revision 2 changes (2026-11-23)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-from-the-original-design-2026-11-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes from the original design (2026-11-03)
       
     </span>
   </a>
@@ -1064,10 +1075,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#digikey-purchase-request-1" class="md-nav__link">
+  <a href="#digikey-purchase-request-1-2-day-shipping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DigiKey (purchase request 1)
+        DigiKey (purchase request 1, 2-day shipping)
       
     </span>
   </a>
@@ -1075,10 +1086,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dfrobot-purchase-request-2" class="md-nav__link">
+  <a href="#amazon-purchase-request-2-prime-12-day-delivery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DFRobot (purchase request 2)
+        Amazon (purchase request 2, Prime 1–2 day delivery)
       
     </span>
   </a>
@@ -1102,10 +1113,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#changes-from-the-original-design" class="md-nav__link">
+  <a href="#revision-2-changes-2026-11-23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Changes from the original design
+        Revision 2 changes (2026-11-23)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-from-the-original-design-2026-11-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes from the original design (2026-11-03)
       
     </span>
   </a>
@@ -1199,18 +1221,19 @@
   <h1>Bill of Materials</h1>
 
 <h2 id="overview">Overview</h2>
-<p>This is the bill of materials for my individual board (Driver Nano 3: Linear Actuator B + IMU). It lists every part on the <a href="../../04-Schematic/schematic/">schematic</a>, using the schematic's reference designators, plus the off-board motor and potentiometer. The tables are sorted by vendor, and each vendor below gets one purchase request.</p>
+<p>This is the bill of materials for my individual board, PCB-4 (Driver Nano 3: Motor-2 + IMU + potentiometer P-3). It lists every part on the <a href="../../04-Schematic/schematic/">schematic</a>, using the schematic's reference designators, plus the off-board motor and potentiometer. The tables are sorted by vendor, and each vendor below gets one purchase request.</p>
 <p><strong>Order quantities.</strong> Following the assignment instructions, for every part I order one for the breadboard prototype, one for the subsystem PCB, and one or two spares:</p>
 <ul>
-<li>Through-hole parts (regulators, op-amp, barrel jack, diodes), the off-board motor and the slide potentiometer: 3 each (breadboard, PCB, spare). For the diodes it is 2 boards × 6 + 3 spares = 15.</li>
-<li>The two surface-mount ICs (DRV8833 in HTSSOP-16 and ADXL343 in LGA-14) have no through-hole version, and I am not using breakout boards, so they cannot go on the breadboard. I order 3 of each: one for the PCB and two spares, because these are the hardest parts to solder.</li>
+<li>Through-hole parts (regulators, op-amp, barrel jack, diodes): 3 each (breadboard, PCB, spare). For the diodes it is 2 boards × 6 + 3 spares = 15.</li>
+<li>The DRV8833 (HTSSOP-16) has no through-hole version, and I am not using a breakout board, so it cannot go on the breadboard. I order 3: one for the PCB and two spares, because it is the hardest part to solder.</li>
+<li>Off-board parts (motor, potentiometer, IMU module) come in multi-packs from Amazon that also cover my teammates' boards.</li>
 <li>Parts that TECH 162 stocks (fuses, IC sockets, headers, and common passives, LEDs and buttons) are not ordered. They are listed below with the quantity I will take.</li>
 </ul>
-<p>This is more than one board's worth of parts. One finished board uses about $24.49 of purchased parts (see <a href="../../02-Component-Selection/Component-Selection/">Component Selection, section 4</a>).</p>
-<p>Prices and stock are from DigiKey and DFRobot, checked on 2026-11-03. Every ordered part was in stock and active that day, and nothing is back-ordered or special-order. Shipping and tax are not included.</p>
+<p>This is more than one board's worth of parts. One finished board uses about $15.92 of purchased parts: $9.69 of DigiKey parts, one potentiometer from the 10-pack (about $0.73) and one ADXL345 module from the 2-pack ($5.50). The motor comes from lab stock.</p>
+<p><strong>Revision 2 (2026-11-23).</strong> The order was redone to match the team's arm sketch and the parts the team agreed on, and so that everything arrives within 2 days. See <a href="#revision-2-changes-2026-11-23">Revision 2 changes</a> below. DigiKey prices are from 2026-11-03 and Amazon prices from 2026-11-23, when all four Amazon items showed Prime next-day delivery. Shipping and tax are not included.</p>
 <p>Datasheets are stored in this repository in the <code>docs/03-BOM/datasheets/</code> folder and linked in each row. Where a manufacturer site would not allow the PDF to be saved, the datasheet link goes to the manufacturer or vendor page instead.</p>
 <h2 id="bill-of-materials">Bill of Materials</h2>
-<h3 id="digikey-purchase-request-1">DigiKey (purchase request 1)</h3>
+<h3 id="digikey-purchase-request-1-2-day-shipping">DigiKey (purchase request 1, 2-day shipping)</h3>
 <table>
 <thead>
 <tr>
@@ -1227,17 +1250,6 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm)</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">$4.020</td>
-<td style="text-align: left;">$12.06</td>
-<td style="text-align: left;">Analog Devices</td>
-<td style="text-align: left;">ADXL343BCCZ</td>
-<td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918">DigiKey 505-ADXL343BCCZ-ND</a></td>
-<td style="text-align: left;"><a href="../datasheets/ADXL343.pdf">ADXL343.pdf</a></td>
-<td style="text-align: left;">U5</td>
-</tr>
-<tr>
 <td style="text-align: left;">Dual H-bridge motor driver, HTSSOP-16</td>
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">$3.020</td>
@@ -1247,17 +1259,6 @@
 <td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167">DigiKey 296-29434-1-ND</a></td>
 <td style="text-align: left;"><a href="../datasheets/DRV8833.pdf">DRV8833.pdf</a></td>
 <td style="text-align: left;">U3</td>
-</tr>
-<tr>
-<td style="text-align: left;">Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7)</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">$1.780</td>
-<td style="text-align: left;">$5.34</td>
-<td style="text-align: left;">Bourns</td>
-<td style="text-align: left;">PTA2043-2015CPB103</td>
-<td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176">DigiKey PTA2043-2015CPB103-ND</a></td>
-<td style="text-align: left;"><a href="../datasheets/PTA-slide-pot.pdf">PTA-slide-pot.pdf</a></td>
-<td style="text-align: left;">–</td>
 </tr>
 <tr>
 <td style="text-align: left;">Schottky diode 40 V 1 A, DO-41</td>
@@ -1340,7 +1341,7 @@
 <td style="text-align: left;"><strong>DigiKey subtotal</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>$45.44</strong></td>
+<td style="text-align: left;"><strong>$28.04</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -1349,7 +1350,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="dfrobot-purchase-request-2">DFRobot (purchase request 2)</h3>
+<p>DigiKey is the only non-Amazon vendor. The DRV8833 is a surface-mount IC that the PCB footprint needs, and Amazon sells it only on breakout boards. The other DigiKey parts ship in the same order.</p>
+<h3 id="amazon-purchase-request-2-prime-12-day-delivery">Amazon (purchase request 2, Prime 1–2 day delivery)</h3>
 <table>
 <thead>
 <tr>
@@ -1366,21 +1368,54 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4)</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">$9.000</td>
-<td style="text-align: left;">$27.00</td>
-<td style="text-align: left;">DFRobot</td>
-<td style="text-align: left;">FIT0577</td>
-<td style="text-align: left;"><a href="https://www.dfrobot.com/product-1733.html">DFRobot FIT0577</a></td>
-<td style="text-align: left;"><a href="https://www.dfrobot.com/product-1733.html">DFRobot page</a></td>
-<td style="text-align: left;">–</td>
+<td style="text-align: left;">N20 6 V 200 RPM gearmotor, 4-pack (164 RPM rated, 0.6 A stall, D-shaft; Motor-2, off-board, on J4)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">$12.99</td>
+<td style="text-align: left;">$12.99</td>
+<td style="text-align: left;">DORHEA</td>
+<td style="text-align: left;">ASIN B0HB558JTS</td>
+<td style="text-align: left;"><a href="https://www.amazon.com/dp/B0HB558JTS">Amazon B0HB558JTS</a></td>
+<td style="text-align: left;"><a href="https://www.amazon.com/dp/B0HB558JTS">Amazon page</a></td>
+<td style="text-align: left;">J4 (off-board)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>DFRobot subtotal</strong></td>
+<td style="text-align: left;">WH148 B10K linear rotary potentiometer, 10-pack (P-1 to P-3; mine is P-3, off-board, on J7)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">$7.29</td>
+<td style="text-align: left;">$7.29</td>
+<td style="text-align: left;">Comimark</td>
+<td style="text-align: left;">ASIN B07WWLC33K</td>
+<td style="text-align: left;"><a href="https://www.amazon.com/dp/B07WWLC33K">Amazon B07WWLC33K</a></td>
+<td style="text-align: left;"><a href="https://www.amazon.com/dp/B07WWLC33K">Amazon page</a></td>
+<td style="text-align: left;">J7 (off-board)</td>
+</tr>
+<tr>
+<td style="text-align: left;">ADXL345 (GY-291) 3-axis accelerometer module, 2-pack (on the arm link, I2C to J6)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">$10.99</td>
+<td style="text-align: left;">$10.99</td>
+<td style="text-align: left;">Hailege</td>
+<td style="text-align: left;">ASIN B08D7F38XY</td>
+<td style="text-align: left;"><a href="https://www.amazon.com/dp/B08D7F38XY">Amazon B08D7F38XY</a></td>
+<td style="text-align: left;"><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">ADXL345 datasheet</a></td>
+<td style="text-align: left;">J6-10 to J6-13, J5-2 (off-board)</td>
+</tr>
+<tr>
+<td style="text-align: left;">M3 × 4 × 5 mm brass heat-set inserts, 120 pcs (3D-printed links)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">$8.98</td>
+<td style="text-align: left;">$8.98</td>
+<td style="text-align: left;">Ktehloy</td>
+<td style="text-align: left;">ASIN B0CLKCQ2SH</td>
+<td style="text-align: left;"><a href="https://www.amazon.com/dp/B0CLKCQ2SH">Amazon B0CLKCQ2SH</a></td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">mechanical</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Amazon subtotal</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>$27.00</strong></td>
+<td style="text-align: left;"><strong>$40.25</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -1389,7 +1424,7 @@
 </tr>
 </tbody>
 </table>
-<p>No vendor on the course list had this motor in stock: RobotShop lists it as special order, and DigiKey only as a non-stock part with a 9-week lead time. The course sourcing guide allows another supplier when the preferred vendors are out of stock, so it comes directly from DFRobot's US store, which showed it in stock. DFRobot ships from China, so shipping and possible import duty are extra.</p>
+<p>One 4-pack of motors gives the 3 extra N20 motors the team asked for, plus a spare. The 10-pack of potentiometers covers P-1 (PCB-2), P-2 (PCB-3) and P-3 (mine).</p>
 <h3 id="tech-162-lab-stock-and-course-kit-not-ordered">TECH 162 lab stock and course kit (not ordered)</h3>
 <p>The assignment lists fuses, IC sockets and headers as TECH 162 stock. If TECH 162 runs out of any part here, it is a common, in-stock DigiKey part.</p>
 <table>
@@ -1407,6 +1442,17 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;">N20 micro metal gearmotor 210:1 HPCB 6 V, 160 RPM, 3 mm D-shaft (Motor-2)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">lab stock</td>
+<td style="text-align: left;">$0</td>
+<td style="text-align: left;">Pololu</td>
+<td style="text-align: left;">3067</td>
+<td style="text-align: left;">lab stock</td>
+<td style="text-align: left;"><a href="https://www.pololu.com/product/3067">Pololu page</a></td>
+<td style="text-align: left;">J4 (off-board)</td>
+</tr>
 <tr>
 <td style="text-align: left;">PIC18F57Q43 Curiosity Nano</td>
 <td style="text-align: left;">1</td>
@@ -1673,8 +1719,83 @@
 </tr>
 </tbody>
 </table>
-<p>Test points TP1–TP13 are bare copper pads on the PCB, so they cost nothing. JP1 and JP2 are 2-pin jumpers that let me disconnect the motor rail and the IMU while I debug.</p>
-<h2 id="changes-from-the-original-design">Changes from the original design</h2>
+<p>Test points TP1–TP13 are bare copper pads on the PCB, so they cost nothing. JP1 and JP2 are 2-pin jumpers that let me disconnect the Nano's VBUS feed and the motor rail while I debug. Dupont jumper wire for the off-board IMU cable also comes from lab stock.</p>
+<p><strong>Not fitted:</strong> U5 (ADXL343BCCZ) is marked DNP (do not populate) on the schematic and PCB. Its pads stay on the board, but it is not ordered (see below).</p>
+<h2 id="revision-2-changes-2026-11-23">Revision 2 changes (2026-11-23)</h2>
+<p>The team's arm sketch gives PCB-4 (my board) <strong>Motor-2, the IMU and potentiometer P-3</strong>, reporting to PCB-1 (Preston, IK and FK). The circuit and the PCB copper are unchanged: the new motor and potentiometer plug into the same headers (J4, J7), and the IMU moves off the board.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Removed</th>
+<th style="text-align: left;">Why</th>
+<th style="text-align: left;">Replaced by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">DFRobot FIT0577 lead-screw motor ×3 ($27.00)</td>
+<td style="text-align: left;">The lab has Pololu #3067 N20 motors, and DFRobot ships from China, too slowly for the 2-day rule</td>
+<td style="text-align: left;">Lab Pololu #3067, plus a DORHEA N20 4-pack from Amazon for the 3 extra motors the team asked for</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bourns PTA2043 slide pot ×3 ($5.34)</td>
+<td style="text-align: left;">The joint is now a rotary hinge, and the team chose a rotary pot</td>
+<td style="text-align: left;">Comimark WH148 B10K rotary pot (10-pack, shared with P-1 and P-2) on the same 3-pin header J7</td>
+</tr>
+<tr>
+<td style="text-align: left;">ADXL343BCCZ ×3 ($12.06)</td>
+<td style="text-align: left;">The sketch puts the IMU on the arm link, not on the board</td>
+<td style="text-align: left;">Hailege ADXL345 (GY-291) module on the arm link, wired to the spare headers; U5 marked DNP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Motor current.</strong> The 0.33 Ω sense resistor still makes the DRV8833 limit the motor current to about 0.61 A. The Amazon motor stalls at 0.6 A, right at that limit; the lab Pololu #3067 stalls at 1.5 A, so the driver limits it to 0.61 A, which costs some torque but protects the motor. The 1 A fuse stays.</p>
+<p><strong>Off-board IMU wiring</strong> (GY-291 to PCB-4 spare headers; keep the cable under about 30 cm):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">GY-291 pin</th>
+<th style="text-align: left;">PCB-4 header</th>
+<th style="text-align: left;">Nano pin</th>
+<th style="text-align: left;">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">VCC</td>
+<td style="text-align: left;">J6-12</td>
+<td style="text-align: left;">+3V3</td>
+<td style="text-align: left;">power</td>
+</tr>
+<tr>
+<td style="text-align: left;">GND</td>
+<td style="text-align: left;">J6-13</td>
+<td style="text-align: left;">GND</td>
+<td style="text-align: left;">ground</td>
+</tr>
+<tr>
+<td style="text-align: left;">SDA</td>
+<td style="text-align: left;">J6-11</td>
+<td style="text-align: left;">RC0</td>
+<td style="text-align: left;">I2C1 SDA (via PPS)</td>
+</tr>
+<tr>
+<td style="text-align: left;">SCL</td>
+<td style="text-align: left;">J6-10</td>
+<td style="text-align: left;">RC1</td>
+<td style="text-align: left;">I2C1 SCL (via PPS)</td>
+</tr>
+<tr>
+<td style="text-align: left;">INT1 (optional)</td>
+<td style="text-align: left;">J5-2</td>
+<td style="text-align: left;">RB2</td>
+<td style="text-align: left;">INT0 / INT2 (via PPS)</td>
+</tr>
+</tbody>
+</table>
+<p>On the 48-pin PIC18F57Q43, I2C1 SDA and SCL can be mapped to ports B and C, and INT0 to ports A and B (PPS tables, datasheet DS40002147E). RC0 and RC1 are free on the Curiosity Nano because its 32.768 kHz crystal footprint is not connected by default. The firmware maps I2C1 to RC0/RC1 with open-drain outputs at 100 kHz; the module's address is 0x53. The ADXL345 uses the same registers as the ADXL343, so the IMU code barely changes.</p>
+<p><strong>Still to confirm with the team:</strong> the sketch labels the motor "DF Robot DC", but the later team message switched to the lab's N20 motors, which have no built-in lead screw. The hinge drive has to come from the mechanical design.</p>
+<h2 id="changes-from-the-original-design-2026-11-03">Changes from the original design (2026-11-03)</h2>
 <p>The <a href="../../04-Schematic/schematic/">schematic</a> has been updated for all of these, so the reference designators and part numbers above match it.</p>
 <ul>
 <li><strong>U5:</strong> the ST LIS3DHTR was out of stock (DigiKey has none until March 2027, and the ST store and other distributors I checked had none). It is replaced by the Analog Devices ADXL343BCCZ, the lower-cost, pin-compatible version of the ADXL345 that was my second choice on the <a href="../../02-Component-Selection/Component-Selection/">Component Selection</a> page. U5 is rewired for its pinout on the same SPI1, chip-select and INT1 nets.</li>
@@ -1695,23 +1816,23 @@
 <tbody>
 <tr>
 <td style="text-align: left;">DigiKey</td>
-<td style="text-align: left;">10 line items</td>
-<td style="text-align: left;">$45.44</td>
+<td style="text-align: left;">8 line items</td>
+<td style="text-align: left;">$28.04</td>
 </tr>
 <tr>
-<td style="text-align: left;">DFRobot</td>
-<td style="text-align: left;">1 line item</td>
-<td style="text-align: left;">$27.00</td>
+<td style="text-align: left;">Amazon</td>
+<td style="text-align: left;">4 line items</td>
+<td style="text-align: left;">$40.25</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Total new purchases</strong></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>$72.44</strong></td>
+<td style="text-align: left;"><strong>$68.29</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The order covers a breadboard prototype, a PCB and spares, as the assignment asks. One finished board uses about $24.49 of these parts. Shipping is extra, and DFRobot may add import duty.</p>
-<p>The KiCad BOM export (<code>BOM.csv</code>) is inside the <a href="../04-Schematic/Subsystem-Schematic-KG.zip">schematic ZIP</a>. This page's table is also saved as <a href="../BOM-KG.csv">BOM-KG.csv</a>.</p>
+<p>The team budget is $70–80. The order covers a breadboard prototype, a PCB and spares, as the assignment asks, plus multi-packs shared with teammates. One finished board uses about $15.92 of these parts. DigiKey 2-day shipping and tax are extra.</p>
+<p>The KiCad project, with U5 marked DNP, is in the <a href="../../06-PCB-Design/Subsystem-PCB-KG-ECAD.zip">PCB Design ZIP</a>. The revision 2 table, with a status column that marks each line as ordered, removed or lab stock, is saved as <a href="../BOM-KG.csv">BOM-KG.csv</a>.</p>
 
 
 

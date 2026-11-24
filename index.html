@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="static/logo304.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
             
 
     
@@ -1063,11 +1063,11 @@ for<br>
 <p>This datasheet documents my individual subsystem board for RAS 304 (Embedded Systems). It walks through how the board was designed: its block diagram, the components chosen and why, the power budget, the schematic and the bill of materials.</p>
 <h3 id="project-summary">Project Summary</h3>
 <p>Team 102 is building a <strong>modular robotic spider leg</strong> for robotics hobbyists and students: a leg made from 3D-printed parts and off-the-shelf electronics that users can buy assembled, repair themselves, and wire into their own walking robots. The leg uses a hub-and-spoke design. Preston's hub board runs the leg kinematics and sends commands over ribbon cables to each teammate's board, and each board drives one part of the leg and reports back. Each board has its own power supply; the only connection between teammates' boards is the UART communication link.</p>
-<p>My board, <strong>Driver Nano 3</strong>, is the spoke on hub connector 3. It drives <strong>Linear Actuator B</strong> (an N20 gearmotor turning an M3 lead screw) to the position the hub asks for, using a slide potentiometer for position feedback and motor-current sensing for stall protection. It also reads an <strong>ADXL343 accelerometer</strong> to measure the leg's jerk and impulse, which it sends back to the hub. More detail on the whole project is in the <a href="https://ras304-fall26-102.github.io/">Team 102 report</a>.</p>
+<p>My board, <strong>Driver Nano 3</strong>, is the spoke on hub connector 3. In the team's arm sketch it is <strong>PCB-4</strong>: it drives <strong>Motor-2</strong> (an N20 6 V gearmotor) to the joint angle the hub asks for, using rotary potentiometer <strong>P-3</strong> for position feedback and motor-current sensing for stall protection. It also reads an <strong>ADXL345 accelerometer module</strong> on the arm link to measure jerk and impulse, which it sends back to the hub. More detail on the whole project is in the <a href="https://ras304-fall26-102.github.io/">Team 102 report</a>.</p>
 <h3 id="my-contribution">My Contribution</h3>
 <ul>
-<li>Linear actuator control: DRV8833 H-bridge with current limit, MCP601 current-sense amplifier, and closed-loop position from a slide potentiometer.</li>
-<li>Motion sensing: ADXL343 accelerometer on SPI for jerk and impulse data.</li>
+<li>Linear actuator control: DRV8833 H-bridge with current limit, MCP601 current-sense amplifier, and closed-loop position from rotary potentiometer P-3.</li>
+<li>Motion sensing: off-board ADXL345 accelerometer module on I2C for jerk and impulse data (the on-board ADXL343 footprint is not fitted from revision 2).</li>
 <li>Board power: 9 V input with fuse and reverse-polarity protection, a 6 V motor rail and a 5 V logic rail.</li>
 <li>UART link to the hub over the class-standard 8-pin ribbon cable.</li>
 </ul>

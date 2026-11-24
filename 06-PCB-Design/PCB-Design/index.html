@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../static/logo304.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
             
 
     
@@ -1191,7 +1191,7 @@
 
 
 <h1 id="pcb-design">PCB Design</h1>
-<p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU</strong>
+<p><strong>RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3 (PCB-4): Motor-2 + IMU + Pot P-3</strong>
 Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)</p>
 <p><strong>Page link:</strong> <a href="https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/">https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/</a></p>
 <h2 id="overview">Overview</h2>
@@ -1209,6 +1209,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 <strong>Figure 3:</strong> Front layout (F.Cu, F.Mask, F.Silkscreen, board outline).</p>
 <p><a class="glightbox" href="../PCB-Layout-Back-KG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Back layout: bottom copper, mask and silkscreen" src="../PCB-Layout-Back-KG.png" /></a>
 <strong>Figure 4:</strong> Back layout (B.Cu, B.Mask, B.Silkscreen, board outline), shown mirrored as seen from the bottom.</p>
+<p><strong>Revision 2 (23 Nov 2026).</strong> After the BOM was redone for the team's arm sketch, U5 (ADXL343) is marked DNP and the IMU is an off-board ADXL345 module on the arm link, wired to J6 and J5 (see the <a href="../../03-BOM/BOM/#revision-2-changes-2026-11-23">BOM</a>). The motor (J4) and pot (J7) changes use the same headers. No copper changed, so the Gerbers, DRC result and JLCDFM check below still apply; DRC was re-run after the edit and is still clean. The project ZIP below has the revision 2 files.</p>
 <h2 id="resources">Resources</h2>
 <ul>
 <li>PDF of the front and back layout: <a href="../PCB-Layout-Front-Back-KG.pdf"><em>here</em></a>.</li>
@@ -1234,7 +1235,7 @@ Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)<
 </tr>
 <tr>
 <td>Left middle</td>
-<td>ADXL343 (U5) with C14/C16, ribbon header J2 and J3, UART test pads, debug LEDs</td>
+<td>ADXL343 (U5, DNP from rev 2) with C14/C16, ribbon header J2 and J3, UART test pads, debug LEDs</td>
 <td>The SPI, UART and LED pins are on the Nano's left row</td>
 </tr>
 <tr>
