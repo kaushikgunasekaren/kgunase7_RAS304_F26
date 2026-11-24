@@ -4,6 +4,9 @@ title: Power Budget
 
 # Power Budget
 
+> **Update (23 Nov 2026):** this page shows the design as submitted. In [BOM revision 2](../03-BOM/BOM.md#revision-2-changes-2026-11-23) the motor became a lab Pololu #3067 / DORHEA N20 6 V gearmotor (no lead screw), the slide pot became a 10k rotary pot (P-3), and the IMU became an off-board ADXL345 module on I2C (U5 not fitted). The circuit and PCB are otherwise unchanged.
+
+
 **RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU**
 
 > This budget matches my current [schematic](../04-Schematic/schematic.md): a 6 V motor rail (LM317TG set to 5.9 V) and a separate 5 V logic rail (L7805CV). It was built in the course power budget template. Values marked "est." should be replaced with measured values once the board is built.

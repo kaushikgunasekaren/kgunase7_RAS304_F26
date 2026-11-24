@@ -7,7 +7,7 @@ tags:
 
 # PCB Design
 
-**RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3: Linear Actuator B + IMU**
+**RAS 304 – Individual Datasheet (Kaushik) – Driver Nano 3 (PCB-4): Motor-2 + IMU + Pot P-3**
 Project: Team 102 Modular Spider Leg (my board is the spoke on hub connector 3)
 
 **Page link:** [https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/](https://kaushikgunasekaren.github.io/kgunase7_RAS304_F26/06-PCB-Design/PCB-Design/)
@@ -32,6 +32,8 @@ This is the PCB layout of my [schematic](../04-Schematic/schematic.md), drawn in
 ![Back layout: bottom copper, mask and silkscreen](PCB-Layout-Back-KG.png)
 **Figure 4:** Back layout (B.Cu, B.Mask, B.Silkscreen, board outline), shown mirrored as seen from the bottom.
 
+**Revision 2 (23 Nov 2026).** After the BOM was redone for the team's arm sketch, U5 (ADXL343) is marked DNP and the IMU is an off-board ADXL345 module on the arm link, wired to J6 and J5 (see the [BOM](../03-BOM/BOM.md#revision-2-changes-2026-11-23)). The motor (J4) and pot (J7) changes use the same headers. No copper changed, so the Gerbers, DRC result and JLCDFM check below still apply; DRC was re-run after the edit and is still clean. The project ZIP below has the revision 2 files.
+
 ## Resources
 
 * PDF of the front and back layout: [*here*](PCB-Layout-Front-Back-KG.pdf).
@@ -46,7 +48,7 @@ The Curiosity Nano sits in the middle of the board on two 1×28 female headers, 
 | Area | Parts | Why there |
 |---|---|---|
 | Top left | Barrel jack J1 (opening at the board edge), fuse F1, D1, L7805CV (U2), LM317TG (U6), their capacitors, power LED | The jack is reachable from the edge, and the input, regulators and their input/output capacitors stay close together |
-| Left middle | ADXL343 (U5) with C14/C16, ribbon header J2 and J3, UART test pads, debug LEDs | The SPI, UART and LED pins are on the Nano's left row |
+| Left middle | ADXL343 (U5, DNP from rev 2) with C14/C16, ribbon header J2 and J3, UART test pads, debug LEDs | The SPI, UART and LED pins are on the Nano's left row |
 | Bottom left | DRV8833 (U3) with C8–C11, flyback diodes D6–D9, motor header J4, sense resistor R8 | Short, wide motor and VM paths; the motor header is at the board edge |
 | Top right | JP1, D3, C5 (VBUS feed), C17/C6 on 3.3 V | Next to the Nano's VBUS and VTG pins |
 | Right | Pot header J7 with R14/C15, button SW1 with R4/R5/C7, MCP601 current-sense amplifier (U4) with R10–R13 | Next to the ADC (RA0, RA1) and button (RD5) pins on the Nano's right row |

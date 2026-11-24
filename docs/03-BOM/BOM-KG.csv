@@ -1,36 +1,41 @@
-Vendor,Part Name/Description,Qty,Unit Cost,Total Cost,Manufacturer,Manufacturer #,Vendor Link,Datasheet Link,Schematic Reference Designators
-DigiKey,"3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm)",3,$4.020,$12.06,Analog Devices,ADXL343BCCZ,https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918,ADXL343.pdf,U5
-DigiKey,"Dual H-bridge motor driver, HTSSOP-16",3,$3.020,$9.06,Texas Instruments,DRV8833PWPR,https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167,DRV8833.pdf,U3
-DigiKey,"Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7)",3,$1.780,$5.34,Bourns,PTA2043-2015CPB103,https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176,PTA-slide-pot.pdf,–
-DigiKey,"Schottky diode 40 V 1 A, DO-41",15,$0.343,$5.15,onsemi,1N5819RLG,https://www.digikey.com/en/products/detail/onsemi/1N5819RLG/918061,1N5819.pdf,"D1, D3, D6–D9"
-DigiKey,"Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220",3,$1.300,$3.90,onsemi,LM317TG,https://www.digikey.com/en/products/result?keywords=LM317TG,LM317.pdf,U6
-DigiKey,"5 V 1.5 A linear regulator, TO-220",3,$1.140,$3.42,STMicroelectronics,L7805CV,https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964,L78xx.pdf,U2
-DigiKey,"DC barrel jack, 2.1 mm, PCB mount",3,$0.660,$1.98,Same Sky (CUI Devices),PJ-002A,https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/PJ-002A/96962,PJ-002A.pdf,J1
-DigiKey,"Op-amp (current-sense amplifier), PDIP-8",3,$0.630,$1.89,Microchip,MCP601-I/P,https://www.digikey.com/en/products/result?keywords=MCP601-I/P,MCP601.pdf,U4
-DigiKey,"Ceramic capacitor 2.2 µF 25 V X7R, radial",3,$0.490,$1.47,TDK,FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,C11
-DigiKey,"Current-sense resistor 0.33 Ω 1 W 5%, axial",3,$0.390,$1.17,YAGEO,FMP100JR-52-0R33,https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33,https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33,R8
-DFRobot,"N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4)",3,$9.000,$27.00,DFRobot,FIT0577,https://www.dfrobot.com/product-1733.html,https://www.dfrobot.com/product-1733.html,–
-TECH 162 lab stock and course kit,PIC18F57Q43 Curiosity Nano,1,course kit,$0,Microchip,DM164150,course kit,https://www.microchip.com/en-us/development-tool/DM164150,U1
-TECH 162 lab stock and course kit,"9 V 1 A wall adapter, 5.5 × 2.1 mm, center-positive",1,already owned,$0,–,–,–,https://www.adafruit.com/product/63,–
-TECH 162 lab stock and course kit,"Fuse 1 A fast-acting, 5 × 20 mm",5,TECH 162,$0,Littelfuse,0217001.HXP,TECH 162,https://www.digikey.com/en/products/detail/littelfuse-inc/0217001-HXP/777108,F1
-TECH 162 lab stock and course kit,"Fuse clip, 5 mm, PCB mount",4,TECH 162,$0,Keystone,3517,TECH 162,Keystone-3517.pdf,F1
-TECH 162 lab stock and course kit,DIP-8 IC socket (for the op-amp),3,TECH 162,$0,any,–,TECH 162,–,U4
-TECH 162 lab stock and course kit,TO-220 clip-on heatsink (for the 6 V regulator),2,TECH 162,$0,any,–,TECH 162,–,U6
-TECH 162 lab stock and course kit,2x4 IDC shrouded header (ribbon to hub),3,TECH 162,$0,Molex,0702460801,TECH 162,https://www.digikey.com/en/products/result?keywords=0702460801,J2
-TECH 162 lab stock and course kit,"Break-away male header strip, 2.54 mm",2,TECH 162,$0,Sullins,PREC040SAAN-RC,TECH 162,–,"J3–J7, JP1, JP2"
-TECH 162 lab stock and course kit,"Jumper shunt, 2.54 mm",4,TECH 162,$0,Sullins,QPC02SXGN-RC,TECH 162,–,"JP1, JP2"
-TECH 162 lab stock and course kit,"Female header 1x28, 2.54 mm (Curiosity Nano socket)",4,TECH 162,$0,Sullins,PPTC281LFBN-RC,TECH 162,–,U1
-TECH 162 lab stock and course kit,"Tactile push button, 6 mm",3,TECH 162,$0,TE Connectivity,1825910-6,TECH 162,TE-1825910-switch.pdf,SW1
-TECH 162 lab stock and course kit,LED 5 mm green / red / yellow,3 each,TECH 162,$0,Kingbright,WP7113GD / WP7113ID / WP7113YD,TECH 162,WP7113-LED.pdf,"D2, D4, D5"
-TECH 162 lab stock and course kit,Ceramic capacitor 0.33 µF 50 V,3,TECH 162,$0,KEMET,C320C334K5R5TA,TECH 162,https://www.kemet.com/en/us/capacitors/ceramic/products/goldmax.html,C1
-TECH 162 lab stock and course kit,Ceramic capacitor 0.1 µF 50 V,26,TECH 162,$0,KEMET,C320C104K5R5TA,TECH 162,https://www.kemet.com/en/us/capacitors/ceramic/products/goldmax.html,"C3–C7, C10, C12–C16, C18"
-TECH 162 lab stock and course kit,Ceramic capacitor 0.01 µF 50 V,3,TECH 162,$0,KEMET,C315C103K5R5TA,TECH 162,https://www.kemet.com/en/us/capacitors/ceramic/products/goldmax.html,C8
-TECH 162 lab stock and course kit,"Electrolytic capacitor 47 µF 25 V, radial",3,TECH 162,$0,Nichicon,UVR1E470MDD (obsolete; any 47 µF ≥ 16 V radial),TECH 162,–,C2
-TECH 162 lab stock and course kit,"Electrolytic capacitor 10 µF 25 V, radial",5,TECH 162,$0,Nichicon,UVR1E100MDD (any 10 µF ≥ 16 V radial),TECH 162,–,"C9, C17"
-TECH 162 lab stock and course kit,Resistor 1 kΩ 1/4 W,10,TECH 162,$0,Stackpole,CF14JT1K00,TECH 162,–,"R1, R5, R13, R14"
-TECH 162 lab stock and course kit,Resistor 330 Ω 1/4 W,5,TECH 162,$0,Stackpole,CF14JT330R,TECH 162,–,"R2, R3"
-TECH 162 lab stock and course kit,Resistor 10 kΩ 1/4 W,16,TECH 162,$0,Stackpole,CF14JT10K0,TECH 162,–,"R4, R6, R7, R9, R10, R15, R16"
-TECH 162 lab stock and course kit,Resistor 47 kΩ 1/4 W,3,TECH 162,$0,Stackpole,CF14JT47K0,TECH 162,–,R11
-TECH 162 lab stock and course kit,Resistor 4.7 kΩ 1/4 W,3,TECH 162,$0,Stackpole,CF14JT4K70,TECH 162,–,R12
-TECH 162 lab stock and course kit,Resistor 220 Ω 1/4 W (LM317 voltage set),3,TECH 162,$0,Stackpole,CF14JT220R,TECH 162,–,R17
-TECH 162 lab stock and course kit,Resistor 820 Ω 1/4 W (LM317 voltage set),3,TECH 162,$0,Stackpole,CF14JT820R,TECH 162,–,R18
+Vendor,Part Name/Description,Qty,Unit Cost,Total Cost,Manufacturer,Manufacturer #,Vendor Link,Datasheet Link,Schematic Reference Designators,"Status (rev 2, 2026-11-23)"
+DigiKey,"3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm)",3,$4.020,$12.06,Analog Devices,ADXL343BCCZ,https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918,ADXL343.pdf,U5,REMOVED - IMU moved off-board (ADXL345 module on arm link); U5 DNP
+DigiKey,"Dual H-bridge motor driver, HTSSOP-16",3,$3.020,$9.06,Texas Instruments,DRV8833PWPR,https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167,DRV8833.pdf,U3,ORDER
+DigiKey,"Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7)",3,$1.780,$5.34,Bourns,PTA2043-2015CPB103,https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176,PTA-slide-pot.pdf,–,REMOVED - replaced by team-chosen Amazon pot (B07WWLC33K)
+DigiKey,"Schottky diode 40 V 1 A, DO-41",15,$0.343,$5.15,onsemi,1N5819RLG,https://www.digikey.com/en/products/detail/onsemi/1N5819RLG/918061,1N5819.pdf,"D1, D3, D6–D9",ORDER
+DigiKey,"Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220",3,$1.300,$3.90,onsemi,LM317TG,https://www.digikey.com/en/products/result?keywords=LM317TG,LM317.pdf,U6,ORDER
+DigiKey,"5 V 1.5 A linear regulator, TO-220",3,$1.140,$3.42,STMicroelectronics,L7805CV,https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964,L78xx.pdf,U2,ORDER
+DigiKey,"DC barrel jack, 2.1 mm, PCB mount",3,$0.660,$1.98,Same Sky (CUI Devices),PJ-002A,https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/PJ-002A/96962,PJ-002A.pdf,J1,ORDER
+DigiKey,"Op-amp (current-sense amplifier), PDIP-8",3,$0.630,$1.89,Microchip,MCP601-I/P,https://www.digikey.com/en/products/result?keywords=MCP601-I/P,MCP601.pdf,U4,ORDER
+DigiKey,"Ceramic capacitor 2.2 µF 25 V X7R, radial",3,$0.490,$1.47,TDK,FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06,C11,ORDER
+DigiKey,"Current-sense resistor 0.33 Ω 1 W 5%, axial",3,$0.390,$1.17,YAGEO,FMP100JR-52-0R33,https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33,https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33,R8,ORDER
+DFRobot,"N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4)",3,$9.000,$27.00,DFRobot,FIT0577,https://www.dfrobot.com/product-1733.html,https://www.dfrobot.com/product-1733.html,–,REMOVED - using lab-stock N20 (Pololu #3067); Amazon N20 x3 added instead
+TECH 162 lab stock and course kit,PIC18F57Q43 Curiosity Nano,1,course kit,$0,Microchip,DM164150,course kit,https://www.microchip.com/en-us/development-tool/DM164150,U1,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"9 V 1 A wall adapter, 5.5 × 2.1 mm, center-positive",1,already owned,$0,–,–,–,https://www.adafruit.com/product/63,–,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Fuse 1 A fast-acting, 5 × 20 mm",5,TECH 162,$0,Littelfuse,0217001.HXP,TECH 162,https://www.digikey.com/en/products/detail/littelfuse-inc/0217001-HXP/777108,F1,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Fuse clip, 5 mm, PCB mount",4,TECH 162,$0,Keystone,3517,TECH 162,Keystone-3517.pdf,F1,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,DIP-8 IC socket (for the op-amp),3,TECH 162,$0,any,–,TECH 162,–,U4,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,TO-220 clip-on heatsink (for the 6 V regulator),2,TECH 162,$0,any,–,TECH 162,–,U6,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,2x4 IDC shrouded header (ribbon to hub),3,TECH 162,$0,Molex,0702460801,TECH 162,https://www.digikey.com/en/products/result?keywords=0702460801,J2,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Break-away male header strip, 2.54 mm",2,TECH 162,$0,Sullins,PREC040SAAN-RC,TECH 162,–,"J3–J7, JP1, JP2",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Jumper shunt, 2.54 mm",4,TECH 162,$0,Sullins,QPC02SXGN-RC,TECH 162,–,"JP1, JP2",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Female header 1x28, 2.54 mm (Curiosity Nano socket)",4,TECH 162,$0,Sullins,PPTC281LFBN-RC,TECH 162,–,U1,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Tactile push button, 6 mm",3,TECH 162,$0,TE Connectivity,1825910-6,TECH 162,TE-1825910-switch.pdf,SW1,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,LED 5 mm green / red / yellow,3 each,TECH 162,$0,Kingbright,WP7113GD / WP7113ID / WP7113YD,TECH 162,WP7113-LED.pdf,"D2, D4, D5",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Ceramic capacitor 0.33 µF 50 V,3,TECH 162,$0,KEMET,C320C334K5R5TA,TECH 162,https://www.kemet.com/en/us/capacitors/ceramic/products/goldmax.html,C1,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Ceramic capacitor 0.1 µF 50 V,26,TECH 162,$0,KEMET,C320C104K5R5TA,TECH 162,https://www.kemet.com/en/us/capacitors/ceramic/products/goldmax.html,"C3–C7, C10, C12–C16, C18",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Ceramic capacitor 0.01 µF 50 V,3,TECH 162,$0,KEMET,C315C103K5R5TA,TECH 162,https://www.kemet.com/en/us/capacitors/ceramic/products/goldmax.html,C8,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Electrolytic capacitor 47 µF 25 V, radial",3,TECH 162,$0,Nichicon,UVR1E470MDD (obsolete; any 47 µF ≥ 16 V radial),TECH 162,–,C2,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,"Electrolytic capacitor 10 µF 25 V, radial",5,TECH 162,$0,Nichicon,UVR1E100MDD (any 10 µF ≥ 16 V radial),TECH 162,–,"C9, C17",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 1 kΩ 1/4 W,10,TECH 162,$0,Stackpole,CF14JT1K00,TECH 162,–,"R1, R5, R13, R14",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 330 Ω 1/4 W,5,TECH 162,$0,Stackpole,CF14JT330R,TECH 162,–,"R2, R3",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 10 kΩ 1/4 W,16,TECH 162,$0,Stackpole,CF14JT10K0,TECH 162,–,"R4, R6, R7, R9, R10, R15, R16",Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 47 kΩ 1/4 W,3,TECH 162,$0,Stackpole,CF14JT47K0,TECH 162,–,R11,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 4.7 kΩ 1/4 W,3,TECH 162,$0,Stackpole,CF14JT4K70,TECH 162,–,R12,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 220 Ω 1/4 W (LM317 voltage set),3,TECH 162,$0,Stackpole,CF14JT220R,TECH 162,–,R17,Not ordered (lab/kit stock)
+TECH 162 lab stock and course kit,Resistor 820 Ω 1/4 W (LM317 voltage set),3,TECH 162,$0,Stackpole,CF14JT820R,TECH 162,–,R18,Not ordered (lab/kit stock)
+Lab stock,"N20 micro metal gearmotor 210:1 HPCB 6 V, 160 RPM, 3 mm D-shaft (Motor-2, on J4)",1,lab stock,$0,Pololu,3067,https://www.pololu.com/product/3067,https://www.pololu.com/product/3067,J4 (off-board),Not ordered (lab has large qty)
+Amazon,"DORHEA N20 6 V 200 RPM gearmotor, 4-pack",1,$12.99,$12.99,DORHEA,B0HB558JTS,https://www.amazon.com/dp/B0HB558JTS,https://www.amazon.com/dp/B0HB558JTS,J4 (off-board),ORDER
+Amazon,"Comimark WH148 B10K linear rotary pot, 10-pack (P-1..P-3)",1,$7.29,$7.29,Comimark,B07WWLC33K,https://www.amazon.com/dp/B07WWLC33K,https://www.amazon.com/dp/B07WWLC33K,J7 (off-board),ORDER
+Amazon,"Ktehloy M3x4x5 brass heat-set inserts, 120 pcs",1,$8.98,$8.98,Ktehloy,B0CLKCQ2SH,https://www.amazon.com/dp/B0CLKCQ2SH,–,mechanical,ORDER
+Amazon,"Hailege ADXL345 GY-291 IMU module, 2-pack (on arm link, I2C to J6)",1,$10.99,$10.99,Hailege,B08D7F38XY,https://www.amazon.com/dp/B08D7F38XY,https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf,"J6-10..13, J5-2 (off-board)",ORDER

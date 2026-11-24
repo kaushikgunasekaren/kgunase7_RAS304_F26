@@ -6,6 +6,9 @@ tags:
 - accelerometer
 ---
 
+> **Update (23 Nov 2026):** this page shows the design as submitted. In [BOM revision 2](../03-BOM/BOM.md#revision-2-changes-2026-11-23) the motor became a lab Pololu #3067 / DORHEA N20 6 V gearmotor (no lead screw), the slide pot became a 10k rotary pot (P-3), and the IMU became an off-board ADXL345 module on I2C (U5 not fitted). The circuit and PCB are otherwise unchanged.
+
+
 ## Overview
 
 This page shows the electrical architecture of my subsystem for Team 102's Modular Spider Leg. In the team's hub-and-spoke layout, my board is the spoke on **hub connector 3**. It drives the leg's small **linear actuator** (the actuator) and measures leg motion with an **accelerometer** for jerk and impulse sensing (the sensor). Commands come from Preston's hub board over the ribbon cable.

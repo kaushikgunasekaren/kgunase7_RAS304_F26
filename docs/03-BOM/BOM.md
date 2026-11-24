@@ -6,29 +6,28 @@ tags:
 
 ## Overview
 
-This is the bill of materials for my individual board (Driver Nano 3: Linear Actuator B + IMU). It lists every part on the [schematic](../04-Schematic/schematic.md), using the schematic's reference designators, plus the off-board motor and potentiometer. The tables are sorted by vendor, and each vendor below gets one purchase request.
+This is the bill of materials for my individual board, PCB-4 (Driver Nano 3: Motor-2 + IMU + potentiometer P-3). It lists every part on the [schematic](../04-Schematic/schematic.md), using the schematic's reference designators, plus the off-board motor and potentiometer. The tables are sorted by vendor, and each vendor below gets one purchase request.
 
 **Order quantities.** Following the assignment instructions, for every part I order one for the breadboard prototype, one for the subsystem PCB, and one or two spares:
 
-* Through-hole parts (regulators, op-amp, barrel jack, diodes), the off-board motor and the slide potentiometer: 3 each (breadboard, PCB, spare). For the diodes it is 2 boards × 6 + 3 spares = 15.
-* The two surface-mount ICs (DRV8833 in HTSSOP-16 and ADXL343 in LGA-14) have no through-hole version, and I am not using breakout boards, so they cannot go on the breadboard. I order 3 of each: one for the PCB and two spares, because these are the hardest parts to solder.
+* Through-hole parts (regulators, op-amp, barrel jack, diodes): 3 each (breadboard, PCB, spare). For the diodes it is 2 boards × 6 + 3 spares = 15.
+* The DRV8833 (HTSSOP-16) has no through-hole version, and I am not using a breakout board, so it cannot go on the breadboard. I order 3: one for the PCB and two spares, because it is the hardest part to solder.
+* Off-board parts (motor, potentiometer, IMU module) come in multi-packs from Amazon that also cover my teammates' boards.
 * Parts that TECH 162 stocks (fuses, IC sockets, headers, and common passives, LEDs and buttons) are not ordered. They are listed below with the quantity I will take.
 
-This is more than one board's worth of parts. One finished board uses about $24.49 of purchased parts (see [Component Selection, section 4](../02-Component-Selection/Component-Selection.md)).
+This is more than one board's worth of parts. One finished board uses about $15.92 of purchased parts: $9.69 of DigiKey parts, one potentiometer from the 10-pack (about $0.73) and one ADXL345 module from the 2-pack ($5.50). The motor comes from lab stock.
 
-Prices and stock are from DigiKey and DFRobot, checked on 2026-11-03. Every ordered part was in stock and active that day, and nothing is back-ordered or special-order. Shipping and tax are not included.
+**Revision 2 (2026-11-23).** The order was redone to match the team's arm sketch and the parts the team agreed on, and so that everything arrives within 2 days. See [Revision 2 changes](#revision-2-changes-2026-11-23) below. DigiKey prices are from 2026-11-03 and Amazon prices from 2026-11-23, when all four Amazon items showed Prime next-day delivery. Shipping and tax are not included.
 
 Datasheets are stored in this repository in the `docs/03-BOM/datasheets/` folder and linked in each row. Where a manufacturer site would not allow the PDF to be saved, the datasheet link goes to the manufacturer or vendor page instead.
 
 ## Bill of Materials
 
-### DigiKey (purchase request 1)
+### DigiKey (purchase request 1, 2-day shipping)
 
 | Part Name/Description | Qty | Unit Cost | Total Cost | Manufacturer | Manufacturer # | Vendor Link | Datasheet Link | Schematic Reference Designators |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 3-axis accelerometer, SPI/I2C, LGA-14 (3 × 5 mm) | 3 | $4.020 | $12.06 | Analog Devices | ADXL343BCCZ | [DigiKey 505-ADXL343BCCZ-ND](https://www.digikey.com/en/products/detail/analog-devices-inc/ADXL343BCCZ/3542918) | [ADXL343.pdf](datasheets/ADXL343.pdf) | U5 |
 | Dual H-bridge motor driver, HTSSOP-16 | 3 | $3.020 | $9.06 | Texas Instruments | DRV8833PWPR | [DigiKey 296-29434-1-ND](https://www.digikey.com/en/products/detail/texas-instruments/DRV8833PWPR/2743167) | [DRV8833.pdf](datasheets/DRV8833.pdf) | U3 |
-| Slide potentiometer 10 kΩ, 20 mm travel (off-board, on J7) | 3 | $1.780 | $5.34 | Bourns | PTA2043-2015CPB103 | [DigiKey PTA2043-2015CPB103-ND](https://www.digikey.com/en/products/detail/bourns-inc/PTA2043-2015CPB103/3781176) | [PTA-slide-pot.pdf](datasheets/PTA-slide-pot.pdf) | – |
 | Schottky diode 40 V 1 A, DO-41 | 15 | $0.343 | $5.15 | onsemi | 1N5819RLG | [DigiKey 1N5819RLGOSCT-ND](https://www.digikey.com/en/products/detail/onsemi/1N5819RLG/918061) | [1N5819.pdf](datasheets/1N5819.pdf) | D1, D3, D6–D9 |
 | Adjustable 1.5 A linear regulator (set to 5.9 V), TO-220 | 3 | $1.300 | $3.90 | onsemi | LM317TG | [DigiKey LM317TGOS-ND](https://www.digikey.com/en/products/result?keywords=LM317TG) | [LM317.pdf](datasheets/LM317.pdf) | U6 |
 | 5 V 1.5 A linear regulator, TO-220 | 3 | $1.140 | $3.42 | STMicroelectronics | L7805CV | [DigiKey 497-1443-5-ND](https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964) | [L78xx.pdf](datasheets/L78xx.pdf) | U2 |
@@ -36,16 +35,21 @@ Datasheets are stored in this repository in the `docs/03-BOM/datasheets/` folder
 | Op-amp (current-sense amplifier), PDIP-8 | 3 | $0.630 | $1.89 | Microchip | MCP601-I/P | [DigiKey MCP601-I/P-ND](https://www.digikey.com/en/products/result?keywords=MCP601-I/P) | [MCP601.pdf](datasheets/MCP601.pdf) | U4 |
 | Ceramic capacitor 2.2 µF 25 V X7R, radial | 3 | $0.490 | $1.47 | TDK | FA16X7R1E225KNU06 | [DigiKey 445-180433-1-ND](https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06) | [DigiKey page](https://www.digikey.com/en/products/result?keywords=FA16X7R1E225KNU06) | C11 |
 | Current-sense resistor 0.33 Ω 1 W 5%, axial | 3 | $0.390 | $1.17 | YAGEO | FMP100JR-52-0R33 | [DigiKey 0.33WCT-ND](https://www.digikey.com/en/products/result?keywords=FMP100JR-52-0R33) | [YAGEO page](https://www.yageo.com/en/ProductSearch/PartNumber?part_number=FMP100JR-52-0R33) | R8 |
-| **DigiKey subtotal** | | | **$45.44** | | | | | |
+| **DigiKey subtotal** | | | **$28.04** | | | | | |
 
-### DFRobot (purchase request 2)
+DigiKey is the only non-Amazon vendor. The DRV8833 is a surface-mount IC that the PCB footprint needs, and Amazon sells it only on breakout boards. The other DigiKey parts ship in the same order.
+
+### Amazon (purchase request 2, Prime 1–2 day delivery)
 
 | Part Name/Description | Qty | Unit Cost | Total Cost | Manufacturer | Manufacturer # | Vendor Link | Datasheet Link | Schematic Reference Designators |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| N20 6 V 98 RPM gearmotor with M3 × 20 mm lead screw (off-board, on J4) | 3 | $9.000 | $27.00 | DFRobot | FIT0577 | [DFRobot FIT0577](https://www.dfrobot.com/product-1733.html) | [DFRobot page](https://www.dfrobot.com/product-1733.html) | – |
-| **DFRobot subtotal** | | | **$27.00** | | | | | |
+| N20 6 V 200 RPM gearmotor, 4-pack (164 RPM rated, 0.6 A stall, D-shaft; Motor-2, off-board, on J4) | 1 | $12.99 | $12.99 | DORHEA | ASIN B0HB558JTS | [Amazon B0HB558JTS](https://www.amazon.com/dp/B0HB558JTS) | [Amazon page](https://www.amazon.com/dp/B0HB558JTS) | J4 (off-board) |
+| WH148 B10K linear rotary potentiometer, 10-pack (P-1 to P-3; mine is P-3, off-board, on J7) | 1 | $7.29 | $7.29 | Comimark | ASIN B07WWLC33K | [Amazon B07WWLC33K](https://www.amazon.com/dp/B07WWLC33K) | [Amazon page](https://www.amazon.com/dp/B07WWLC33K) | J7 (off-board) |
+| ADXL345 (GY-291) 3-axis accelerometer module, 2-pack (on the arm link, I2C to J6) | 1 | $10.99 | $10.99 | Hailege | ASIN B08D7F38XY | [Amazon B08D7F38XY](https://www.amazon.com/dp/B08D7F38XY) | [ADXL345 datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf) | J6-10 to J6-13, J5-2 (off-board) |
+| M3 × 4 × 5 mm brass heat-set inserts, 120 pcs (3D-printed links) | 1 | $8.98 | $8.98 | Ktehloy | ASIN B0CLKCQ2SH | [Amazon B0CLKCQ2SH](https://www.amazon.com/dp/B0CLKCQ2SH) | – | mechanical |
+| **Amazon subtotal** | | | **$40.25** | | | | | |
 
-No vendor on the course list had this motor in stock: RobotShop lists it as special order, and DigiKey only as a non-stock part with a 9-week lead time. The course sourcing guide allows another supplier when the preferred vendors are out of stock, so it comes directly from DFRobot's US store, which showed it in stock. DFRobot ships from China, so shipping and possible import duty are extra.
+One 4-pack of motors gives the 3 extra N20 motors the team asked for, plus a spare. The 10-pack of potentiometers covers P-1 (PCB-2), P-2 (PCB-3) and P-3 (mine).
 
 ### TECH 162 lab stock and course kit (not ordered)
 
@@ -54,6 +58,7 @@ The assignment lists fuses, IC sockets and headers as TECH 162 stock. If TECH 16
 
 | Part Name/Description | Qty | Unit Cost | Total Cost | Manufacturer | Manufacturer # | Vendor Link | Datasheet Link | Schematic Reference Designators |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| N20 micro metal gearmotor 210:1 HPCB 6 V, 160 RPM, 3 mm D-shaft (Motor-2) | 1 | lab stock | $0 | Pololu | 3067 | lab stock | [Pololu page](https://www.pololu.com/product/3067) | J4 (off-board) |
 | PIC18F57Q43 Curiosity Nano | 1 | course kit | $0 | Microchip | DM164150 | course kit | [Microchip page](https://www.microchip.com/en-us/development-tool/DM164150) | U1 |
 | 9 V 1 A wall adapter, 5.5 × 2.1 mm, center-positive | 1 | already owned | $0 | – | – | – | [Adafruit page](https://www.adafruit.com/product/63) | – |
 | Fuse 1 A fast-acting, 5 × 20 mm | 5 | TECH 162 | $0 | Littelfuse | 0217001.HXP | TECH 162 | [DigiKey page](https://www.digikey.com/en/products/detail/littelfuse-inc/0217001-HXP/777108) | F1 |
@@ -79,9 +84,37 @@ The assignment lists fuses, IC sockets and headers as TECH 162 stock. If TECH 16
 | Resistor 220 Ω 1/4 W (LM317 voltage set) | 3 | TECH 162 | $0 | Stackpole | CF14JT220R | TECH 162 | – | R17 |
 | Resistor 820 Ω 1/4 W (LM317 voltage set) | 3 | TECH 162 | $0 | Stackpole | CF14JT820R | TECH 162 | – | R18 |
 
-Test points TP1–TP13 are bare copper pads on the PCB, so they cost nothing. JP1 and JP2 are 2-pin jumpers that let me disconnect the motor rail and the IMU while I debug.
+Test points TP1–TP13 are bare copper pads on the PCB, so they cost nothing. JP1 and JP2 are 2-pin jumpers that let me disconnect the Nano's VBUS feed and the motor rail while I debug. Dupont jumper wire for the off-board IMU cable also comes from lab stock.
 
-## Changes from the original design
+**Not fitted:** U5 (ADXL343BCCZ) is marked DNP (do not populate) on the schematic and PCB. Its pads stay on the board, but it is not ordered (see below).
+
+## Revision 2 changes (2026-11-23)
+
+The team's arm sketch gives PCB-4 (my board) **Motor-2, the IMU and potentiometer P-3**, reporting to PCB-1 (Preston, IK and FK). The circuit and the PCB copper are unchanged: the new motor and potentiometer plug into the same headers (J4, J7), and the IMU moves off the board.
+
+| Removed | Why | Replaced by |
+|:--|:--|:--|
+| DFRobot FIT0577 lead-screw motor ×3 ($27.00) | The lab has Pololu #3067 N20 motors, and DFRobot ships from China, too slowly for the 2-day rule | Lab Pololu #3067, plus a DORHEA N20 4-pack from Amazon for the 3 extra motors the team asked for |
+| Bourns PTA2043 slide pot ×3 ($5.34) | The joint is now a rotary hinge, and the team chose a rotary pot | Comimark WH148 B10K rotary pot (10-pack, shared with P-1 and P-2) on the same 3-pin header J7 |
+| ADXL343BCCZ ×3 ($12.06) | The sketch puts the IMU on the arm link, not on the board | Hailege ADXL345 (GY-291) module on the arm link, wired to the spare headers; U5 marked DNP |
+
+**Motor current.** The 0.33 Ω sense resistor still makes the DRV8833 limit the motor current to about 0.61 A. The Amazon motor stalls at 0.6 A, right at that limit; the lab Pololu #3067 stalls at 1.5 A, so the driver limits it to 0.61 A, which costs some torque but protects the motor. The 1 A fuse stays.
+
+**Off-board IMU wiring** (GY-291 to PCB-4 spare headers; keep the cable under about 30 cm):
+
+| GY-291 pin | PCB-4 header | Nano pin | Function |
+|:--|:--|:--|:--|
+| VCC | J6-12 | +3V3 | power |
+| GND | J6-13 | GND | ground |
+| SDA | J6-11 | RC0 | I2C1 SDA (via PPS) |
+| SCL | J6-10 | RC1 | I2C1 SCL (via PPS) |
+| INT1 (optional) | J5-2 | RB2 | INT0 / INT2 (via PPS) |
+
+On the 48-pin PIC18F57Q43, I2C1 SDA and SCL can be mapped to ports B and C, and INT0 to ports A and B (PPS tables, datasheet DS40002147E). RC0 and RC1 are free on the Curiosity Nano because its 32.768 kHz crystal footprint is not connected by default. The firmware maps I2C1 to RC0/RC1 with open-drain outputs at 100 kHz; the module's address is 0x53. The ADXL345 uses the same registers as the ADXL343, so the IMU code barely changes.
+
+**Still to confirm with the team:** the sketch labels the motor "DF Robot DC", but the later team message switched to the lab's N20 motors, which have no built-in lead screw. The hinge drive has to come from the mechanical design.
+
+## Changes from the original design (2026-11-03)
 
 The [schematic](../04-Schematic/schematic.md) has been updated for all of these, so the reference designators and part numbers above match it.
 
@@ -95,10 +128,10 @@ The [schematic](../04-Schematic/schematic.md) has been updated for all of these,
 
 | Vendor | Items | Subtotal |
 |:--|:--|:--|
-| DigiKey | 10 line items | $45.44 |
-| DFRobot | 1 line item | $27.00 |
-| **Total new purchases** | | **$72.44** |
+| DigiKey | 8 line items | $28.04 |
+| Amazon | 4 line items | $40.25 |
+| **Total new purchases** | | **$68.29** |
 
-The order covers a breadboard prototype, a PCB and spares, as the assignment asks. One finished board uses about $24.49 of these parts. Shipping is extra, and DFRobot may add import duty.
+The team budget is $70–80. The order covers a breadboard prototype, a PCB and spares, as the assignment asks, plus multi-packs shared with teammates. One finished board uses about $15.92 of these parts. DigiKey 2-day shipping and tax are extra.
 
-The KiCad BOM export (`BOM.csv`) is inside the [schematic ZIP](../04-Schematic/Subsystem-Schematic-KG.zip). This page's table is also saved as [BOM-KG.csv](BOM-KG.csv).
+The KiCad project, with U5 marked DNP, is in the [PCB Design ZIP](../06-PCB-Design/Subsystem-PCB-KG-ECAD.zip). The revision 2 table, with a status column that marks each line as ordered, removed or lab stock, is saved as [BOM-KG.csv](BOM-KG.csv).
